@@ -1,0 +1,16 @@
+[
+{
+  "modid": "chinacraft",
+  "name": "ChinaCraft2",
+  "description": "An chinese culture mod reloaded edition of minecraft forge.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/UnknownStudio/ChinaCraft2",
+  "updateUrl": "",
+  "authorList": ["ExampleDude"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
