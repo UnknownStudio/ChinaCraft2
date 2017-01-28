@@ -29,29 +29,25 @@ public class CommonProxy {
     protected Map<LoaderState, Collection<Method>> stateLoaderMap = new HashMap<>();
 
     public void preInit(FMLPreInitializationEvent event) {
-        invoke(event, Side.SERVER);
+        invoke(event,LoaderState.PREINITIALIZATION, Side.SERVER);
     }
 
     public void init(FMLInitializationEvent event) {
-        invoke(event, Side.SERVER);
+        invoke(event,LoaderState.INITIALIZATION, Side.SERVER);
     }
 
     public void postInit(FMLPostInitializationEvent event) {
-        invoke(event, Side.SERVER);
+        invoke(event,LoaderState.POSTINITIALIZATION, Side.SERVER);
     }
 
     public void loadComplete(FMLLoadCompleteEvent event) {
-        invoke(event, Side.SERVER);
+        invoke(event,LoaderState.AVAILABLE, Side.SERVER);
     }
 
-    public void load(FMLLoadCompleteEvent event) {
-        invoke(event, Side.SERVER);
-    }
-
-    protected <T extends FMLStateEvent> void invoke (T event, Side side) {
+    protected <T extends FMLStateEvent> void invoke (T event,LoaderState state, Side side) {
         stateLoaderMap.values().forEach(methods -> methods.forEach(method -> {
             if (method.getAnnotation(Load.class).side().equals(side))
-                if (method.getParameterCount() == 0 && method.getAnnotation(Load.class).value().getEvent().getClass().equals(event.getClass()))
+                if (method.getParameterCount() == 0 && method.getAnnotation(Load.class).value().equals(state))
                     try {
                         method.invoke(loaderInstanceMap.get(method.getDeclaringClass()));
                     } catch (IllegalAccessException | InvocationTargetException e) {

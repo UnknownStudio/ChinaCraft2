@@ -43,11 +43,6 @@ public final class ChinaCraft {
     }
 
     @EventHandler
-    public void load(FMLLoadCompleteEvent event) {
-        proxy.load(event);
-    }
-
-    @EventHandler
     public void loadComplete(FMLLoadCompleteEvent event) {
         proxy.loadComplete(event);
     }
