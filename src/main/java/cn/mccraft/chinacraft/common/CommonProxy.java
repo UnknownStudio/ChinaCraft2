@@ -2,8 +2,8 @@ package cn.mccraft.chinacraft.common;
 
 import cn.mccraft.chinacraft.block.BlockLoader;
 import cn.mccraft.chinacraft.item.ItemLoader;
-import cn.mccraft.chinacraft.util.ILoader;
-import cn.mccraft.chinacraft.util.loader.Load;
+import cn.mccraft.chinacraft.util.loader.ILoader;
+import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import com.google.common.collect.Lists;
 import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.common.event.*;

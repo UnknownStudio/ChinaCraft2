@@ -1,5 +1,8 @@
 package cn.mccraft.chinacraft.common;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -7,6 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,6 +31,13 @@ public final class ChinaCraft {
 
     private final Logger LOGGER = LogManager.getLogger(MODID);
 
+    public static final CreativeTabs tabCore = new CreativeTabs(ChinaCraft.MODID+"_core") {
+        @Override
+        public ItemStack getTabIconItem() {
+            return new ItemStack(Blocks.AIR);
+        }
+    };
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
@@ -34,6 +45,8 @@ public final class ChinaCraft {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
+        NetworkRegistry.INSTANCE.registerGuiHandler(ChinaCraft.instance, new GuiHandler());
+
         proxy.init(event);
     }
 
