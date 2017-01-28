@@ -1,0 +1,25 @@
+# Use Whitelist Mode
+/*
+
+# Gradle Files
+!gradle/
+!gradlew
+!gradlew.bat
+!build.gradle
+!gradle.properties
+
+# Description Files
+!README.md
+
+# Source Code
+!src/
+
+# Git Files
+!.gitignore
+
+# Libs Files
+!libs/
+
+# Ci Files
+!.travis.yml
+
