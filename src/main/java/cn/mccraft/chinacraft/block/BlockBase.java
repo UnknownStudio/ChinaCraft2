@@ -1,6 +1,6 @@
 package cn.mccraft.chinacraft.block;
 
-import cn.mccraft.chinacraft.common.ChinaCraft;
+import cn.mccraft.chinacraft.init.CCCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -11,6 +11,6 @@ public class BlockBase extends Block{
 
     public BlockBase(Material materialIn) {
         super(materialIn);
-        setCreativeTab(ChinaCraft.tabCore);
+        setCreativeTab(CCCreativeTabs.tabCore);
     }
 }

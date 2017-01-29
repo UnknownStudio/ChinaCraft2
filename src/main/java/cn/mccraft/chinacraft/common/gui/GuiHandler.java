@@ -1,4 +1,4 @@
-package cn.mccraft.chinacraft.common;
+package cn.mccraft.chinacraft.common.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;

@@ -1,9 +1,7 @@
 package cn.mccraft.chinacraft.common;
 
+import cn.mccraft.chinacraft.common.gui.GuiHandler;
 import cn.mccraft.chinacraft.network.RedPacketMessage;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -20,28 +18,21 @@ import org.apache.logging.log4j.Logger;
 /**
  * Created by Mouse on 2017/1/28.
  */
-@Mod(modid = ChinaCraft.MODID,name = ChinaCraft.NAME,version = ChinaCraft.VERSION)
+@Mod(modid = ChinaCraft.MODID, name = ChinaCraft.NAME, version = ChinaCraft.VERSION)
 public final class ChinaCraft {
     public static final String MODID = "chinacraft";
     public static final String NAME = "ChinaCraft2";
     public static final String VERSION = "0.0.1";
 
     @SidedProxy(clientSide = "cn.mccraft.chinacraft.client.ClientProxy", serverSide = "cn.mccraft.chinacraft.common.CommonProxy")
-    public static CommonProxy proxy;
+    private static CommonProxy proxy;
 
     @Mod.Instance(ChinaCraft.MODID)
-    public static ChinaCraft instance;
+    private static ChinaCraft instance;
 
-    public static SimpleNetworkWrapper network;
+    private static SimpleNetworkWrapper network;
 
-    private final Logger LOGGER = LogManager.getLogger(MODID);
-
-    public static final CreativeTabs tabCore = new CreativeTabs(ChinaCraft.MODID+"_core") {
-        @Override
-        public ItemStack getTabIconItem() {
-            return new ItemStack(Blocks.AIR);
-        }
-    };
+    private static final Logger LOGGER = LogManager.getLogger(MODID);
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -53,7 +44,7 @@ public final class ChinaCraft {
         network = new SimpleNetworkWrapper(MODID);
         network.registerMessage(new RedPacketMessage.Handler(), RedPacketMessage.class,0, Side.SERVER);
 
-        NetworkRegistry.INSTANCE.registerGuiHandler(ChinaCraft.instance, new GuiHandler());
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
         proxy.init(event);
     }
@@ -68,7 +59,19 @@ public final class ChinaCraft {
         proxy.loadComplete(event);
     }
 
-    public Logger getLogger() {
+    public static Logger getLogger() {
         return LOGGER;
+    }
+
+    public static ChinaCraft getInstance() {
+        return instance;
+    }
+
+    public static SimpleNetworkWrapper getNetwork() {
+        return network;
+    }
+
+    public static CommonProxy getProxy() {
+        return proxy;
     }
 }

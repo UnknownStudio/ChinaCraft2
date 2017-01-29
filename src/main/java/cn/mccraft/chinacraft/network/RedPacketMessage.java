@@ -61,7 +61,7 @@ public class RedPacketMessage implements IMessage { // 包类
             EntityPlayer player = ctx.getServerHandler().playerEntity;
             ItemStack itemStack = player.inventory.getCurrentItem();
 
-            if (itemStack == null || itemStack.getItem() != ChinaCraft.redPacket)return null;
+//          FIXME  if (itemStack == null || itemStack.getItem() != ChinaCraft.redPacket)return null;
 
             player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
 
