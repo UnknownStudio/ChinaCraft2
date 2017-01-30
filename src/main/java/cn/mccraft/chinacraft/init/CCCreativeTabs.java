@@ -19,4 +19,12 @@ public interface CCCreativeTabs {
             return new ItemStack(Blocks.AIR);
         }
     };
+
+    CreativeTabs tabMaterials = new CreativeTabs(ChinaCraft.MODID + "_materials") {
+        @Nonnull
+        @Override
+        public ItemStack getTabIconItem() {
+            return new ItemStack(Blocks.AIR);
+        }
+    };
 }

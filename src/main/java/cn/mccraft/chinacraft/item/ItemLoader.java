@@ -22,6 +22,7 @@ import java.util.List;
  * Auto loader of all items annotated with {@link RegItem} in {@link CCItems}.
  * 自动加载{@link CCItems}中被{@link RegItem}注释的物品。
  */
+@SuppressWarnings("unused")
 public class ItemLoader implements ILoader<RegItem> {
 
     @Load
@@ -63,6 +64,6 @@ public class ItemLoader implements ILoader<RegItem> {
     }
 
     private void registerItemBlock(Block block) {
-        GameRegistry.register(new ItemBlock(block));
+        GameRegistry.register(new ItemBlock(block).setRegistryName(block.getRegistryName()).setUnlocalizedName(block.getUnlocalizedName()));
     }
 }

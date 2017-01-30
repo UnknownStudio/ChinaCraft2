@@ -10,6 +10,6 @@ import javax.annotation.Nonnull;
 public class ContainerRedPacket extends Container {
     @Override
     public boolean canInteractWith(@Nonnull EntityPlayer playerIn) {
-        return playerIn.getHeldItemMainhand().isItemEqual(new ItemStack(CCItems.ITEM_RED_PACKET));
+        return playerIn.getHeldItemMainhand().isItemEqual(new ItemStack(CCItems.RED_PACKET));
     }
 }

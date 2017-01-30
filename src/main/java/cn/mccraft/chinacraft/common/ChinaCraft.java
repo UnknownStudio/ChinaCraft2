@@ -2,6 +2,7 @@ package cn.mccraft.chinacraft.common;
 
 import cn.mccraft.chinacraft.common.gui.GuiHandler;
 import cn.mccraft.chinacraft.network.RedPacketMessage;
+import cn.mccraft.chinacraft.util.JsonSettings;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -34,8 +35,11 @@ public final class ChinaCraft {
 
     private static final Logger LOGGER = LogManager.getLogger(MODID);
 
+    private JsonSettings settings;
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        settings = new JsonSettings(event.getModConfigurationDirectory(), "config");
         proxy.preInit(event);
     }
 
@@ -57,6 +61,10 @@ public final class ChinaCraft {
     @EventHandler
     public void loadComplete(FMLLoadCompleteEvent event) {
         proxy.loadComplete(event);
+    }
+
+    public JsonSettings getSettings() {
+        return settings;
     }
 
     public static Logger getLogger() {
