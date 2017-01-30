@@ -1,50 +1,36 @@
 package cn.mccraft.chinacraft.block.machine;
 
-import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockStateContainer;
+import cn.mccraft.chinacraft.block.tileentity.TileEntityCrusher;
+import cn.mccraft.chinacraft.capability.CapabilityLoader;
+import cn.mccraft.chinacraft.common.ChinaCraft;
+import cn.mccraft.chinacraft.common.gui.EnumGuiType;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
-import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class BlockCrusher extends BlockMachine {
-    private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-    private static final PropertyEnum<EnumMaterial> MATERIAL = PropertyEnum.create("material", EnumMaterial.class);
-
-    public BlockCrusher() {
-        setDefaultState(blockState.getBaseState()
-            .withProperty(FACING, EnumFacing.NORTH)
-            .withProperty(MATERIAL, EnumMaterial.STONE)
-        );
+    @Nullable
+    @Override
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new TileEntityCrusher();
     }
 
     @Override
-    public int getMetaFromState(IBlockState state) {
-        int facing = state.getValue(FACING).getHorizontalIndex();
-        int material = state.getValue(MATERIAL).ordinal();
-        return facing * 10 + material;
-    }
-
-    @Override
-    @Nonnull
-    public IBlockState getStateFromMeta(int meta) {
-        EnumFacing facing = EnumFacing.getHorizontal(meta / 10);
-        EnumMaterial material = EnumMaterial.values()[meta - (meta / 10) * 10];
-        return getDefaultState().withProperty(FACING, facing).withProperty(MATERIAL, material);
-    }
-
-    public enum EnumMaterial implements IStringSerializable {
-        STONE, BRONZE, IRON;
-        @Override
-        public String getName() {
-            return this.toString().toLowerCase();
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float side, float hitX, float hitY) {
+        try {
+            if (facing.equals(EnumFacing.UP) && worldIn.getTileEntity(pos).hasCapability(CapabilityLoader.getStatsCapability(), null))
+                worldIn.getTileEntity(pos).getCapability(CapabilityLoader.getStatsCapability(), null).addProgress(0.5f);
+            else
+                playerIn.openGui(ChinaCraft.getInstance(), EnumGuiType.CRUSHER.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
+            return true;
+        } catch (NullPointerException ignored) {
+            return false;
         }
-    }
-
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING, MATERIAL);
     }
 }
