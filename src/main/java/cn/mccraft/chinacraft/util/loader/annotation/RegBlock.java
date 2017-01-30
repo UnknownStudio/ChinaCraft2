@@ -11,4 +11,11 @@ public @interface RegBlock {
      * All {@link net.minecraftforge.oredict.OreDictionary} values to be registered.
      */
     String[] oreDict() default {};
+
+
+    /**
+     * Add prefix on value
+     * Example: gold -> blockGold
+     */
+    String prefix() default "block";
 }

@@ -11,4 +11,10 @@ public @interface RegItem {
      * All {@link net.minecraftforge.oredict.OreDictionary} values to be registered.
      */
     String[] oreDict() default {};
+
+    /**
+     * Add prefix on value
+     * Example: wandIron -> itemWandIron
+     */
+    String prefix() default "item";
 }

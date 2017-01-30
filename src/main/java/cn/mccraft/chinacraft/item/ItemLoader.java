@@ -16,6 +16,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Auto loader of all items annotated with {@link RegItem} in {@link CCItems}.
@@ -32,7 +33,10 @@ public class ItemLoader implements ILoader<RegItem> {
     public void loadForAnnotation(RegItem annotation, Field field) {
         try {
             Item item = (Item) field.get(null);
-            field.set(null, item.setRegistryName(NameBuilder.buildRegistryName(annotation.value())).setUnlocalizedName(NameBuilder.buildUnlocalizedName(annotation.value())));
+            field.setAccessible(true);
+            List<String> value = Arrays.asList(annotation.value());
+            value.add(0, annotation.prefix());
+            field.set(null, item.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
             register(item);
             Arrays.asList(annotation.oreDict()).forEach(s -> OreDictionary.registerOre(s, item));
         } catch (Exception e) {

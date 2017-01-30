@@ -9,6 +9,6 @@ import net.minecraft.block.material.Material;
  * 所有ChinaCraft模组中提供的方块。
  */
 public interface CCBlocks {
-    @RegBlock({"block", "test"})
+    @RegBlock({"test"})
     Block BLOCK_TEST = new Block(Material.ROCK);
 }

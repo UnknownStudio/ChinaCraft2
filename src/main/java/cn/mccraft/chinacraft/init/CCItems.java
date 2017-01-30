@@ -9,9 +9,9 @@ import net.minecraft.item.Item;
  * 所有ChinaCraft模组中提供的物品。
  */
 public interface CCItems {
-    @RegItem({"item", "test"})
+    @RegItem({"testDebug"})
     Item ITEM_TEST = new Item();
 
-    @RegItem({"item", "red", "packet"})
+    @RegItem({"red", "packet"})
     ItemRedPacket ITEM_RED_PACKET = new ItemRedPacket();
 }

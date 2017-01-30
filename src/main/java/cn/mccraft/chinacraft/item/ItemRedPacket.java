@@ -10,10 +10,13 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created by Mouse on 2017/1/28.
  */
 public class ItemRedPacket extends ItemBase {
+    @Nonnull
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         BlockPos pos = playerIn.getPosition();
