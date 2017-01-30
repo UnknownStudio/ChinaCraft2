@@ -7,6 +7,10 @@ import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
+/**
+ * All creative tabs provided by ChinaCraft mod.
+ * 所有ChinaCraft模组中提供的创造物品栏。
+ */
 public interface CCCreativeTabs {
     CreativeTabs tabCore = new CreativeTabs(ChinaCraft.MODID + "_core") {
         @Nonnull

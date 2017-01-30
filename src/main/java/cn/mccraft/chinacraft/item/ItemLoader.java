@@ -8,8 +8,6 @@ import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelBakery;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -19,6 +17,10 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
+/**
+ * Auto loader of all items annotated with {@link RegItem} in {@link CCItems}.
+ * 自动加载{@link CCItems}中被{@link RegItem}注释的物品。
+ */
 public class ItemLoader implements ILoader<RegItem> {
 
     @Load
@@ -32,7 +34,6 @@ public class ItemLoader implements ILoader<RegItem> {
             Item item = (Item) field.get(null);
             field.set(null, item.setRegistryName(NameBuilder.buildRegistryName(annotation.value())).setUnlocalizedName(NameBuilder.buildUnlocalizedName(annotation.value())));
             register(item);
-            ModelBakery.registerItemVariants(item, new ModelResourceLocation(ChinaCraft.MODID + ":" + item.getUnlocalizedName(), "inventory"));
             Arrays.asList(annotation.oreDict()).forEach(s -> OreDictionary.registerOre(s, item));
         } catch (Exception e) {
             ChinaCraft.getLogger().warn("Un-able to register item " + field.toGenericString(), e);

@@ -13,6 +13,10 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
+/**
+ * Auto loader of all blocks annotated with {@link RegBlock} in {@link CCBlocks}.
+ * 自动加载{@link CCBlocks}中被{@link RegBlock}注释的方块。
+ */
 public class BlockLoader implements ILoader<RegBlock> {
     @Load
     public void registerBlocks() {

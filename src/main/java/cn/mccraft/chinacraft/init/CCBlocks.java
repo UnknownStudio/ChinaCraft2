@@ -5,7 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
 /**
- * Created by Mouse on 2017/1/28.
+ * All blocks provided by ChinaCraft mod.
+ * 所有ChinaCraft模组中提供的方块。
  */
 public interface CCBlocks {
     @RegBlock({"block", "test"})

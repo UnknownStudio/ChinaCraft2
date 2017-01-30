@@ -15,7 +15,8 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * Created by Mouse on 2017/1/28.
+ * Common proxy of ChinaCraft.
+ * ChinaCraft公共代理。
  */
 public class CommonProxy {
 

@@ -9,7 +9,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 /**
- * Created by Mouse on 2017/1/28.
+ * Client proxy of ChinaCraft.
+ * ChinaCraft客户端代理。
  */
 public class ClientProxy extends CommonProxy{
 
