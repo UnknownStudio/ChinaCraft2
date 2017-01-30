@@ -6,6 +6,7 @@ import cn.mccraft.chinacraft.init.CCItems;
 import cn.mccraft.chinacraft.util.NameBuilder;
 import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
+import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
@@ -49,7 +51,16 @@ public class ItemLoader implements ILoader<RegItem> {
     public void registerItemBlocks() {
         for (Field field : CCBlocks.class.getFields())
             try {
-                registerItemBlock((Block) field.get(null));
+                field.setAccessible(true);
+                RegBlock anno = field.getAnnotation(RegBlock.class);
+
+                if(anno == null) return;
+
+                Block block = (Block) field.get(null);
+                Class<? extends ItemBlock> itemClass = anno.itemClass();
+                Constructor<? extends ItemBlock> con = itemClass.getConstructor(Block.class);
+                con.setAccessible(true);
+                GameRegistry.register(con.newInstance(block).setRegistryName(block.getRegistryName()).setUnlocalizedName(block.getUnlocalizedName()));
             } catch (Exception e) {
                 ChinaCraft.getLogger().warn("Un-able to register ItemBlock " + field.toGenericString(), e);
             }
@@ -61,9 +72,5 @@ public class ItemLoader implements ILoader<RegItem> {
 
     private void register(Item item) {
         GameRegistry.register(item);
-    }
-
-    private void registerItemBlock(Block block) {
-        GameRegistry.register(new ItemBlock(block).setRegistryName(block.getRegistryName()).setUnlocalizedName(block.getUnlocalizedName()));
     }
 }

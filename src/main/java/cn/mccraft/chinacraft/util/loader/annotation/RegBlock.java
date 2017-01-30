@@ -1,5 +1,7 @@
 package cn.mccraft.chinacraft.util.loader.annotation;
 
+import net.minecraft.item.ItemBlock;
+
 public @interface RegBlock {
     /**
      * The params to build registryName and unlocalizedName.
@@ -18,4 +20,9 @@ public @interface RegBlock {
      * Example: gold -> blockGold
      */
     String prefix() default "block";
+
+    /**
+     *
+     */
+    Class<? extends ItemBlock> itemClass() default ItemBlock.class;
 }
