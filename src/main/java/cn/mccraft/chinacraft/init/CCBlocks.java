@@ -1,10 +1,9 @@
 package cn.mccraft.chinacraft.init;
 
+import cn.mccraft.chinacraft.block.BlockOre;
 import cn.mccraft.chinacraft.block.machine.BlockCrusher;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockOre;
-import net.minecraft.block.material.Material;
 
 /**
  * All blocks provided by ChinaCraft mod.
@@ -13,10 +12,10 @@ import net.minecraft.block.material.Material;
 public interface CCBlocks {
 
     @RegBlock(value = {"copper", "ore"}, oreDict = {"oreCopper"})
-    Block COPPER_ORE = new BlockOre().setHardness(3.0F).setResistance(5.0F);
+    Block COPPER_ORE = new BlockOre();
 
     @RegBlock(value = {"tin", "ore"}, oreDict = {"oreTin"})
-    Block TIN_ORE = new BlockOre().setHardness(3.0F).setResistance(5.0F);
+    Block TIN_ORE = new BlockOre();
 
     @RegBlock({"stone", "crusher"})
     BlockCrusher STONE_CRUSHER = new BlockCrusher();
