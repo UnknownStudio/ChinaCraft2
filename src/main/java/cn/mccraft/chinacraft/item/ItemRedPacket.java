@@ -17,6 +17,11 @@ import javax.annotation.Nonnull;
  * Created by Mouse on 2017/1/28.
  */
 public class ItemRedPacket extends ItemBase {
+
+    public ItemRedPacket(){
+        setMaxStackSize(1);
+    }
+
     @Nonnull
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
