@@ -4,6 +4,7 @@ import cn.mccraft.chinacraft.util.Utils;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagString;
@@ -100,7 +101,7 @@ public class RedPacketMessage implements IMessage {
 
 //          FIXME  if (itemStack == null || itemStack.getItem() != ChinaCraft.redPacket)return null;
 
-            player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
+            player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(Blocks.AIR));
 
             itemStack = itemStack.copy();
             NBTTagCompound nbt = new NBTTagCompound();

@@ -9,6 +9,7 @@ import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.LoaderState;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
@@ -46,6 +48,12 @@ public class BlockLoader implements ILoader<RegBlock> {
             //value.add(0, annotation.prefix());
             register(block.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
             Arrays.asList(annotation.oreDict()).forEach(s -> OreDictionary.registerOre(s, block));
+
+            //Register item block.
+            Class<? extends ItemBlock> itemClass = annotation.itemClass();
+            Constructor<? extends ItemBlock> con = itemClass.getConstructor(Block.class);
+            con.setAccessible(true);
+            GameRegistry.register(con.newInstance(block).setRegistryName(block.getRegistryName()).setUnlocalizedName(block.getUnlocalizedName()));
         } catch (Exception e) {
             ChinaCraft.getLogger().warn("Un-able to register block " + field.toGenericString(), e);
         }

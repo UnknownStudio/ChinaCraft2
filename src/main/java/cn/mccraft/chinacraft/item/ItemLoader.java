@@ -45,7 +45,7 @@ public class ItemLoader implements ILoader<RegItem> {
         }
     }
 
-    @Load
+    /*@Load
     public void registerItemBlocks() {
         for (Field field : CCBlocks.class.getFields())
             try {
@@ -61,7 +61,7 @@ public class ItemLoader implements ILoader<RegItem> {
             } catch (Exception e) {
                 ChinaCraft.getLogger().warn("Un-able to register ItemBlock " + field.toGenericString(), e);
             }
-    }
+    }*/
 
     @Load(side = Side.CLIENT)
     public void registerRenders() {
