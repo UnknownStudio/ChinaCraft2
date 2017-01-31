@@ -42,11 +42,9 @@ public class BlockLoader implements ILoader<RegBlock> {
     public void loadForAnnotation(RegBlock annotation, Field field) {
         try {
             Block block = (Block) field.get(null);
-            field.setAccessible(true);
             List<String> value = Arrays.asList(annotation.value());
-            value.add(0, annotation.prefix());
-            field.set(null, block.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
-            register(block);
+            //value.add(0, annotation.prefix());
+            register(block.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
             Arrays.asList(annotation.oreDict()).forEach(s -> OreDictionary.registerOre(s, block));
         } catch (Exception e) {
             ChinaCraft.getLogger().warn("Un-able to register block " + field.toGenericString(), e);

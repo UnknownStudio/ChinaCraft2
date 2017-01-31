@@ -1,5 +1,12 @@
 package cn.mccraft.chinacraft.util.loader.annotation;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
 public @interface RegItem {
     /**
      * The params to build registryName and unlocalizedName.
@@ -16,5 +23,5 @@ public @interface RegItem {
      * Add prefix on value
      * Example: wandIron -> itemWandIron
      */
-    String prefix() default "item";
+    //String prefix() default "item";
 }

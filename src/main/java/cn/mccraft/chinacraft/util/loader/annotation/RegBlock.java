@@ -2,6 +2,13 @@ package cn.mccraft.chinacraft.util.loader.annotation;
 
 import net.minecraft.item.ItemBlock;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
 public @interface RegBlock {
     /**
      * The params to build registryName and unlocalizedName.
@@ -19,7 +26,7 @@ public @interface RegBlock {
      * Add prefix on value
      * Example: gold -> blockGold
      */
-    String prefix() default "block";
+    //String prefix() default "block";
 
     /**
      *

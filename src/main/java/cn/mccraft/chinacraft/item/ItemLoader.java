@@ -38,9 +38,8 @@ public class ItemLoader implements ILoader<RegItem> {
             Item item = (Item) field.get(null);
             field.setAccessible(true);
             List<String> value = Arrays.asList(annotation.value());
-            value.add(0, annotation.prefix());
-            field.set(null, item.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
-            register(item);
+            //value.add(0, annotation.prefix());
+            register(item.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
             Arrays.asList(annotation.oreDict()).forEach(s -> OreDictionary.registerOre(s, item));
         } catch (Exception e) {
             ChinaCraft.getLogger().warn("Un-able to register item " + field.toGenericString(), e);
@@ -51,7 +50,6 @@ public class ItemLoader implements ILoader<RegItem> {
     public void registerItemBlocks() {
         for (Field field : CCBlocks.class.getFields())
             try {
-                field.setAccessible(true);
                 RegBlock anno = field.getAnnotation(RegBlock.class);
 
                 if(anno == null) return;

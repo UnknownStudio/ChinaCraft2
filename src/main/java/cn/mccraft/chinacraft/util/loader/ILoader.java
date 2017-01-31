@@ -22,9 +22,9 @@ public interface ILoader<T extends Annotation> {
      * @param clz class to be loaded
      */
     default void loadAllFieldsInClass(Class<T> annotationClass, Class<?> clz) {
-        for (Field field : clz.getDeclaredFields()) {
+        for (Field field : clz.getFields()) {
             field.setAccessible(true);
-            if (field.getAnnotation(annotationClass) != null)
+            if (field.getAnnotation(annotationClass)!=null)
                 loadForAnnotation(field.getAnnotation(annotationClass), field);
         }
     }

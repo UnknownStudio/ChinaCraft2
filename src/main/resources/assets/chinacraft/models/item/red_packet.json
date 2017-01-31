@@ -1,0 +1,6 @@
+{
+    "parent": "builtin/generate",
+    "textures": {
+        "layer0": "items/red_packet"
+    }
+}
