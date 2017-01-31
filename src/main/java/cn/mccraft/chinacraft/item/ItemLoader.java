@@ -9,8 +9,10 @@ import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.oredict.OreDictionary;
@@ -65,6 +67,7 @@ public class ItemLoader implements ILoader<RegItem> {
 
     @Load(side = Side.CLIENT)
     public void registerRenders() {
+        ModelLoader.setCustomModelResourceLocation(CCItems.RED_PACKET, 0, new ModelResourceLocation(CCItems.RED_PACKET.getRegistryName(), "inventory"));
     }
 
     private void register(Item item) {

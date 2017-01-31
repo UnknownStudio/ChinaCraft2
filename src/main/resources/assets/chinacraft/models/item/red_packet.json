@@ -1,6 +1,6 @@
 {
-    "parent": "builtin/generate",
+    "parent": "item/generated",
     "textures": {
-        "layer0": "items/red_packet"
+        "layer0": "chinacraft:items/red_packet"
     }
 }

@@ -118,17 +118,17 @@ public class RedPacketMessage implements IMessage {
             EntityPlayer reciverPlayer = Utils.getPlayerByName(receiver);
             if (reciverPlayer == null) {
                 player.inventory.setInventorySlotContents(player.inventory.currentItem, itemStack);
-                player.addChatMessage(new TextComponentString(I18n.format("redpacket.not_found_player", receiver)));
+                player.addChatMessage(new TextComponentString(I18n.format("redPacket.notFoundPlayer", receiver)));
                 return null;
             }
 
             if (reciverPlayer.inventory.addItemStackToInventory(itemStack)) {
-                player.addChatMessage(new TextComponentString(I18n.format("redpacket.success", receiver)));
-                reciverPlayer.addChatMessage(new TextComponentString(I18n.format("redpacket.received", message.getSender())));
+                player.addChatMessage(new TextComponentString(I18n.format("redPacket.success", receiver)));
+                reciverPlayer.addChatMessage(new TextComponentString(I18n.format("redPacket.received", message.getSender())));
                 return null;
             } else {
                 player.inventory.setInventorySlotContents(player.inventory.currentItem, itemStack);
-                player.addChatMessage(new TextComponentString(I18n.format("redpacket.backpack_full", receiver)));
+                player.addChatMessage(new TextComponentString(I18n.format("redPacket.backpackFull", receiver)));
                 return null;
             }
         }

@@ -41,7 +41,7 @@ public class GuiContainerRedPacket extends GuiContainer {
             sender = redpacket.getString("sender");
             wish = redpacket.getString("wish");
         }
-        if (wish == null || wish.isEmpty()) wish= I18n.format("gui.redpacket.wash");
+        if (wish == null || wish.isEmpty()) wish= I18n.format("gui.redPacket.wish");
     }
 
     @Override
@@ -57,7 +57,7 @@ public class GuiContainerRedPacket extends GuiContainer {
         receiverTextBox = new GuiTextField(1,Minecraft.getMinecraft().fontRendererObj, this.xSize / 2 + 96, 65, 64, 16);
         receiverTextBox.setMaxStringLength(32);
         this.buttonList.add(this.buttonSend = new GuiButton(0, k + this.xSize / 2 + 96, l + 89, 64, 20,
-                I18n.format("gui.redpacket.send")));
+                I18n.format("gui.redPacket.send")));
         buttonSend.enabled = false;
         updateButton();
         super.initGui();
@@ -74,7 +74,7 @@ public class GuiContainerRedPacket extends GuiContainer {
         if (sender == null || sender.isEmpty() || sender.equalsIgnoreCase(player.getDisplayName().getFormattedText())) {
             wishTextBox.drawTextBox();
             receiverTextBox.drawTextBox();
-            String head = I18n.format("item.redpacket.name");
+            String head = I18n.format("gui.redPacket.title");
             this.fontRendererObj.drawString(head, this.xSize / 2 - this.fontRendererObj.getStringWidth(head) / 2, 5,
                     Integer.MAX_VALUE);
         } else {
@@ -85,7 +85,7 @@ public class GuiContainerRedPacket extends GuiContainer {
             buttonSend.visible = false;
             this.fontRendererObj.drawString(getWish(), this.xSize / 2 - this.fontRendererObj.getStringWidth(getWish()) / 2, 68,
                     Integer.MAX_VALUE);
-            String head = I18n.format("gui.redpacket.from",sender);
+            String head = I18n.format("gui.redPacket.from",sender);
             this.fontRendererObj.drawString(head, this.xSize / 2 - this.fontRendererObj.getStringWidth(head) / 2, 5,
                     Integer.MAX_VALUE);
         }

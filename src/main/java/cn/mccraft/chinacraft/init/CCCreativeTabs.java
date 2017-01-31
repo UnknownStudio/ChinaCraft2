@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
  * 所有ChinaCraft模组中提供的创造物品栏。
  */
 public interface CCCreativeTabs {
-    CreativeTabs tabCore = new CreativeTabs(ChinaCraft.MODID + "_core") {
+    CreativeTabs tabCore = new CreativeTabs(ChinaCraft.MODID + "Core") {
         @Nonnull
         @Override
         public ItemStack getTabIconItem() {
@@ -20,7 +20,7 @@ public interface CCCreativeTabs {
         }
     };
 
-    CreativeTabs tabMaterials = new CreativeTabs(ChinaCraft.MODID + "_materials") {
+    CreativeTabs tabMaterials = new CreativeTabs(ChinaCraft.MODID + "Materials") {
         @Nonnull
         @Override
         public ItemStack getTabIconItem() {
