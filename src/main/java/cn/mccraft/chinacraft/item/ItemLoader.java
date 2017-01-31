@@ -36,7 +36,6 @@ public class ItemLoader implements ILoader<RegItem> {
     public void loadForAnnotation(RegItem annotation, Field field) {
         try {
             Item item = (Item) field.get(null);
-            field.setAccessible(true);
             List<String> value = Arrays.asList(annotation.value());
             //value.add(0, annotation.prefix());
             register(item.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));

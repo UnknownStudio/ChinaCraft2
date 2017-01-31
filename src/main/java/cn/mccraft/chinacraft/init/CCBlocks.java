@@ -11,8 +11,6 @@ import net.minecraft.block.material.Material;
  * 所有ChinaCraft模组中提供的方块。
  */
 public interface CCBlocks {
-    @RegBlock({"test"})
-    Block TEST = new Block(Material.ROCK);
 
     @RegBlock(value = {"copper", "ore"}, oreDict = {"oreCopper"})
     Block COPPER_ORE = new BlockOre().setHardness(3.0F).setResistance(5.0F);
