@@ -16,6 +16,12 @@ public interface CCItems {
     @RegItem({"red", "packet"})
     ItemRedPacket RED_PACKET = new ItemRedPacket();
 
+    @RegItem(value = {"copper", "ingot"}, oreDict = {"ingotCopper"})
+    ItemIngot COPPER_INGOT = new ItemIngot();
+
+    @RegItem(value = {"tin", "ingot"}, oreDict = {"ingotTin"})
+    ItemIngot TIN_INGOT = new ItemIngot();
+
     @RegItem(value = {"bronze", "ingot"}, oreDict = {"ingotBronze"})
     ItemIngot BRONZE_INGOT = new ItemIngot();
 

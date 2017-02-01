@@ -6,24 +6,18 @@ import cn.mccraft.chinacraft.util.NameBuilder;
 import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
-import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
-import cn.mccraft.chinacraft.world.gen.WorldGenCCOre;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Auto loader of all blocks annotated with {@link RegBlock} in {@link CCBlocks}.
