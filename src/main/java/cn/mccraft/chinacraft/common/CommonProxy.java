@@ -4,7 +4,6 @@ import cn.mccraft.chinacraft.block.BlockLoader;
 import cn.mccraft.chinacraft.item.ItemLoader;
 import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
-import cn.mccraft.chinacraft.worldgen.CCWorldOreGenerator;
 import com.google.common.collect.Lists;
 import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.common.event.*;
@@ -27,8 +26,6 @@ public class CommonProxy {
     private final Map<Class<? extends ILoader>, ILoader> loaderInstanceMap = new HashMap<>();
     private final Map<LoaderState, Collection<Method>> stateLoaderMap = new HashMap<>();
 
-    private CCWorldOreGenerator generator;
-
     public void preInit(FMLPreInitializationEvent event) {
         invoke(event, LoaderState.PREINITIALIZATION, Side.SERVER);
     }
@@ -39,7 +36,6 @@ public class CommonProxy {
 
     public void postInit(FMLPostInitializationEvent event) {
         invoke(event, LoaderState.POSTINITIALIZATION, Side.SERVER);
-        generator = new CCWorldOreGenerator();
     }
 
     public void loadComplete(FMLLoadCompleteEvent event) {
@@ -100,9 +96,5 @@ public class CommonProxy {
 
     public Map<LoaderState, Collection<Method>> getStateLoaderMap() {
         return stateLoaderMap;
-    }
-
-    public CCWorldOreGenerator getWorldGenerator() {
-        return generator;
     }
 }

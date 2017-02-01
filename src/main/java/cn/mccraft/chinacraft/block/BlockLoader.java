@@ -6,6 +6,7 @@ import cn.mccraft.chinacraft.util.NameBuilder;
 import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
+import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -15,6 +16,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.lang.reflect.Constructor;
@@ -30,44 +32,53 @@ import java.util.List;
 public class BlockLoader implements ILoader<RegBlock> {
     @Load
     public void registerBlocks() {
-        loadAllFieldsInClass(RegBlock.class, CCBlocks.class);
-    }
+        for (Field field : CCBlocks.class.getFields()) {
+            field.setAccessible(true);
+            RegBlock anno = field.getAnnotation(RegBlock.class);
+            if (anno==null) return;
 
-    @Load(value = LoaderState.INITIALIZATION, side = Side.CLIENT)
-    public void registerRenders() {
-        registerRender(CCBlocks.STONE_CRUSHER, 0, "stone_crusher");
-        registerRender(CCBlocks.BRONZE_CRUSHER, 10, "bronze_crusher");
-        registerRender(CCBlocks.IRON_CRUSHER, 20, "iron_crusher");
-    }
+            try {
+                Block block = (Block) field.get(null);
+                List<String> value = Arrays.asList(anno.value());
+                //value.add(0, annotation.prefix());
+                GameRegistry.register(block.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
 
-    @Override
-    public void loadForAnnotation(RegBlock annotation, Field field) {
-        try {
-            Block block = (Block) field.get(null);
-            List<String> value = Arrays.asList(annotation.value());
-            //value.add(0, annotation.prefix());
-            register(block.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
-            Arrays.asList(annotation.oreDict()).forEach(s -> OreDictionary.registerOre(s, block));
+                //Register item block.
+                Class<? extends ItemBlock> itemClass = anno.itemClass();
+                Constructor<? extends ItemBlock> con = itemClass.getConstructor(Block.class);
+                con.setAccessible(true);
+                GameRegistry.register(con.newInstance(block).setRegistryName(block.getRegistryName()).setUnlocalizedName(block.getUnlocalizedName()));
 
-            //Register item block.
-            Class<? extends ItemBlock> itemClass = annotation.itemClass();
-            Constructor<? extends ItemBlock> con = itemClass.getConstructor(Block.class);
-            con.setAccessible(true);
-            GameRegistry.register(con.newInstance(block).setRegistryName(block.getRegistryName()).setUnlocalizedName(block.getUnlocalizedName()));
-        } catch (Exception e) {
-            ChinaCraft.getLogger().warn("Un-able to register block " + field.toGenericString(), e);
+                Arrays.asList(anno.oreDict()).forEach(s -> OreDictionary.registerOre(s, block));
+            } catch (Exception e) {
+                ChinaCraft.getLogger().warn("Un-able to register block " + field.toGenericString(), e);
+            }
         }
     }
 
-    private void register(Block block){
-        GameRegistry.register(block);
+    @Load(side = Side.CLIENT)
+    public void registerRenders() {
+        //registerRender(CCBlocks.STONE_CRUSHER, 0);
+        //registerRender(CCBlocks.BRONZE_CRUSHER, 10);
+        //registerRender(CCBlocks.IRON_CRUSHER, 20);
+        //registerRender(CCBlocks.TIN_ORE,0);
+        for (Field field : CCBlocks.class.getFields()) {
+            field.setAccessible(true);
+            RegBlock anno = field.getAnnotation(RegBlock.class);
+            if (anno==null) return;
+
+            try {
+                Block block = (Block) field.get(null);
+                registerRender(block,0);
+            } catch (Exception e) {
+                ChinaCraft.getLogger().warn("Un-able to register block " + field.toGenericString(), e);
+            }
+        }
     }
 
-    private void registerRender(Block block, int meta, String name)
+    private void registerRender(Block block, int meta)
     {
         Item item = Item.getItemFromBlock(block);
-        ResourceLocation location = new ResourceLocation(ChinaCraft.MODID, name);
-        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(location, "inventory"));
-        ModelLoader.registerItemVariants(item, location);
+        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
     }
 }

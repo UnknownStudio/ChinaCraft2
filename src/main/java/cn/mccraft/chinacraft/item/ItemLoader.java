@@ -31,46 +31,43 @@ public class ItemLoader implements ILoader<RegItem> {
 
     @Load
     public void registerItems() {
-        loadAllFieldsInClass(RegItem.class, CCItems.class);
-    }
+        for (Field field : CCItems.class.getFields()) {
+            field.setAccessible(true);
+            RegItem anno = field.getAnnotation(RegItem.class);
+            if (anno==null) return;
 
-    @Override
-    public void loadForAnnotation(RegItem annotation, Field field) {
-        try {
-            Item item = (Item) field.get(null);
-            List<String> value = Arrays.asList(annotation.value());
-            //value.add(0, annotation.prefix());
-            register(item.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
-            Arrays.asList(annotation.oreDict()).forEach(s -> OreDictionary.registerOre(s, item));
-        } catch (Exception e) {
-            ChinaCraft.getLogger().warn("Un-able to register item " + field.toGenericString(), e);
+            try {
+                Item item = (Item) field.get(null);
+                List<String> value = Arrays.asList(anno.value());
+                //value.add(0, annotation.prefix());
+                GameRegistry.register(item.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
+
+                Arrays.asList(anno.oreDict()).forEach(s -> OreDictionary.registerOre(s, item));
+            } catch (Exception e) {
+                ChinaCraft.getLogger().warn("Un-able to register item " + field.toGenericString(), e);
+            }
         }
     }
 
-    /*@Load
-    public void registerItemBlocks() {
-        for (Field field : CCBlocks.class.getFields())
-            try {
-                RegBlock anno = field.getAnnotation(RegBlock.class);
-
-                if(anno == null) return;
-
-                Block block = (Block) field.get(null);
-                Class<? extends ItemBlock> itemClass = anno.itemClass();
-                Constructor<? extends ItemBlock> con = itemClass.getConstructor(Block.class);
-                con.setAccessible(true);
-                GameRegistry.register(con.newInstance(block).setRegistryName(block.getRegistryName()).setUnlocalizedName(block.getUnlocalizedName()));
-            } catch (Exception e) {
-                ChinaCraft.getLogger().warn("Un-able to register ItemBlock " + field.toGenericString(), e);
-            }
-    }*/
-
     @Load(side = Side.CLIENT)
     public void registerRenders() {
-        ModelLoader.setCustomModelResourceLocation(CCItems.RED_PACKET, 0, new ModelResourceLocation(CCItems.RED_PACKET.getRegistryName(), "inventory"));
+        //ModelLoader.setCustomModelResourceLocation(CCItems.RED_PACKET, 0, new ModelResourceLocation(CCItems.RED_PACKET.getRegistryName(), "inventory"));
+        for (Field field : CCItems.class.getFields()) {
+            field.setAccessible(true);
+            RegItem anno = field.getAnnotation(RegItem.class);
+            if (anno==null) return;
+
+            try {
+                Item item = (Item) field.get(null);
+                registerRender(item,0);
+            } catch (Exception e) {
+                ChinaCraft.getLogger().warn("Un-able to register item " + field.toGenericString(), e);
+            }
+        }
     }
 
-    private void register(Item item) {
-        GameRegistry.register(item);
+    private void registerRender(Item item, int meta)
+    {
+        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
     }
 }
