@@ -5,45 +5,59 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.chunk.IChunkGenerator;
-import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraftforge.fml.common.IWorldGenerator;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by Mouse on 2017/2/1.
  */
-public class WorldGenCCOre implements IWorldGenerator{
+public class WorldGenCCOre extends WorldGenerator{
 
-    private Set<Integer> dimensionID = new HashSet<>();
-    private Set<Integer> biomeID = new HashSet<>();
-    private int frequency;
-    private int highest,lowest;
-    private int size;
-    private IBlockState oreBlock;
-    private Predicate<IBlockState> predicate = null;
+    private final Set<Integer> dimensionID = new HashSet();
+    private final Set<Integer> biomeID = new HashSet();
+    private final int frequency;
+    private final int highest,lowest;
+    private final WorldGenMinable gen;
 
-    public WorldGenCCOre(){}
+    public WorldGenCCOre(int dimensions[], int biomes[], int frequency, int highest, int lowest, int size, IBlockState oreBlock){
+        this(dimensions,biomes,frequency, highest,lowest,size,oreBlock,null);
+    }
+
+    public WorldGenCCOre(int dimensions[], int frequency, int highest, int lowest, int size, IBlockState oreBlock){
+        this(dimensions,frequency, highest,lowest,size,oreBlock,null);
+    }
+
+    public WorldGenCCOre(int dimensions[], int frequency, int highest, int lowest, int size, IBlockState oreBlock, Predicate<IBlockState> predicate){
+        this(dimensions,new int[0],frequency, highest,lowest,size,oreBlock,predicate);
+    }
+
+    public WorldGenCCOre(int dimensions[], int biomes[], int frequency, int highest, int lowest, int size, IBlockState oreBlock, Predicate<IBlockState> predicate){
+        Arrays.stream(dimensions).forEach(i->dimensionID.add(i));
+        Arrays.stream(biomes).forEach(i->biomeID.add(i));
+        this.frequency = frequency;
+        this.highest = highest;
+        this.lowest = lowest;
+        if(predicate==null) gen = new WorldGenMinable(oreBlock, size);
+        else gen = new WorldGenMinable(oreBlock, size, predicate);
+    }
 
     @Override
-    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        if (!dimensionID.contains(world.provider.getDimension())) return;
+    public boolean generate(World worldIn, Random rand, BlockPos position) {
+        if (!dimensionID.contains(worldIn.provider.getDimension())) return true;
 
         for (int i = 0; i < frequency; i++) {
-            int x= chunkX * 16 + random.nextInt(16);
-            int y = random.nextInt(highest - lowest) + lowest;
-            int z = chunkZ * 16 + random.nextInt(16);
+            int x= position.getX() + rand.nextInt(16);
+            int y = rand.nextInt(highest - lowest) + lowest;
+            int z = position.getZ() + rand.nextInt(16);
             BlockPos pos = new BlockPos(x,y,z);
 
-            if(!biomeID.isEmpty() && !biomeID.contains(Biome.getIdForBiome(world.getBiome(pos)))) return;
+            if(!biomeID.isEmpty() && !biomeID.contains(Biome.getIdForBiome(worldIn.getBiome(pos)))) return true;
 
-            if(predicate==null)new WorldGenMinable(oreBlock, size).generate(world, random, pos);
-            else new WorldGenMinable(oreBlock, size, predicate).generate(world, random, pos);
+            gen.generate(worldIn, rand, pos);
         }
+        return true;
     }
 
     static class CustomPredicate implements Predicate<IBlockState> {

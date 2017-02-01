@@ -4,6 +4,7 @@ import cn.mccraft.chinacraft.block.BlockLoader;
 import cn.mccraft.chinacraft.item.ItemLoader;
 import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
+import cn.mccraft.chinacraft.world.gen.WorldGenListener;
 import com.google.common.collect.Lists;
 import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.common.event.*;
@@ -21,7 +22,7 @@ import java.util.*;
 public class CommonProxy {
 
     private final Collection<Class<? extends ILoader>> loaders =
-            Lists.newArrayList(BlockLoader.class, ItemLoader.class, RecipeLoader.class);
+            Lists.newArrayList(BlockLoader.class, ItemLoader.class, RecipeLoader.class, WorldGenListener.class);
 
     private final Map<Class<? extends ILoader>, ILoader> loaderInstanceMap = new HashMap<>();
     private final Map<LoaderState, Collection<Method>> stateLoaderMap = new HashMap<>();
