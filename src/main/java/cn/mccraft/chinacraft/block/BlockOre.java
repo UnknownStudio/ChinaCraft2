@@ -23,10 +23,4 @@ public class BlockOre extends BlockBase{
         setResistance(5.0F);
         setSoundType(SoundType.STONE);
     }
-
-    @Nonnull
-    @Override
-    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, @Nonnull IBlockState state, int fortune) {
-        return Collections.singletonList(new ItemStack(Item.getItemFromBlock(this)));
-    }
 }
