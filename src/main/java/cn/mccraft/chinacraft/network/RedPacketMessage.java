@@ -106,7 +106,7 @@ public class RedPacketMessage implements IMessage {
             itemStack = itemStack.copy();
             NBTTagCompound nbt = new NBTTagCompound();
             nbt.setTag("wish", new NBTTagString(message.getWish()));
-            nbt.setTag("sender", new NBTTagString(message.getReceiver()));
+            nbt.setTag("sender", new NBTTagString(message.getSender()));
             itemStack.setTagInfo("redpacket", nbt);
 
             String  receiver = message.getReceiver();
