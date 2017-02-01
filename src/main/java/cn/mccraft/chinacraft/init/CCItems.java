@@ -1,6 +1,6 @@
 package cn.mccraft.chinacraft.init;
 
-import cn.mccraft.chinacraft.item.ItemIngot;
+import cn.mccraft.chinacraft.item.ItemBase;
 import cn.mccraft.chinacraft.item.ItemRedPacket;
 import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
 import net.minecraft.item.*;
@@ -17,13 +17,13 @@ public interface CCItems {
     ItemRedPacket RED_PACKET = new ItemRedPacket();
 
     @RegItem(value = {"copper", "ingot"}, oreDict = {"ingotCopper"})
-    ItemIngot COPPER_INGOT = new ItemIngot();
+    ItemBase COPPER_INGOT = new ItemBase();
 
     @RegItem(value = {"tin", "ingot"}, oreDict = {"ingotTin"})
-    ItemIngot TIN_INGOT = new ItemIngot();
+    ItemBase TIN_INGOT = new ItemBase();
 
     @RegItem(value = {"bronze", "ingot"}, oreDict = {"ingotBronze"})
-    ItemIngot BRONZE_INGOT = new ItemIngot();
+    ItemBase BRONZE_INGOT = new ItemBase();
 
     @RegItem({"bronze", "pickaxe"})
     ItemPickaxe BRONZE_PICKAXE = new ItemPickaxe(BRONZE_TOOL_MATERIAL){};

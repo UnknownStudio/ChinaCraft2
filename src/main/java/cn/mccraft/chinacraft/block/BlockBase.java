@@ -3,6 +3,10 @@ package cn.mccraft.chinacraft.block;
 import cn.mccraft.chinacraft.init.CCCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
+
+import java.util.Random;
 
 /**
  * Base block of ChinaCraft.
