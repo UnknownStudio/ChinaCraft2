@@ -29,19 +29,17 @@ import java.util.List;
  * 自动加载{@link CCBlocks}中被{@link RegBlock}注释的方块。
  */
 @SuppressWarnings("unused")
-public class BlockLoader implements ILoader<RegBlock> {
+public class BlockLoader implements ILoader {
     @Load
     public void registerBlocks() {
         for (Field field : CCBlocks.class.getFields()) {
             field.setAccessible(true);
             RegBlock anno = field.getAnnotation(RegBlock.class);
-            if (anno==null) return;
+            if (anno==null) continue;
 
             try {
                 Block block = (Block) field.get(null);
-                List<String> value = Arrays.asList(anno.value());
-                //value.add(0, annotation.prefix());
-                GameRegistry.register(block.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
+                GameRegistry.register(block.setRegistryName(NameBuilder.buildRegistryName(anno.value())).setUnlocalizedName(NameBuilder.buildUnlocalizedName(anno.value())));
 
                 //Register item block.
                 Class<? extends ItemBlock> itemClass = anno.itemClass();
@@ -65,7 +63,7 @@ public class BlockLoader implements ILoader<RegBlock> {
         for (Field field : CCBlocks.class.getFields()) {
             field.setAccessible(true);
             RegBlock anno = field.getAnnotation(RegBlock.class);
-            if (anno==null) return;
+            if (anno==null) continue;
 
             try {
                 Block block = (Block) field.get(null);

@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
  * {@link #loadAllFieldsInClass(Class, Class)}函数。
  * @param <T> Type of Annotation
  */
-public interface ILoader<T extends Annotation> {
+public interface ILoader {
     /**
      * Load all fields in a class.
      * @param annotationClass annotation to be checked

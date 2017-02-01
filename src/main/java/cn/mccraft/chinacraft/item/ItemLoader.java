@@ -27,20 +27,18 @@ import java.util.List;
  * 自动加载{@link CCItems}中被{@link RegItem}注释的物品。
  */
 @SuppressWarnings("unused")
-public class ItemLoader implements ILoader<RegItem> {
+public class ItemLoader implements ILoader {
 
     @Load
     public void registerItems() {
         for (Field field : CCItems.class.getFields()) {
             field.setAccessible(true);
             RegItem anno = field.getAnnotation(RegItem.class);
-            if (anno==null) return;
+            if (anno==null) continue;
 
             try {
                 Item item = (Item) field.get(null);
-                List<String> value = Arrays.asList(anno.value());
-                //value.add(0, annotation.prefix());
-                GameRegistry.register(item.setRegistryName(NameBuilder.buildRegistryName(value.toArray(new String[]{}))).setUnlocalizedName(NameBuilder.buildUnlocalizedName(value.toArray(new String[]{}))));
+                GameRegistry.register(item.setRegistryName(NameBuilder.buildRegistryName(anno.value())).setUnlocalizedName(NameBuilder.buildUnlocalizedName(anno.value())));
 
                 Arrays.asList(anno.oreDict()).forEach(s -> OreDictionary.registerOre(s, item));
             } catch (Exception e) {
@@ -55,7 +53,7 @@ public class ItemLoader implements ILoader<RegItem> {
         for (Field field : CCItems.class.getFields()) {
             field.setAccessible(true);
             RegItem anno = field.getAnnotation(RegItem.class);
-            if (anno==null) return;
+            if (anno==null) continue;
 
             try {
                 Item item = (Item) field.get(null);
