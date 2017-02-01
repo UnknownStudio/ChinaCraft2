@@ -1,11 +1,11 @@
 package cn.mccraft.chinacraft.client.gui;
 
+import cn.mccraft.chinacraft.inventory.ContainerCrusher;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.inventory.Container;
 
 public class GuiContainerCrusher extends GuiContainer {
-    public GuiContainerCrusher(Container inventorySlotsIn) {
-        super(inventorySlotsIn);
+    public GuiContainerCrusher() {
+        super(new ContainerCrusher());
     }
 
     @Override

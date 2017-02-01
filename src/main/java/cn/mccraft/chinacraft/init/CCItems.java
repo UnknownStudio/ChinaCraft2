@@ -19,15 +19,15 @@ public interface CCItems {
     @RegItem(value = {"bronze", "ingot"}, oreDict = {"ingotBronze"})
     ItemIngot BRONZE_INGOT = new ItemIngot();
 
-    /*@RegItem({"bronze", "pickaxe"})
+    @RegItem({"bronze", "pickaxe"})
     ItemPickaxe BRONZE_PICKAXE = new ItemPickaxe(BRONZE_TOOL_MATERIAL){};
 
     @RegItem({"bronze", "axe"})
-    ItemAxe BRONZE_AXE = new ItemAxe(BRONZE_TOOL_MATERIAL){};
+    ItemAxe BRONZE_AXE = new ItemAxe(BRONZE_TOOL_MATERIAL, 8.0F, -3.15F){};
 
     @RegItem({"bronze", "shovel"})
     ItemSpade BRONZE_SHOVEL = new ItemSpade(BRONZE_TOOL_MATERIAL){};
 
     @RegItem({"bronze", "sword"})
-    ItemSword BRONZE_SWORD = new ItemSword(BRONZE_TOOL_MATERIAL){};*/
+    ItemSword BRONZE_SWORD = new ItemSword(BRONZE_TOOL_MATERIAL){};
 }
