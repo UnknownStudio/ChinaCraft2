@@ -7,6 +7,7 @@ import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
+import cn.mccraft.chinacraft.world.gen.WorldGenCCOre;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;

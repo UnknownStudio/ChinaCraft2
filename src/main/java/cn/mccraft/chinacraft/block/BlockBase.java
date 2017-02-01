@@ -15,4 +15,9 @@ public class BlockBase extends Block{
         super(materialIn);
         setCreativeTab(CCCreativeTabs.tabCore);
     }
+
+    public BlockBase setHarvestLevelReturnBlock(String toolClass, int level) {
+        super.setHarvestLevel(toolClass, level);
+        return this;
+    }
 }

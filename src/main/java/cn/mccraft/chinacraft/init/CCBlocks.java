@@ -12,10 +12,10 @@ import net.minecraft.block.Block;
 public interface CCBlocks {
 
     @RegBlock(value = {"copper", "ore"}, oreDict = {"oreCopper"})
-    Block COPPER_ORE = new BlockOre();
+    Block COPPER_ORE = new BlockOre().setHarvestLevelReturnBlock("pickaxe", 1);
 
     @RegBlock(value = {"tin", "ore"}, oreDict = {"oreTin"})
-    Block TIN_ORE = new BlockOre();
+    Block TIN_ORE = new BlockOre().setHarvestLevelReturnBlock("pickaxe", 1);
 
     @RegBlock({"stone", "crusher"})
     BlockCrusher STONE_CRUSHER = new BlockCrusher();
