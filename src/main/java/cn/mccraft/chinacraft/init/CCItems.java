@@ -13,9 +13,6 @@ import net.minecraftforge.common.util.EnumHelper;
 public interface CCItems {
     Item.ToolMaterial BRONZE_TOOL_MATERIAL = EnumHelper.addToolMaterial("BRONZE", 2, 232, 5.0F, 1.75F, 9);
 
-    @RegItem({"red", "packet"})
-    ItemRedPacket RED_PACKET = new ItemRedPacket();
-
     @RegItem(value = {"copper", "ingot"}, oreDict = {"ingotCopper"})
     ItemBase COPPER_INGOT = new ItemBase();
 
@@ -39,4 +36,7 @@ public interface CCItems {
 
     @RegItem({"bronze", "sword"})
     ItemSword BRONZE_SWORD = new ItemSword(BRONZE_TOOL_MATERIAL){};
+
+    @RegItem({"red", "packet"})
+    ItemRedPacket RED_PACKET = new ItemRedPacket();
 }
