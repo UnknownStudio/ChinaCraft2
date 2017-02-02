@@ -8,6 +8,10 @@ item.copperIngot.name=铜锭
 item.tinIngot.name=锡锭
 item.bronzeIngot.name=青铜锭
 item.silverIngot.name=银锭
+tile.copperBlock.name=铜块
+tile.tinBlock.name=锡块
+tile.silverBlock.name=银块
+tile.bronzeBlock.name=青铜块
 
 item.redPacket.name=红包
 gui.redPacket.title=红包

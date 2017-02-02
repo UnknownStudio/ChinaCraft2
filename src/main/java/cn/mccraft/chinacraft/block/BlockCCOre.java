@@ -6,9 +6,9 @@ import net.minecraft.block.material.Material;
 /**
  * Created by Mouse on 2017/1/31.
  */
-public class BlockOre extends BlockBase{
+public class BlockCCOre extends BlockCCBase {
 
-    public BlockOre() {
+    public BlockCCOre() {
         super(Material.ROCK);
         setHardness(3.0F);
         setResistance(5.0F);
