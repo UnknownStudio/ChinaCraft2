@@ -25,6 +25,9 @@ public interface CCItems {
     @RegItem(value = {"bronze", "ingot"}, oreDict = {"ingotBronze"})
     ItemBase BRONZE_INGOT = new ItemBase();
 
+    @RegItem(value = {"silver", "ingot"}, oreDict = {"ingotSilver"})
+    ItemBase SILVER_INGOT = new ItemBase();
+
     @RegItem({"bronze", "pickaxe"})
     ItemPickaxe BRONZE_PICKAXE = new ItemPickaxe(BRONZE_TOOL_MATERIAL){};
 

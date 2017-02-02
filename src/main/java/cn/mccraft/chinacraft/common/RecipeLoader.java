@@ -22,5 +22,6 @@ public class RecipeLoader implements ILoader{
     public void loadSmeltingRecipe() {
         addSmelting(CCBlocks.COPPER_ORE, new ItemStack(CCItems.COPPER_INGOT), 0.8f);
         addSmelting(CCBlocks.TIN_ORE, new ItemStack(CCItems.TIN_INGOT), 0.8f);
+        addSmelting(CCBlocks.SILVER_ORE, new ItemStack(CCItems.SILVER_INGOT), 1.2f);
     }
 }

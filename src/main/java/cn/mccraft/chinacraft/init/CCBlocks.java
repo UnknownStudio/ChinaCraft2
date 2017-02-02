@@ -17,6 +17,9 @@ public interface CCBlocks {
     @RegBlock(value = {"tin", "ore"}, oreDict = {"oreTin"})
     Block TIN_ORE = new BlockOre().setHarvestLevelReturnBlock("pickaxe", 1);
 
+    @RegBlock(value = {"silver", "ore"}, oreDict = {"oreSilver"})
+    Block SILVER_ORE = new BlockOre().setHarvestLevelReturnBlock("pickaxe", 2);
+
     @RegBlock({"stone", "crusher"})
     BlockCrusher STONE_CRUSHER = new BlockCrusher();
 
