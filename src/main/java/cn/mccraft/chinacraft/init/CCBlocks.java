@@ -2,6 +2,7 @@ package cn.mccraft.chinacraft.init;
 
 import cn.mccraft.chinacraft.block.BlockCCBase;
 import cn.mccraft.chinacraft.block.BlockCCOre;
+import cn.mccraft.chinacraft.block.BlockCCRotatedPillar;
 import cn.mccraft.chinacraft.block.machine.BlockCrusher;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import net.minecraft.block.Block;
@@ -34,6 +35,18 @@ public interface CCBlocks {
 
     @RegBlock(value = {"silver", "block"}, oreDict = {"blockSilver"})
     Block SILVER_BLOCK = new BlockCCBase(Material.IRON).setHarvestLevelReturnBlock("pickaxe", 2).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+
+    @RegBlock("marble")
+    Block MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+
+    @RegBlock({"smooth","marble"})
+    Block SMOOTH_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+
+    @RegBlock({"chiseled","marble"})
+    Block CHISELED_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+
+    @RegBlock({"pillar","marble"})
+    Block PILLAR_MARBLE = new BlockCCRotatedPillar(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"stone", "crusher"})
     BlockCrusher STONE_CRUSHER = new BlockCrusher();

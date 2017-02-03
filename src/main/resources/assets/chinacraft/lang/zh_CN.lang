@@ -12,6 +12,10 @@ tile.copperBlock.name=铜块
 tile.tinBlock.name=锡块
 tile.silverBlock.name=银块
 tile.bronzeBlock.name=青铜块
+tile.marble.name=大理石
+tile.pillarMarble.name=竖纹大理石块
+tile.smoothMarble.name=平滑大理石块
+tile.chiseledMarble.name=錾制大理石块
 
 item.redPacket.name=红包
 gui.redPacket.title=红包

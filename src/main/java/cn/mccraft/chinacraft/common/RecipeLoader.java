@@ -18,14 +18,20 @@ public class RecipeLoader implements ILoader{
 
     @Load(LoaderState.INITIALIZATION)
     public void loadCraftingRecipe() {
-        addRecipe(new ShapedOreRecipe(COPPER_BLOCK,"###","###","###",'#',COPPER_INGOT));
-        addRecipe(new ShapelessOreRecipe(new ItemStack(COPPER_INGOT,9),COPPER_BLOCK));
-        addRecipe(new ShapedOreRecipe(TIN_BLOCK,"###","###","###",'#',TIN_INGOT));
-        addRecipe(new ShapelessOreRecipe(new ItemStack(TIN_INGOT,9),TIN_BLOCK));
-        addRecipe(new ShapedOreRecipe(SILVER_BLOCK,"###","###","###",'#',SILVER_INGOT));
-        addRecipe(new ShapelessOreRecipe(new ItemStack(SILVER_INGOT,9),SILVER_BLOCK));
-        addRecipe(new ShapedOreRecipe(BRONZE_BLOCK,"###","###","###",'#',BRONZE_INGOT));
+        addRecipe(new ShapedOreRecipe(COPPER_BLOCK, "###", "###", "###", '#', COPPER_INGOT));
+        addRecipe(new ShapelessOreRecipe(new ItemStack(COPPER_INGOT, 9), COPPER_BLOCK));
+        addRecipe(new ShapedOreRecipe(TIN_BLOCK, "###", "###", "###", '#', TIN_INGOT));
+        addRecipe(new ShapelessOreRecipe(new ItemStack(TIN_INGOT, 9), TIN_BLOCK));
+        addRecipe(new ShapedOreRecipe(SILVER_BLOCK, "###", "###", "###", '#', SILVER_INGOT));
+        addRecipe(new ShapelessOreRecipe(new ItemStack(SILVER_INGOT, 9), SILVER_BLOCK));
+        addRecipe(new ShapedOreRecipe(BRONZE_BLOCK, "###", "###", "###", '#', BRONZE_INGOT));
         addRecipe(new ShapelessOreRecipe(new ItemStack(BRONZE_INGOT,9),BRONZE_BLOCK));
+
+        addRecipe(new ItemStack(CHISELED_MARBLE, 4), new Object[]{"## ", "## ", "   ", '#', PILLAR_MARBLE});
+        addRecipe(new ItemStack(SMOOTH_MARBLE, 4), new Object[]{"## ", "## ", "   ", '#', CHISELED_MARBLE});
+        addRecipe(new ItemStack(PILLAR_MARBLE, 4), new Object[]{"## ", "## ", "   ", '#', SMOOTH_MARBLE});
+        addRecipe(new ItemStack(SMOOTH_MARBLE, 4), new Object[]{"## ", "## ", "   ", '#', MARBLE});
+
     }
 
     @Load(LoaderState.INITIALIZATION)
