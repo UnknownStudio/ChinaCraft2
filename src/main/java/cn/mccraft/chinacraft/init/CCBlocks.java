@@ -39,13 +39,13 @@ public interface CCBlocks {
     @RegBlock("marble")
     Block MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
-    @RegBlock({"smooth","marble"})
+    @RegBlock({"smooth", "marble"})
     Block SMOOTH_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
-    @RegBlock({"chiseled","marble"})
+    @RegBlock({"chiseled", "marble"})
     Block CHISELED_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
-    @RegBlock({"pillar","marble"})
+    @RegBlock({"pillar", "marble"})
     Block PILLAR_MARBLE = new BlockCCRotatedPillar(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"stone", "crusher"})

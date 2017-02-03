@@ -22,7 +22,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = ChinaCraft.MODID, name = ChinaCraft.NAME, version = ChinaCraft.VERSION)
 public final class ChinaCraft {
     public static final String MODID = "chinacraft";
-    public static final String NAME = "ChinaCraft2";
+    public static final String NAME = "ChinaCraft 2";
     public static final String VERSION = "0.0.1";
 
     @SidedProxy(clientSide = "cn.mccraft.chinacraft.client.ClientProxy", serverSide = "cn.mccraft.chinacraft.common.CommonProxy")
@@ -30,6 +30,8 @@ public final class ChinaCraft {
 
     @Mod.Instance(ChinaCraft.MODID)
     private static ChinaCraft instance;
+
+    private CCEventHandler eventHandler;
 
     private static SimpleNetworkWrapper network;
 
@@ -41,6 +43,7 @@ public final class ChinaCraft {
     public void preInit(FMLPreInitializationEvent event) {
         settings = new JsonSettings(event.getModConfigurationDirectory(), "config");
         proxy.preInit(event);
+        eventHandler = new CCEventHandler();
     }
 
     @EventHandler
@@ -65,6 +68,10 @@ public final class ChinaCraft {
 
     public JsonSettings getSettings() {
         return settings;
+    }
+
+    public CCEventHandler getEventHandler() {
+        return eventHandler;
     }
 
     public static Logger getLogger() {

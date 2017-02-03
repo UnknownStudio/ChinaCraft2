@@ -1,6 +1,8 @@
+# 创造物品栏
 itemGroup.chinacraftCore=华夏文明-核心
 itemGroup.chinacraftMaterials=华夏文明-材料
 
+# 材料
 tile.copperOre.name=铜矿石
 tile.tinOre.name=锡矿石
 tile.silverOre.name=银矿石
@@ -17,6 +19,22 @@ tile.pillarMarble.name=竖纹大理石块
 tile.smoothMarble.name=平滑大理石块
 tile.chiseledMarble.name=錾制大理石块
 
+# 工具
+item.bronzePickaxe.name=青铜镐
+item.bronzeAxe.name=青铜斧
+item.bronzeShovel.name=青铜铲
+item.bronzeSword.name=青铜剑
+
+# 成就
+achievement.firstBronze=第一个青铜！
+achievement.firstBronze.desc=合成出你的第一个青铜
+achievement.firstBronzePickaxe=更加耐用
+achievement.firstBronzePickaxe.desc=合成出你的第一个青铜镐
+
+# 磨
+
+
+# 红包系统
 item.redPacket.name=红包
 gui.redPacket.title=红包
 gui.redPacket.wish=请输入祝福语...

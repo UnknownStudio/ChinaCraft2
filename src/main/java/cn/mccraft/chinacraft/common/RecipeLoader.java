@@ -1,5 +1,6 @@
 package cn.mccraft.chinacraft.common;
 
+import cn.mccraft.chinacraft.init.CCItems;
 import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import net.minecraft.item.ItemStack;
@@ -7,30 +8,45 @@ import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-import static net.minecraftforge.fml.common.registry.GameRegistry.*;
 import static cn.mccraft.chinacraft.init.CCBlocks.*;
 import static cn.mccraft.chinacraft.init.CCItems.*;
+import static net.minecraftforge.fml.common.registry.GameRegistry.addRecipe;
+import static net.minecraftforge.fml.common.registry.GameRegistry.addSmelting;
 
 /**
  * Created by Mouse on 2017/1/28.
  */
-public class RecipeLoader implements ILoader{
+public class RecipeLoader implements ILoader {
 
     @Load(LoaderState.INITIALIZATION)
     public void loadCraftingRecipe() {
-        addRecipe(new ShapedOreRecipe(COPPER_BLOCK, "###", "###", "###", '#', COPPER_INGOT));
-        addRecipe(new ShapelessOreRecipe(new ItemStack(COPPER_INGOT, 9), COPPER_BLOCK));
-        addRecipe(new ShapedOreRecipe(TIN_BLOCK, "###", "###", "###", '#', TIN_INGOT));
-        addRecipe(new ShapelessOreRecipe(new ItemStack(TIN_INGOT, 9), TIN_BLOCK));
-        addRecipe(new ShapedOreRecipe(SILVER_BLOCK, "###", "###", "###", '#', SILVER_INGOT));
-        addRecipe(new ShapelessOreRecipe(new ItemStack(SILVER_INGOT, 9), SILVER_BLOCK));
-        addRecipe(new ShapedOreRecipe(BRONZE_BLOCK, "###", "###", "###", '#', BRONZE_INGOT));
-        addRecipe(new ShapelessOreRecipe(new ItemStack(BRONZE_INGOT,9),BRONZE_BLOCK));
+        // 方块合成
+        addRecipe(new ShapedOreRecipe(COPPER_BLOCK, "###", "###", "###", '#', "ingotCopper"));
+        addRecipe(new ShapelessOreRecipe(new ItemStack(COPPER_INGOT, 9), "blockCopper"));
+        addRecipe(new ShapedOreRecipe(TIN_BLOCK, "###", "###", "###", '#', "ingotTin"));
+        addRecipe(new ShapelessOreRecipe(new ItemStack(TIN_INGOT, 9), "blockTin"));
+        addRecipe(new ShapedOreRecipe(SILVER_BLOCK, "###", "###", "###", '#', "ingotSilver"));
+        addRecipe(new ShapelessOreRecipe(new ItemStack(SILVER_INGOT, 9), "blockSilver"));
+        addRecipe(new ShapedOreRecipe(BRONZE_BLOCK, "###", "###", "###", '#', "ingotBronze"));
+        addRecipe(new ShapelessOreRecipe(new ItemStack(BRONZE_INGOT, 9), "blockBronze"));
 
-        addRecipe(new ItemStack(CHISELED_MARBLE, 4), new Object[]{"## ", "## ", "   ", '#', PILLAR_MARBLE});
-        addRecipe(new ItemStack(SMOOTH_MARBLE, 4), new Object[]{"## ", "## ", "   ", '#', CHISELED_MARBLE});
-        addRecipe(new ItemStack(PILLAR_MARBLE, 4), new Object[]{"## ", "## ", "   ", '#', SMOOTH_MARBLE});
-        addRecipe(new ItemStack(SMOOTH_MARBLE, 4), new Object[]{"## ", "## ", "   ", '#', MARBLE});
+        // 锭合成
+        addRecipe(new ShapelessOreRecipe(new ItemStack(BRONZE_INGOT, 3), "ingotCopper", "ingotCopper", "ingotCopper", "ingotTin"));
+
+        // 工具合成
+        addRecipe(new ShapedOreRecipe(CCItems.BRONZE_PICKAXE, "###", " X ", " X ", '#', "ingotBronze", 'X', "stickWood"));
+        addRecipe(new ShapedOreRecipe(CCItems.BRONZE_AXE, "## ", "#X ", " X ", '#', "ingotBronze", 'X', "stickWood"));
+        addRecipe(new ShapedOreRecipe(CCItems.BRONZE_AXE, " ##", " X#", " X ", '#', "ingotBronze", 'X', "stickWood"));
+        addRecipe(new ShapedOreRecipe(CCItems.BRONZE_SHOVEL, " # ", " X ", " X ", '#', "ingotBronze", 'X', "stickWood"));
+        addRecipe(new ShapedOreRecipe(CCItems.BRONZE_SWORD, " # ", " # ", " X ", '#', "ingotBronze", 'X', "stickWood"));
+        addRecipe(new ShapedOreRecipe(CCItems.BRONZE_HOE, "## ", " X ", " X ", '#', "ingotBronze", 'X', "stickWood"));
+        addRecipe(new ShapedOreRecipe(CCItems.BRONZE_HOE, " ##", " X ", " X ", '#', "ingotBronze", 'X', "stickWood"));
+
+        // 大理石
+        addRecipe(new ItemStack(CHISELED_MARBLE, 4), "## ", "## ", "   ", '#', PILLAR_MARBLE);
+        addRecipe(new ItemStack(SMOOTH_MARBLE, 4), "## ", "## ", "   ", '#', CHISELED_MARBLE);
+        addRecipe(new ItemStack(PILLAR_MARBLE, 4), "## ", "## ", "   ", '#', SMOOTH_MARBLE);
+        addRecipe(new ItemStack(SMOOTH_MARBLE, 4), "## ", "## ", "   ", '#', MARBLE);
 
     }
 

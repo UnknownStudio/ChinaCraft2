@@ -1,29 +1,27 @@
 package cn.mccraft.chinacraft.common.gui;
 
+import cn.mccraft.chinacraft.block.tileentity.TileEntityCrusher;
+import cn.mccraft.chinacraft.client.gui.GuiContainerCrusher;
 import cn.mccraft.chinacraft.client.gui.GuiContainerRedPacket;
-import cn.mccraft.chinacraft.common.ChinaCraft;
+import cn.mccraft.chinacraft.inventory.ContainerCrusher;
 import cn.mccraft.chinacraft.inventory.ContainerRedPacket;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-
-import java.lang.reflect.Constructor;
 
 /**
  * Created by Mouse on 2017/1/28.
  */
 public class GuiHandler implements IGuiHandler {
 
-    public static final int RED_PACKET = 0;
-
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-        switch (id){
+        switch (EnumGuiType.values()[id]) {
             case RED_PACKET:
                 return new ContainerRedPacket(player);
+            case CRUSHER:
+                return new ContainerCrusher(player.inventory, (TileEntityCrusher) world.getTileEntity(new BlockPos(x, y, z)));
             default:
                 return null;
         }
@@ -37,9 +35,11 @@ public class GuiHandler implements IGuiHandler {
 
     @Override
     public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-        switch (id){
+        switch (EnumGuiType.values()[id]) {
             case RED_PACKET:
                 return new GuiContainerRedPacket(player);
+            case CRUSHER:
+                return new GuiContainerCrusher(player.inventory, (TileEntityCrusher) world.getTileEntity(new BlockPos(x, y, z)));
             default:
                 return null;
         }

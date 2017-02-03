@@ -22,7 +22,7 @@ import java.util.*;
 public class CommonProxy {
 
     private final Collection<Class<? extends ILoader>> loaders =
-            Lists.newArrayList(BlockLoader.class, ItemLoader.class, RecipeLoader.class, WorldGenListener.class, ModificationLoader.class);
+            Lists.newArrayList(BlockLoader.class, ItemLoader.class, RecipeLoader.class, WorldGenListener.class, ModificationLoader.class, AchievementsLoader.class);
 
     private final Map<Class<? extends ILoader>, ILoader> loaderInstanceMap = new HashMap<>();
     private final Map<LoaderState, Collection<Method>> stateLoaderMap = new HashMap<>();
