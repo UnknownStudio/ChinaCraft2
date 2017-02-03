@@ -1,7 +1,7 @@
 package cn.mccraft.chinacraft.init;
 
-import cn.mccraft.chinacraft.item.ItemBase;
-import cn.mccraft.chinacraft.item.ItemRedPacket;
+import cn.mccraft.chinacraft.item.ItemCCBase;
+import cn.mccraft.chinacraft.item.ItemCCRedPacket;
 import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.*;
@@ -15,16 +15,16 @@ public interface CCItems {
     Item.ToolMaterial BRONZE_TOOL_MATERIAL = EnumHelper.addToolMaterial("BRONZE", 2, 232, 5.0F, 1.75F, 9);
 
     @RegItem(value = {"copper", "ingot"}, oreDict = {"ingotCopper"})
-    ItemBase COPPER_INGOT = new ItemBase();
+    ItemCCBase COPPER_INGOT = new ItemCCBase();
 
     @RegItem(value = {"tin", "ingot"}, oreDict = {"ingotTin"})
-    ItemBase TIN_INGOT = new ItemBase();
+    ItemCCBase TIN_INGOT = new ItemCCBase();
 
     @RegItem(value = {"bronze", "ingot"}, oreDict = {"ingotBronze"})
-    ItemBase BRONZE_INGOT = new ItemBase();
+    ItemCCBase BRONZE_INGOT = new ItemCCBase();
 
     @RegItem(value = {"silver", "ingot"}, oreDict = {"ingotSilver"})
-    ItemBase SILVER_INGOT = new ItemBase();
+    ItemCCBase SILVER_INGOT = new ItemCCBase();
 
     @RegItem({"bronze", "pickaxe"})
     Item BRONZE_PICKAXE = new ItemPickaxe(BRONZE_TOOL_MATERIAL){}.setCreativeTab(CreativeTabs.TOOLS);
@@ -42,5 +42,5 @@ public interface CCItems {
     Item BRONZE_HOE = new ItemHoe(BRONZE_TOOL_MATERIAL){}.setCreativeTab(CreativeTabs.TOOLS);
 
     @RegItem({"red", "packet"})
-    ItemRedPacket RED_PACKET = new ItemRedPacket();
+    ItemCCRedPacket RED_PACKET = new ItemCCRedPacket();
 }

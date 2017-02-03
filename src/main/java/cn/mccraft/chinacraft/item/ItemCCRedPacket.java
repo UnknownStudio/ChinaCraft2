@@ -1,7 +1,6 @@
 package cn.mccraft.chinacraft.item;
 
 import cn.mccraft.chinacraft.common.ChinaCraft;
-import cn.mccraft.chinacraft.common.gui.EnumGuiType;
 import cn.mccraft.chinacraft.common.gui.GuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -16,9 +15,9 @@ import javax.annotation.Nonnull;
 /**
  * Created by Mouse on 2017/1/28.
  */
-public class ItemRedPacket extends ItemBase {
+public class ItemCCRedPacket extends ItemCCBase {
 
-    public ItemRedPacket(){
+    public ItemCCRedPacket(){
         setMaxStackSize(1);
     }
 
