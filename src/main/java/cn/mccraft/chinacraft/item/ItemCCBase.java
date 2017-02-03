@@ -6,9 +6,9 @@ import net.minecraft.item.Item;
 /**
  * Created by Mouse on 2017/1/28.
  */
-public class ItemBase extends Item{
+public class ItemCCBase extends Item{
 
-    public ItemBase(){
+    public ItemCCBase(){
         setCreativeTab(CCCreativeTabs.tabCore);
     }
 
