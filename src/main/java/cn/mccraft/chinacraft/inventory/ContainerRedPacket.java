@@ -109,7 +109,7 @@ public class ContainerRedPacket extends Container {
             if (var5.getMaxStackSize() == var3.getMaxStackSize()) {
                 return null;
             }
-            var4.func_190901_a(par1EntityPlayer, var5);
+            var4.onTake(par1EntityPlayer, var5);
         }
 
         return var3;

@@ -46,6 +46,7 @@ public class BlockCCSlab extends BlockSlab{
         return null;
     }
 
+    @Override
     public IBlockState getStateFromMeta(int meta)
     {
         IBlockState iblockstate = this.getDefaultState();
@@ -58,11 +59,13 @@ public class BlockCCSlab extends BlockSlab{
         return iblockstate;
     }
 
+    @Override
     public int getMetaFromState(IBlockState state)
     {
         return !this.isDouble() && state.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP?1:0;
     }
 
+    @Override
     protected BlockStateContainer createBlockState()
     {
         return this.isDouble() ? new BlockStateContainer(this): new BlockStateContainer(this, new IProperty[] {HALF});

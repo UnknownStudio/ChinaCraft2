@@ -58,9 +58,9 @@ public class RedPacketMessage implements IMessage {
     @Override
     public void fromBytes(ByteBuf buf) {
         PacketBuffer pb = new PacketBuffer(buf);
-        sender = pb.readStringFromBuffer(pb.readInt());
-        wish = pb.readStringFromBuffer(pb.readInt());
-        receiver = pb.readStringFromBuffer(pb.readInt());
+        sender = pb.readString(pb.readInt());
+        wish = pb.readString(pb.readInt());
+        receiver = pb.readString(pb.readInt());
         isSend = pb.readBoolean();
     }
 
@@ -96,7 +96,7 @@ public class RedPacketMessage implements IMessage {
 
         @Override
         public IMessage onMessage(RedPacketMessage message, MessageContext ctx) {
-            EntityPlayer player = ctx.getServerHandler().playerEntity;
+            EntityPlayer player = ctx.getServerHandler().player;
             ItemStack itemStack = player.inventory.getCurrentItem();
 
 //          FIXME  if (itemStack == null || itemStack.getItem() != ChinaCraft.redPacket)return null;
@@ -118,17 +118,17 @@ public class RedPacketMessage implements IMessage {
             EntityPlayer reciverPlayer = Utils.getPlayerByName(receiver);
             if (reciverPlayer == null) {
                 player.inventory.setInventorySlotContents(player.inventory.currentItem, itemStack);
-                player.addChatMessage(new TextComponentString(I18n.format("redPacket.notFoundPlayer", receiver)));
+                player.sendMessage(new TextComponentString(I18n.format("redPacket.notFoundPlayer", receiver)));
                 return null;
             }
 
             if (reciverPlayer.inventory.addItemStackToInventory(itemStack)) {
-                player.addChatMessage(new TextComponentString(I18n.format("redPacket.success", receiver)));
-                reciverPlayer.addChatMessage(new TextComponentString(I18n.format("redPacket.received", message.getSender())));
+                player.sendMessage(new TextComponentString(I18n.format("redPacket.success", receiver)));
+                reciverPlayer.sendMessage(new TextComponentString(I18n.format("redPacket.received", message.getSender())));
                 return null;
             } else {
                 player.inventory.setInventorySlotContents(player.inventory.currentItem, itemStack);
-                player.addChatMessage(new TextComponentString(I18n.format("redPacket.backpackFull", receiver)));
+                player.sendMessage(new TextComponentString(I18n.format("redPacket.backpackFull", receiver)));
                 return null;
             }
         }
