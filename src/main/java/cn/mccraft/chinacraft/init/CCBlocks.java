@@ -33,16 +33,25 @@ public interface CCBlocks {
     Block SILVER_BLOCK = new BlockCCBase(Material.IRON).setHarvestLevelReturnBlock("pickaxe", 2).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock("marble")
-    Block MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"smooth", "marble"})
-    Block SMOOTH_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block SMOOTH_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"chiseled", "marble"})
-    Block CHISELED_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block CHISELED_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"pillar", "marble"})
-    Block PILLAR_MARBLE = new BlockCCRotatedPillar(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block PILLAR_MARBLE = new BlockCCRotatedPillar(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+
+    @RegBlock({"marble", "stairs"})
+    Block MARBLE_STAIRS = new BlockCCStairs(SMOOTH_MARBLE.getDefaultState()).setHarvestLevelReturnBlock("pickaxe",0);
+
+    @RegBlock(value = {"marble","slab"},isRegisterItemBlock = false)
+    BlockCCSlab MARBLE_SLAB = (BlockCCSlab)new BlockCCSlab(Material.ROCK,false,null).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+
+    @RegBlock(value = {"marble","double","slab"},isRegisterItemBlock = false)
+    BlockCCSlab MARBLE_DOUBLE_SLAB = (BlockCCSlab)new BlockCCSlab(Material.ROCK,true,MARBLE_SLAB).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     /*@RegBlock({"stone", "crusher"})
     BlockCrusher STONE_CRUSHER = new BlockCrusher();

@@ -39,6 +39,9 @@ public interface CCItems {
     @RegItem({"bronze", "hoe"})
     Item BRONZE_HOE = new ItemCCHoe(BRONZE_TOOL_MATERIAL);
 
+    @RegItem({"marble","slab"})
+    ItemCCSlab ITEM_MARBLE_SLAB = new ItemCCSlab(CCBlocks.MARBLE_SLAB, CCBlocks.MARBLE_SLAB, CCBlocks.MARBLE_DOUBLE_SLAB);
+
     @RegItem({"red", "packet"})
     ItemCCRedPacket RED_PACKET = new ItemCCRedPacket();
 }

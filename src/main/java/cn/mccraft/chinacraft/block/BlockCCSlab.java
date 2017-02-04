@@ -1,29 +1,54 @@
 package cn.mccraft.chinacraft.block;
 
 import cn.mccraft.chinacraft.init.CCCreativeTabs;
-import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.BlockPurpurSlab;
 import net.minecraft.block.BlockSlab;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
+import java.util.Random;
 
 /**
  * Created by Mouse on 2017/2/2.
  */
 public class BlockCCSlab extends BlockSlab{
 
+    public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.<EnumType>create("variant", EnumType.class);
     private final boolean isDouble;
+    private final BlockCCSlab singleSlab;
 
-    public BlockCCSlab(Material materialIn,boolean isDouble) {
+    public BlockCCSlab(Material materialIn,boolean isDouble,BlockCCSlab singleSlab) {
         super(materialIn);
         this.isDouble = isDouble;
+        this.singleSlab = singleSlab==null?this:singleSlab;
 
-        if (!this.isDouble()) {
-            setDefaultState(this.blockState.getBaseState().withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM));
-            setCreativeTab(CCCreativeTabs.tabCore);
-        }
+        IBlockState iblockstate = this.blockState.getBaseState();
+
+        if (!this.isDouble())
+            iblockstate.withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM);
+
+        this.setDefaultState(iblockstate.withProperty(VARIANT, EnumType.DEFAULT));
+        setCreativeTab(CCCreativeTabs.tabCore);
+    }
+
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(singleSlab);
+    }
+
+    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
+    {
+        return new ItemStack(singleSlab);
     }
 
     @Override
@@ -36,20 +61,20 @@ public class BlockCCSlab extends BlockSlab{
         return isDouble;
     }
 
-    @Override
-    public IProperty<?> getVariantProperty() {
-        return null;
+    public IProperty<?> getVariantProperty()
+    {
+        return VARIANT;
     }
 
-    @Override
-    public Comparable<?> getTypeForItem(ItemStack stack) {
-        return null;
+    public Comparable<?> getTypeForItem(ItemStack stack)
+    {
+        return EnumType.DEFAULT;
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        IBlockState iblockstate = this.getDefaultState();
+        IBlockState iblockstate = this.getDefaultState().withProperty(VARIANT, EnumType.DEFAULT);
 
         if (!this.isDouble())
         {
@@ -65,9 +90,30 @@ public class BlockCCSlab extends BlockSlab{
         return !this.isDouble() && state.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP?1:0;
     }
 
-    @Override
     protected BlockStateContainer createBlockState()
     {
-        return this.isDouble() ? new BlockStateContainer(this): new BlockStateContainer(this, new IProperty[] {HALF});
+        return this.isDouble() ? new BlockStateContainer(this, new IProperty[] {VARIANT}): new BlockStateContainer(this, new IProperty[] {HALF, VARIANT});
+    }
+
+    public BlockCCSlab setHarvestLevelReturnBlock(String toolClass, int level) {
+        super.setHarvestLevel(toolClass, level);
+        return this;
+    }
+
+    @Override
+    public BlockCCSlab setSoundType(SoundType sound)
+    {
+        super.setSoundType(sound);
+        return this;
+    }
+
+    public static enum EnumType implements IStringSerializable
+    {
+        DEFAULT;
+
+        public String getName()
+        {
+            return "default";
+        }
     }
 }

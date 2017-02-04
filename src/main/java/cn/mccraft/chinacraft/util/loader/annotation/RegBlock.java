@@ -32,4 +32,6 @@ public @interface RegBlock {
      *
      */
     Class<? extends ItemBlock> itemClass() default ItemBlock.class;
+
+    boolean isRegisterItemBlock() default true;
 }
