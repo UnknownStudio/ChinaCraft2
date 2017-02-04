@@ -1,12 +1,8 @@
 package cn.mccraft.chinacraft.init;
 
-import cn.mccraft.chinacraft.block.BlockCCBase;
-import cn.mccraft.chinacraft.block.BlockCCOre;
-import cn.mccraft.chinacraft.block.BlockCCRotatedPillar;
-import cn.mccraft.chinacraft.block.machine.BlockCrusher;
+import cn.mccraft.chinacraft.block.*;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 
 /**
@@ -48,12 +44,12 @@ public interface CCBlocks {
     @RegBlock({"pillar", "marble"})
     Block PILLAR_MARBLE = new BlockCCRotatedPillar(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
-    @RegBlock({"stone", "crusher"})
+    /*@RegBlock({"stone", "crusher"})
     BlockCrusher STONE_CRUSHER = new BlockCrusher();
 
     @RegBlock({"bronze", "crusher"})
     BlockCrusher BRONZE_CRUSHER = new BlockCrusher();
 
     @RegBlock({"iron", "crusher"})
-    BlockCrusher IRON_CRUSHER = new BlockCrusher();
+    BlockCrusher IRON_CRUSHER = new BlockCrusher();*/
 }
