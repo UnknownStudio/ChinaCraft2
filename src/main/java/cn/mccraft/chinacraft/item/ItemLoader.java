@@ -55,6 +55,8 @@ public class ItemLoader implements ILoader {
             RegItem anno = field.getAnnotation(RegItem.class);
             if (anno==null) continue;
 
+            if(!anno.isRegisterRender()) continue;
+
             try {
                 Item item = (Item) field.get(null);
                 registerRender(item,0);

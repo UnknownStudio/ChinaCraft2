@@ -62,6 +62,8 @@ public class BlockLoader implements ILoader {
             RegBlock anno = field.getAnnotation(RegBlock.class);
             if (anno==null) continue;
 
+            if(!anno.isRegisterRender()||!anno.isRegisterItemBlock()) continue;
+
             try {
                 Block block = (Block) field.get(null);
                 registerRender(block,0);

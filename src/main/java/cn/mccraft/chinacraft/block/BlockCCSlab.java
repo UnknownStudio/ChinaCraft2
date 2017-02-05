@@ -1,7 +1,6 @@
 package cn.mccraft.chinacraft.block;
 
 import cn.mccraft.chinacraft.init.CCCreativeTabs;
-import net.minecraft.block.BlockPurpurSlab;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -9,7 +8,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
@@ -35,10 +33,12 @@ public class BlockCCSlab extends BlockSlab{
         IBlockState iblockstate = this.blockState.getBaseState();
 
         if (!this.isDouble())
-            iblockstate.withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM);
+        {
+            iblockstate = iblockstate.withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM);
+            setCreativeTab(CCCreativeTabs.tabCore);
+        }
 
         this.setDefaultState(iblockstate.withProperty(VARIANT, EnumType.DEFAULT));
-        setCreativeTab(CCCreativeTabs.tabCore);
     }
 
     public Item getItemDropped(IBlockState state, Random rand, int fortune)

@@ -1,6 +1,6 @@
 {
   "variants": {
-    "half=bottom": { "model": "chinacraft:marble_slab_half" },
-    "half=top": { "model": "chinacraft:marble_slab_top" }
+    "half=bottom,variant=default": { "model": "chinacraft:marble_slab_half" },
+    "half=top,variant=default": { "model": "chinacraft:marble_slab_top" }
   }
 }
