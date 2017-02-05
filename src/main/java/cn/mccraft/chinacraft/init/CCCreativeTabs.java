@@ -16,7 +16,7 @@ public interface CCCreativeTabs {
         @Nonnull
         @Override
         public ItemStack getTabIconItem() {
-            return new ItemStack(Blocks.AIR);
+            return new ItemStack(CCBlocks.COPPER_ORE);
         }
     };
 

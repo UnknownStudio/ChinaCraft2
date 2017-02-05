@@ -18,12 +18,16 @@ tile.marble.name=大理石
 tile.pillarMarble.name=竖纹大理石块
 tile.smoothMarble.name=平滑大理石块
 tile.chiseledMarble.name=錾制大理石块
+tile.marbleStairs.name=大理石楼梯
+tile.marbleSlab.name=大理石半砖
+tile.marbleDoubleSlab.name=大理石半砖
 
 # 工具
 item.bronzePickaxe.name=青铜镐
 item.bronzeAxe.name=青铜斧
 item.bronzeShovel.name=青铜铲
 item.bronzeSword.name=青铜剑
+item.bronzeHoe.name=青铜锄
 
 # 成就
 achievement.firstBronze=第一个青铜！
