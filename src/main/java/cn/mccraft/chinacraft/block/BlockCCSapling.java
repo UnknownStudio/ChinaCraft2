@@ -1,7 +1,8 @@
 package cn.mccraft.chinacraft.block;
 
 import cn.mccraft.chinacraft.init.CCCreativeTabs;
-import net.minecraft.block.*;
+import net.minecraft.block.BlockBush;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
@@ -12,7 +13,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
 import java.util.Random;
@@ -23,14 +24,15 @@ import java.util.Random;
 public class BlockCCSapling extends BlockBush implements IGrowable {
     public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 1);
     protected static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.09999999403953552D, 0.0D, 0.09999999403953552D, 0.8999999761581421D, 0.800000011920929D, 0.8999999761581421D);
+    private final WorldGenerator treeGen;
 
-    public BlockCCSapling() {
-        this.setDefaultState(this.blockState.getBaseState().withProperty(STAGE, Integer.valueOf(0)));
-        this.setCreativeTab(CCCreativeTabs.tabCore);
+    public BlockCCSapling(WorldGenerator treeGen) {
+        this(Material.PLANTS,treeGen);
     }
 
-    public BlockCCSapling(Material material) {
+    public BlockCCSapling(Material material, WorldGenerator treeGen) {
         super(material);
+        this.treeGen = treeGen;
         this.setDefaultState(this.blockState.getBaseState().withProperty(STAGE, Integer.valueOf(0)));
         this.setCreativeTab(CCCreativeTabs.tabCore);
     }
@@ -58,36 +60,15 @@ public class BlockCCSapling extends BlockBush implements IGrowable {
 
     }
 
-    //TODO:
     public void generateTree(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        if(TerrainGen.saplingGrowTree(worldIn, rand, pos)) {
-            Object worldgenerator = rand.nextInt(10) == 0?new WorldGenBigTree(true):new WorldGenTrees(true);
-            int i = 0;
-            int j = 0;
-            boolean flag = false;
-            IBlockState iblockstate2;
-            iblockstate2 = Blocks.AIR.getDefaultState();
-            if(flag) {
-                worldIn.setBlockState(pos.add(i, 0, j), iblockstate2, 4);
-                worldIn.setBlockState(pos.add(i + 1, 0, j), iblockstate2, 4);
-                worldIn.setBlockState(pos.add(i, 0, j + 1), iblockstate2, 4);
-                worldIn.setBlockState(pos.add(i + 1, 0, j + 1), iblockstate2, 4);
-            } else {
-                worldIn.setBlockState(pos, iblockstate2, 4);
-            }
+        if(!TerrainGen.saplingGrowTree(worldIn, rand, pos)) return; //发出事件
 
-            if(!((WorldGenerator)worldgenerator).generate(worldIn, rand, pos.add(i, 0, j))) {
-                if(flag) {
-                    worldIn.setBlockState(pos.add(i, 0, j), state, 4);
-                    worldIn.setBlockState(pos.add(i + 1, 0, j), state, 4);
-                    worldIn.setBlockState(pos.add(i, 0, j + 1), state, 4);
-                    worldIn.setBlockState(pos.add(i + 1, 0, j + 1), state, 4);
-                } else {
-                    worldIn.setBlockState(pos, state, 4);
-                }
-            }
+        worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);//删除树苗
 
-        }
+        if(treeGen.generate(worldIn, rand, pos))  return;//生成树
+
+        worldIn.setBlockState(pos, state, 4);//如果生成失败，放回树苗
+
     }
 
     public int damageDropped(IBlockState state) {

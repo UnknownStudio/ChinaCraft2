@@ -64,5 +64,5 @@ public interface CCBlocks {
     BlockCrusher BRONZE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.BRONZE);
 
     @RegBlock({"iron", "crusher"})
-    BlockCrusher IRON_CRUSHER = new BlockCrusher(EnumCrusherMaterial.IRON);
+    BlockCrusher IRON_CRUSHER = new BlockCrusher(EnumCrusherMaterial.IRON);*/
 }
