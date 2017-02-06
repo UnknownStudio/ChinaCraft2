@@ -68,46 +68,47 @@ public class ContainerRedPacket extends Container {
     @Override
     public void onContainerClosed(EntityPlayer p_75134_1_) {
         super.onContainerClosed(p_75134_1_);
-        if (p_75134_1_.getHeldItemMainhand() == null || !p_75134_1_.getHeldItemMainhand().getItem().equals(CCItems.RED_PACKET)) return;
+        if (p_75134_1_.getHeldItemMainhand() == ItemStack.EMPTY || !p_75134_1_.getHeldItemMainhand().getItem().equals(CCItems.RED_PACKET)) return;
 
         NBTTagCompound nbtitem = new NBTTagCompound();
-        if (getSlot(0).getStack() != null) getSlot(0).getStack().writeToNBT(nbtitem);
+        if (getSlot(0).getStack() != ItemStack.EMPTY) getSlot(0).getStack().writeToNBT(nbtitem);
         p_75134_1_.getHeldItemMainhand().setTagInfo("item", nbtitem);
     }
 
+    @Nonnull
     @Override
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
-        ItemStack var3 = null;
-        Slot var4 = (Slot) this.inventorySlots.get(par2);
+        ItemStack var3 = ItemStack.EMPTY;
+        Slot var4 = this.inventorySlots.get(par2);
         if (var4 != null && var4.getHasStack()) {
             ItemStack var5 = var4.getStack();
             var3 = var5.copy();
             // 点击到Slot的ID为0的时候，将物品送回玩家的背包中
             if (par2 == 0) {
                 if (!this.mergeItemStack(var5, 1, 28, false)) {
-                    return null;
+                    return ItemStack.EMPTY;
                 }
                 var4.onSlotChange(var5, var3);
             }
             // 点击到玩家的背包的时候将物品送到玩家的快捷栏中
             else if (par2 > 0 && par2 < 28) {
                 if (!this.mergeItemStack(var5, 28, 37, false)) {
-                    return null;
+                    return ItemStack.EMPTY;
                 }
             }
             // 点击到玩家的快捷栏的时候将物品送到背包中
             else if (par2 >= 28 && par2 < 37) {
                 if (!this.mergeItemStack(var5, 1, 28, false)) {
-                    return null;
+                    return ItemStack.EMPTY;
                 }
             }
             if (var5.getMaxStackSize() == 0) {
-                var4.putStack((ItemStack) null);
+                var4.putStack(ItemStack.EMPTY);
             } else {
                 var4.onSlotChanged();
             }
             if (var5.getMaxStackSize() == var3.getMaxStackSize()) {
-                return null;
+                return ItemStack.EMPTY;
             }
             var4.onTake(par1EntityPlayer, var5);
         }

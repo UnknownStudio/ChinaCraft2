@@ -1,9 +1,7 @@
 package cn.mccraft.chinacraft.item;
 
 import cn.mccraft.chinacraft.common.ChinaCraft;
-import cn.mccraft.chinacraft.common.gui.EnumGuiType;
-import cn.mccraft.chinacraft.common.gui.GuiHandler;
-import net.minecraft.entity.player.EntityPlayer;
+import cn.mccraft.chinacraft.common.gui.EnumGuiType;import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
