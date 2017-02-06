@@ -24,4 +24,6 @@ public @interface RegItem {
      * Example: wandIron -> itemWandIron
      */
     //String prefix() default "item";
+
+    boolean isRegisterRender() default true;
 }

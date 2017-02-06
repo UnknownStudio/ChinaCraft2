@@ -8,19 +8,19 @@ import net.minecraft.block.state.IBlockState;
 /**
  * Created by Mouse on 2017/2/2.
  */
-public class BlockCCStair extends BlockStairs{
-    public BlockCCStair(IBlockState modelState) {
+public class BlockCCStairs extends BlockStairs{
+    public BlockCCStairs(IBlockState modelState) {
         super(modelState);
         setCreativeTab(CCCreativeTabs.tabCore);
     }
 
-    public BlockCCStair setHarvestLevelReturnBlock(String toolClass, int level) {
+    public BlockCCStairs setHarvestLevelReturnBlock(String toolClass, int level) {
         super.setHarvestLevel(toolClass, level);
         return this;
     }
 
     @Override
-    public BlockCCStair setSoundType(SoundType sound)
+    public BlockCCStairs setSoundType(SoundType sound)
     {
         super.setSoundType(sound);
         return this;

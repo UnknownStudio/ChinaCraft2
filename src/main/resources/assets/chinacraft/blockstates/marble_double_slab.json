@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "half=bottom,variant=default": { "model": "chinacraft:smooth_marble" },
+    "half=top,variant=default": { "model": "chinacraft:smooth_marble" }
+  }
+}

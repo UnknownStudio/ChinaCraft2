@@ -37,10 +37,12 @@ public class BlockLoader implements ILoader {
                 GameRegistry.register(block.setRegistryName(NameBuilder.buildRegistryName(anno.value())).setUnlocalizedName(NameBuilder.buildUnlocalizedName(anno.value())));
 
                 //Register item block.
-                Class<? extends ItemBlock> itemClass = anno.itemClass();
-                Constructor<? extends ItemBlock> con = itemClass.getConstructor(Block.class);
-                con.setAccessible(true);
-                GameRegistry.register(con.newInstance(block).setRegistryName(block.getRegistryName()).setUnlocalizedName(block.getUnlocalizedName()));
+                if(anno.isRegisterItemBlock()) {
+                    Class<? extends ItemBlock> itemClass = anno.itemClass();
+                    Constructor<? extends ItemBlock> con = itemClass.getConstructor(Block.class);
+                    con.setAccessible(true);
+                    GameRegistry.register(con.newInstance(block).setRegistryName(block.getRegistryName()).setUnlocalizedName(block.getUnlocalizedName()));
+                }
 
                 Arrays.asList(anno.oreDict()).forEach(s -> OreDictionary.registerOre(s, block));
             } catch (Exception e) {
@@ -59,6 +61,8 @@ public class BlockLoader implements ILoader {
             field.setAccessible(true);
             RegBlock anno = field.getAnnotation(RegBlock.class);
             if (anno==null) continue;
+
+            if(!anno.isRegisterRender()||!anno.isRegisterItemBlock()) continue;
 
             try {
                 Block block = (Block) field.get(null);
