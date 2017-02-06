@@ -4,6 +4,7 @@ import cn.mccraft.chinacraft.block.BlockCCBase;
 import cn.mccraft.chinacraft.block.BlockCCOre;
 import cn.mccraft.chinacraft.block.BlockCCRotatedPillar;
 import cn.mccraft.chinacraft.block.machine.BlockCrusher;
+import cn.mccraft.chinacraft.block.machine.EnumCrusherMaterial;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -49,11 +50,11 @@ public interface CCBlocks {
     Block PILLAR_MARBLE = new BlockCCRotatedPillar(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"stone", "crusher"})
-    BlockCrusher STONE_CRUSHER = new BlockCrusher();
+    BlockCrusher STONE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.STONE);
 
     @RegBlock({"bronze", "crusher"})
-    BlockCrusher BRONZE_CRUSHER = new BlockCrusher();
+    BlockCrusher BRONZE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.BRONZE);
 
     @RegBlock({"iron", "crusher"})
-    BlockCrusher IRON_CRUSHER = new BlockCrusher();
+    BlockCrusher IRON_CRUSHER = new BlockCrusher(EnumCrusherMaterial.IRON);
 }

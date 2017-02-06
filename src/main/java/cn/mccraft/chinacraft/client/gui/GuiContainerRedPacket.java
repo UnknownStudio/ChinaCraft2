@@ -50,11 +50,11 @@ public class GuiContainerRedPacket extends GuiContainer {
         Keyboard.enableRepeatEvents(true);
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
-        wishTextBox = new GuiTextField(0,Minecraft.getMinecraft().fontRendererObj, this.xSize / 2 - 80, 65, 160, 16);
+        wishTextBox = new GuiTextField(0,Minecraft.getMinecraft().fontRenderer, this.xSize / 2 - 80, 65, 160, 16);
         wishTextBox.setFocused(true);
         wishTextBox.setMaxStringLength(64);
         wishTextBox.setText(wish);
-        receiverTextBox = new GuiTextField(1,Minecraft.getMinecraft().fontRendererObj, this.xSize / 2 + 96, 65, 64, 16);
+        receiverTextBox = new GuiTextField(1,Minecraft.getMinecraft().fontRenderer, this.xSize / 2 + 96, 65, 64, 16);
         receiverTextBox.setMaxStringLength(32);
         this.buttonList.add(this.buttonSend = new GuiButton(0, k + this.xSize / 2 + 96, l + 89, 64, 20,
                 I18n.format("gui.redPacket.send")));
@@ -75,7 +75,7 @@ public class GuiContainerRedPacket extends GuiContainer {
             wishTextBox.drawTextBox();
             receiverTextBox.drawTextBox();
             String head = I18n.format("gui.redPacket.title");
-            this.fontRendererObj.drawString(head, this.xSize / 2 - this.fontRendererObj.getStringWidth(head) / 2, 5,
+            this.fontRenderer.drawString(head, this.xSize / 2 - this.fontRenderer.getStringWidth(head) / 2, 5,
                     Integer.MAX_VALUE);
         } else {
             receiverTextBox.setEnabled(false);
@@ -83,10 +83,10 @@ public class GuiContainerRedPacket extends GuiContainer {
             wishTextBox.setEnabled(false);
             wishTextBox.setVisible(false);
             buttonSend.visible = false;
-            this.fontRendererObj.drawString(getWish(), this.xSize / 2 - this.fontRendererObj.getStringWidth(getWish()) / 2, 68,
+            this.fontRenderer.drawString(getWish(), this.xSize / 2 - this.fontRenderer.getStringWidth(getWish()) / 2, 68,
                     Integer.MAX_VALUE);
             String head = I18n.format("gui.redPacket.from",sender);
-            this.fontRendererObj.drawString(head, this.xSize / 2 - this.fontRendererObj.getStringWidth(head) / 2, 5,
+            this.fontRenderer.drawString(head, this.xSize / 2 - this.fontRenderer.getStringWidth(head) / 2, 5,
                     Integer.MAX_VALUE);
         }
     }

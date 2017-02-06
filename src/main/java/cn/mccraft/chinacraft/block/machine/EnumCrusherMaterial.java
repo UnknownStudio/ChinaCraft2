@@ -18,10 +18,10 @@ public enum EnumCrusherMaterial implements IStringSerializable {
 
     EnumCrusherMaterial(int r, int g, int b, int a) {
         Color color = new Color(r, g, b, a);
-        this.r = color.getRGBColorComponents(null)[0];
-        this.g = color.getRGBColorComponents(null)[1];
-        this.b = color.getRGBColorComponents(null)[2];
-        this.a = color.getRGBColorComponents(null)[3];
+        this.r = color.getRGBComponents(null)[0];
+        this.g = color.getRGBComponents(null)[1];
+        this.b = color.getRGBComponents(null)[2];
+        this.a = color.getRGBComponents(null)[3];
     }
 
     public float getRed() {
