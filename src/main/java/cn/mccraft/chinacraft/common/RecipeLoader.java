@@ -50,6 +50,7 @@ public class RecipeLoader implements ILoader {
         addRecipe(new ItemStack(MARBLE_SLAB, 6), new Object[]{"   ", "   ", "###", '#', SMOOTH_MARBLE});
         addRecipe(new ItemStack(MARBLE_STAIRS, 4), new Object[]{"#  ", "## ", "###", '#', SMOOTH_MARBLE});
         addRecipe(new ItemStack(MARBLE_STAIRS, 4), new Object[]{"  #", " ##", "###", '#', SMOOTH_MARBLE});
+        addRecipe(new ItemStack(MARBLE_WALL, 6), new Object[]{"   ", "###", "###", '#', SMOOTH_MARBLE});
 
     }
 

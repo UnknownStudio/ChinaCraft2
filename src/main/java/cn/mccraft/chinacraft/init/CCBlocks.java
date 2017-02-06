@@ -53,6 +53,9 @@ public interface CCBlocks {
     @RegBlock(value = {"marble","double","slab"},isRegisterItemBlock = false)
     BlockCCSlab MARBLE_DOUBLE_SLAB = (BlockCCSlab)new BlockCCSlab(Material.ROCK,true,MARBLE_SLAB).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
+    @RegBlock({"marble","wall"})
+    Block MARBLE_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+
     /*@RegBlock({"stone", "crusher"})
     BlockCrusher STONE_CRUSHER = new BlockCrusher();
 

@@ -21,6 +21,7 @@ tile.chiseledMarble.name=錾制大理石块
 tile.marbleStairs.name=大理石楼梯
 tile.marbleSlab.name=大理石半砖
 tile.marbleDoubleSlab.name=大理石半砖
+tile.marbleWall.name=大理石墙
 
 # 工具
 item.bronzePickaxe.name=青铜镐

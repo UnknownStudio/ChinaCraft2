@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_side",
+  "textures": {
+    "wall": "chinacraft:blocks/smooth_marble"
+  }
+}

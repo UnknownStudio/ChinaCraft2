@@ -1,9 +1,7 @@
 package cn.mccraft.chinacraft.block;
 
 import cn.mccraft.chinacraft.init.CCCreativeTabs;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFenceGate;
-import net.minecraft.block.BlockWall;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
@@ -84,7 +82,10 @@ public class BlockCCWall extends Block {
     private boolean canConnectTo(IBlockAccess worldIn, BlockPos pos) {
         IBlockState iblockstate = worldIn.getBlockState(pos);
         Block block = iblockstate.getBlock();
-        return block == Blocks.BARRIER ? false : (block != this && !(block instanceof BlockFenceGate) ? (block.getMaterial(block.getDefaultState()).isOpaque() && iblockstate.isFullCube() ? block.getMaterial(block.getDefaultState()) != Material.GOURD : false) : true);
+        if(block == Blocks.BARRIER) return false;
+        if(block==this||block instanceof BlockFenceGate||block instanceof BlockWall) return true;
+        if(block.getMaterial(block.getDefaultState()).isOpaque() && iblockstate.isFullCube()) return block.getMaterial(block.getDefaultState()) != Material.GOURD;
+        return false;
     }
 
     public int damageDropped(IBlockState state) {
@@ -129,5 +130,17 @@ public class BlockCCWall extends Block {
 
     static {
         CLIP_AABB_BY_INDEX = new AxisAlignedBB[]{AABB_BY_INDEX[0].setMaxY(1.5D), AABB_BY_INDEX[1].setMaxY(1.5D), AABB_BY_INDEX[2].setMaxY(1.5D), AABB_BY_INDEX[3].setMaxY(1.5D), AABB_BY_INDEX[4].setMaxY(1.5D), AABB_BY_INDEX[5].setMaxY(1.5D), AABB_BY_INDEX[6].setMaxY(1.5D), AABB_BY_INDEX[7].setMaxY(1.5D), AABB_BY_INDEX[8].setMaxY(1.5D), AABB_BY_INDEX[9].setMaxY(1.5D), AABB_BY_INDEX[10].setMaxY(1.5D), AABB_BY_INDEX[11].setMaxY(1.5D), AABB_BY_INDEX[12].setMaxY(1.5D), AABB_BY_INDEX[13].setMaxY(1.5D), AABB_BY_INDEX[14].setMaxY(1.5D), AABB_BY_INDEX[15].setMaxY(1.5D)};
+    }
+
+    public BlockCCWall setHarvestLevelReturnBlock(String toolClass, int level) {
+        super.setHarvestLevel(toolClass, level);
+        return this;
+    }
+
+    @Override
+    public BlockCCWall setSoundType(SoundType sound)
+    {
+        super.setSoundType(sound);
+        return this;
     }
 }
