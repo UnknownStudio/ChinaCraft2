@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "half=bottom,variant=default": { "model": "chinacraft:black_brick_slab_half" },
+    "half=top,variant=default": { "model": "chinacraft:black_brick_slab_top" }
+  }
+}

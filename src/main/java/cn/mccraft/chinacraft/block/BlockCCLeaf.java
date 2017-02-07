@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -223,8 +224,7 @@ public class BlockCCLeaf extends Block implements IShearable {
 
     @Override
     public List<ItemStack> onSheared(@Nonnull ItemStack itemStack, IBlockAccess iBlockAccess, BlockPos blockPos, int i) {
-        //TODO:
-        return null;
+        return NonNullList.withSize(1, new ItemStack(this, 1));
     }
 
     public boolean isLeaves(IBlockState state, IBlockAccess world, BlockPos pos) {
@@ -235,7 +235,6 @@ public class BlockCCLeaf extends Block implements IShearable {
         if(!((Boolean)state.getValue(CHECK_DECAY)).booleanValue()) {
             world.setBlockState(pos, state.withProperty(CHECK_DECAY, Boolean.valueOf(true)), 4);
         }
-
     }
 
     public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {

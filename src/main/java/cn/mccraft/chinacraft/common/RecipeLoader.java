@@ -10,8 +10,9 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import static cn.mccraft.chinacraft.init.CCBlocks.*;
 import static cn.mccraft.chinacraft.init.CCItems.*;
-import static net.minecraftforge.fml.common.registry.GameRegistry.addRecipe;
-import static net.minecraftforge.fml.common.registry.GameRegistry.addSmelting;
+import static net.minecraft.init.Items.*;
+import static net.minecraft.init.Blocks.*;
+import static net.minecraftforge.fml.common.registry.GameRegistry.*;
 
 /**
  * Created by Mouse on 2017/1/28.
@@ -52,6 +53,20 @@ public class RecipeLoader implements ILoader {
         addRecipe(new ItemStack(MARBLE_STAIRS, 4), new Object[]{"  #", " ##", "###", '#', SMOOTH_MARBLE});
         addRecipe(new ItemStack(MARBLE_WALL, 6), new Object[]{"   ", "###", "###", '#', SMOOTH_MARBLE});
 
+        //青砖
+        {
+            Object objs[] = new Object[9];
+            objs[0] = WATER_BUCKET;
+            for (int i = 1; i <= 8; i++) {
+                objs[i] = BRICK;
+                addShapelessRecipe(new ItemStack(BLACK_BRICK, i), objs);
+            }
+        }
+        addRecipe(new ItemStack(BLACK_BRICK_BLOCK), new Object[]{"## ", "## ", " ", '#', BLACK_BRICK});
+        addRecipe(new ItemStack(BLACK_BRICK_SLAB, 6), new Object[]{"   ", "   ", "###", '#', BLACK_BRICK_BLOCK});
+        addRecipe(new ItemStack(BLACK_BRICK_STAIRS, 4), new Object[]{"#  ", "## ", "###", '#', BLACK_BRICK_BLOCK});
+        addRecipe(new ItemStack(BLACK_BRICK_STAIRS, 4), new Object[]{"  #", " ##", "###", '#', BLACK_BRICK_BLOCK});
+        addRecipe(new ItemStack(BLACK_BRICK_WALL, 6), new Object[]{"   ", "###", "###", '#', BLACK_BRICK_BLOCK});
     }
 
     @Load(LoaderState.INITIALIZATION)

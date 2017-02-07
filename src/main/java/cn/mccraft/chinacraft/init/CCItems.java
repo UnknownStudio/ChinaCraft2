@@ -42,6 +42,12 @@ public interface CCItems {
     @RegItem({"marble","slab"})
     ItemCCSlab ITEM_MARBLE_SLAB = new ItemCCSlab(CCBlocks.MARBLE_SLAB, CCBlocks.MARBLE_SLAB, CCBlocks.MARBLE_DOUBLE_SLAB);
 
+    @RegItem({"black","brick"})
+    ItemCCBase BLACK_BRICK = new ItemCCBase();
+
+    @RegItem({"black","brick","slab"})
+    ItemCCSlab ITEM_BLACK_BRICK_SLAB = new ItemCCSlab(CCBlocks.BLACK_BRICK_SLAB, CCBlocks.BLACK_BRICK_SLAB, CCBlocks.BLACK_BRICK_DOUBLE_SLAB);
+
     @RegItem({"red", "packet"})
     ItemCCRedPacket RED_PACKET = new ItemCCRedPacket();
 }

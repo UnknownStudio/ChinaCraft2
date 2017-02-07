@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_post",
+  "textures": {
+    "wall": "chinacraft:blocks/black_brick_block"
+  }
+}

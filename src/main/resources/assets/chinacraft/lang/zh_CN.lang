@@ -22,6 +22,12 @@ tile.marbleStairs.name=大理石楼梯
 tile.marbleSlab.name=大理石半砖
 tile.marbleDoubleSlab.name=大理石半砖
 tile.marbleWall.name=大理石墙
+item.blackBrick.name=青砖
+tile.blackBrickBlock.name=青砖块
+tile.blackBrickStairs.name=青砖楼梯
+tile.blackBrickSlab.name=青砖半砖
+tile.blackBrickDoubleSlab.name=青砖半砖
+tile.blackBrickWall.name=青砖墙
 
 # 工具
 item.bronzePickaxe.name=青铜镐

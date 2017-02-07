@@ -57,6 +57,21 @@ public interface CCBlocks {
     @RegBlock({"marble","wall"})
     Block MARBLE_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
+    @RegBlock({"black","brick","block"})
+    Block BLACK_BRICK_BLOCK = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+
+    @RegBlock({"black","brick", "stairs"})
+    Block BLACK_BRICK_STAIRS = new BlockCCStairs(SMOOTH_MARBLE.getDefaultState()).setHarvestLevelReturnBlock("pickaxe",0);
+
+    @RegBlock(value = {"black","brick","slab"},isRegisterItemBlock = false)
+    BlockCCSlab BLACK_BRICK_SLAB = (BlockCCSlab)new BlockCCSlab(Material.ROCK,false,null).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+
+    @RegBlock(value = {"black","brick","double","slab"},isRegisterItemBlock = false)
+    BlockCCSlab BLACK_BRICK_DOUBLE_SLAB = (BlockCCSlab)new BlockCCSlab(Material.ROCK,true,MARBLE_SLAB).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+
+    @RegBlock({"black","brick","wall"})
+    Block BLACK_BRICK_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+
     /*@RegBlock({"stone", "crusher"})
     BlockCrusher STONE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.STONE);
 
