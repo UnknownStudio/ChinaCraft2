@@ -44,25 +44,23 @@ public class RecipeLoader implements ILoader {
         addRecipe(new ShapedOreRecipe(CCItems.BRONZE_HOE, " ##", " X ", " X ", '#', "ingotBronze", 'X', "stickWood"));
 
         // 大理石
-        addRecipe(new ItemStack(CHISELED_MARBLE, 4), "## ", "## ", "   ", '#', PILLAR_MARBLE);
-        addRecipe(new ItemStack(SMOOTH_MARBLE, 4), "## ", "## ", "   ", '#', CHISELED_MARBLE);
-        addRecipe(new ItemStack(PILLAR_MARBLE, 4), "## ", "## ", "   ", '#', SMOOTH_MARBLE);
-        addRecipe(new ItemStack(SMOOTH_MARBLE, 4), "## ", "## ", "   ", '#', MARBLE);
+        addRecipe(new ItemStack(CHISELED_MARBLE, 4), "##", "##", '#', PILLAR_MARBLE);
+        addRecipe(new ItemStack(SMOOTH_MARBLE, 4), "##", "##", '#', CHISELED_MARBLE);
+        addRecipe(new ItemStack(PILLAR_MARBLE, 4), "##", "##", '#', SMOOTH_MARBLE);
+        addRecipe(new ItemStack(SMOOTH_MARBLE, 4), "##", "##", '#', MARBLE);
         addRecipe(new ItemStack(MARBLE_SLAB, 6), new Object[]{"   ", "   ", "###", '#', SMOOTH_MARBLE});
         addRecipe(new ItemStack(MARBLE_STAIRS, 4), new Object[]{"#  ", "## ", "###", '#', SMOOTH_MARBLE});
         addRecipe(new ItemStack(MARBLE_STAIRS, 4), new Object[]{"  #", " ##", "###", '#', SMOOTH_MARBLE});
         addRecipe(new ItemStack(MARBLE_WALL, 6), new Object[]{"   ", "###", "###", '#', SMOOTH_MARBLE});
 
         //青砖
-        {
-            Object objs[] = new Object[9];
+        for (int i = 1; i <= 8; i++) {
+            Object objs[] = new Object[i + 1];
             objs[0] = WATER_BUCKET;
-            for (int i = 1; i <= 8; i++) {
-                objs[i] = BRICK;
-                addShapelessRecipe(new ItemStack(BLACK_BRICK, i), objs);
-            }
+            for (int j = 1; j <= i; j++) objs[j] = BRICK;
+            addShapelessRecipe(new ItemStack(BLACK_BRICK, i), objs);
         }
-        addRecipe(new ItemStack(BLACK_BRICK_BLOCK), new Object[]{"## ", "## ", " ", '#', BLACK_BRICK});
+        addRecipe(new ItemStack(BLACK_BRICK_BLOCK), new Object[]{"##", "##", '#', BLACK_BRICK});
         addRecipe(new ItemStack(BLACK_BRICK_SLAB, 6), new Object[]{"   ", "   ", "###", '#', BLACK_BRICK_BLOCK});
         addRecipe(new ItemStack(BLACK_BRICK_STAIRS, 4), new Object[]{"#  ", "## ", "###", '#', BLACK_BRICK_BLOCK});
         addRecipe(new ItemStack(BLACK_BRICK_STAIRS, 4), new Object[]{"  #", " ##", "###", '#', BLACK_BRICK_BLOCK});
