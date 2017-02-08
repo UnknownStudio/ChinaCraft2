@@ -3,6 +3,7 @@ package cn.mccraft.chinacraft.init;
 import cn.mccraft.chinacraft.block.*;
 import cn.mccraft.chinacraft.block.machine.BlockCrusher;
 import cn.mccraft.chinacraft.block.machine.EnumCrusherMaterial;
+import cn.mccraft.chinacraft.item.ItemCCDoor;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -58,7 +59,7 @@ public interface CCBlocks {
     @RegBlock({"marble","wall"})
     Block MARBLE_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
-    @RegBlock({"marble","door"})
+    @RegBlock(value={"marble","door"},itemClass = ItemCCDoor.class)
     Block MARBLE_DOOR = new BlockCCDoor(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"black","brick","block"})

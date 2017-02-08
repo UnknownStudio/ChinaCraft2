@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Created by Mouse on 2017/2/5.
  */
-public class BlockCCWall extends Block {
+public class BlockCCWall extends BlockCCBase {
     public static final PropertyBool UP = PropertyBool.create("up");
     public static final PropertyBool NORTH = PropertyBool.create("north");
     public static final PropertyBool EAST = PropertyBool.create("east");
@@ -32,7 +32,6 @@ public class BlockCCWall extends Block {
     public BlockCCWall(Material material) {
         super(material);
         this.setDefaultState(this.blockState.getBaseState().withProperty(UP, Boolean.valueOf(false)).withProperty(NORTH, Boolean.valueOf(false)).withProperty(EAST, Boolean.valueOf(false)).withProperty(SOUTH, Boolean.valueOf(false)).withProperty(WEST, Boolean.valueOf(false)));
-        this.setCreativeTab(CCCreativeTabs.tabCore);
     }
 
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
@@ -130,17 +129,5 @@ public class BlockCCWall extends Block {
 
     static {
         CLIP_AABB_BY_INDEX = new AxisAlignedBB[]{AABB_BY_INDEX[0].setMaxY(1.5D), AABB_BY_INDEX[1].setMaxY(1.5D), AABB_BY_INDEX[2].setMaxY(1.5D), AABB_BY_INDEX[3].setMaxY(1.5D), AABB_BY_INDEX[4].setMaxY(1.5D), AABB_BY_INDEX[5].setMaxY(1.5D), AABB_BY_INDEX[6].setMaxY(1.5D), AABB_BY_INDEX[7].setMaxY(1.5D), AABB_BY_INDEX[8].setMaxY(1.5D), AABB_BY_INDEX[9].setMaxY(1.5D), AABB_BY_INDEX[10].setMaxY(1.5D), AABB_BY_INDEX[11].setMaxY(1.5D), AABB_BY_INDEX[12].setMaxY(1.5D), AABB_BY_INDEX[13].setMaxY(1.5D), AABB_BY_INDEX[14].setMaxY(1.5D), AABB_BY_INDEX[15].setMaxY(1.5D)};
-    }
-
-    public BlockCCWall setHarvestLevelReturnBlock(String toolClass, int level) {
-        super.setHarvestLevel(toolClass, level);
-        return this;
-    }
-
-    @Override
-    public BlockCCWall setSoundType(SoundType sound)
-    {
-        super.setSoundType(sound);
-        return this;
     }
 }

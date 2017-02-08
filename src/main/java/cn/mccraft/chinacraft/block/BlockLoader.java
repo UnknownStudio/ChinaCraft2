@@ -38,8 +38,8 @@ public class BlockLoader implements ILoader {
 
                 //Register item block.
                 if(anno.isRegisterItemBlock()) {
-                    Class<? extends ItemBlock> itemClass = anno.itemClass();
-                    Constructor<? extends ItemBlock> con = itemClass.getConstructor(Block.class);
+                    Class<? extends Item> itemClass = anno.itemClass();
+                    Constructor<? extends Item> con = itemClass.getConstructor(Block.class);
                     con.setAccessible(true);
                     GameRegistry.register(con.newInstance(block).setRegistryName(block.getRegistryName()).setUnlocalizedName(block.getUnlocalizedName()));
                 }

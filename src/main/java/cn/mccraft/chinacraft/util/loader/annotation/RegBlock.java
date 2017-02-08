@@ -1,5 +1,6 @@
 package cn.mccraft.chinacraft.util.loader.annotation;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
 import java.lang.annotation.ElementType;
@@ -31,7 +32,7 @@ public @interface RegBlock {
     /**
      *
      */
-    Class<? extends ItemBlock> itemClass() default ItemBlock.class;
+    Class<? extends Item> itemClass() default ItemBlock.class;
 
     boolean isRegisterItemBlock() default true;
 
