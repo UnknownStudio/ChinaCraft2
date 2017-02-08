@@ -1,6 +1,7 @@
 package cn.mccraft.chinacraft.init;
 
 import cn.mccraft.chinacraft.block.*;
+import cn.mccraft.chinacraft.block.machine.BlockCrusher;
 import cn.mccraft.chinacraft.block.machine.EnumCrusherMaterial;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import net.minecraft.block.*;
@@ -72,12 +73,12 @@ public interface CCBlocks {
     @RegBlock({"black","brick","wall"})
     Block BLACK_BRICK_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
-    /*@RegBlock({"stone", "crusher"})
+    @RegBlock({"stone", "crusher"})
     BlockCrusher STONE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.STONE);
 
     @RegBlock({"bronze", "crusher"})
     BlockCrusher BRONZE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.BRONZE);
 
     @RegBlock({"iron", "crusher"})
-    BlockCrusher IRON_CRUSHER = new BlockCrusher(EnumCrusherMaterial.IRON);*/
+    BlockCrusher IRON_CRUSHER = new BlockCrusher(EnumCrusherMaterial.IRON);
 }
