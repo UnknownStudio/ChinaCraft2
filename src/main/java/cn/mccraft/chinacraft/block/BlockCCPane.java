@@ -13,6 +13,7 @@ public class BlockCCPane extends BlockPane{
     public BlockCCPane(Material materialIn, boolean canDrop) {
         super(materialIn, canDrop);
         setCreativeTab(CCCreativeTabs.tabCore);
+        setHardness(0.5F);
     }
 
     public BlockCCPane setHarvestLevelReturnBlock(String toolClass, int level) {

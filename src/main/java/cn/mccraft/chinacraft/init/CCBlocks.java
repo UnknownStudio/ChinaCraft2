@@ -77,6 +77,9 @@ public interface CCBlocks {
     @RegBlock({"black","brick","wall"})
     Block BLACK_BRICK_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
+    @RegBlock({"wooden","window"})
+    Block WOODEN_WINDOW = new BlockCCPane(Material.WOOD,true).setSoundType(SoundType.WOOD);
+
     @RegBlock({"stone", "crusher"})
     BlockCrusher STONE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.STONE);
 

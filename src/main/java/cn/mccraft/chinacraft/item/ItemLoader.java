@@ -26,7 +26,6 @@ import java.util.List;
  * Auto loader of all items annotated with {@link RegItem} in {@link CCItems}.
  * 自动加载{@link CCItems}中被{@link RegItem}注释的物品。
  */
-@SuppressWarnings("unused")
 public class ItemLoader implements ILoader {
 
     @Load
@@ -49,7 +48,6 @@ public class ItemLoader implements ILoader {
 
     @Load(side = Side.CLIENT)
     public void registerRenders() {
-        //ModelLoader.setCustomModelResourceLocation(CCItems.RED_PACKET, 0, new ModelResourceLocation(CCItems.RED_PACKET.getRegistryName(), "inventory"));
         for (Field field : CCItems.class.getFields()) {
             field.setAccessible(true);
             RegItem anno = field.getAnnotation(RegItem.class);
