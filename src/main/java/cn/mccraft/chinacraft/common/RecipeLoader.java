@@ -10,8 +10,8 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import static cn.mccraft.chinacraft.init.CCBlocks.*;
 import static cn.mccraft.chinacraft.init.CCItems.*;
-import static net.minecraft.init.Items.*;
-import static net.minecraft.init.Blocks.*;
+import static net.minecraft.init.Items.BRICK;
+import static net.minecraft.init.Items.WATER_BUCKET;
 import static net.minecraftforge.fml.common.registry.GameRegistry.*;
 
 /**
@@ -48,12 +48,12 @@ public class RecipeLoader implements ILoader {
         addRecipe(new ItemStack(SMOOTH_MARBLE, 4), "##", "##", '#', CHISELED_MARBLE);
         addRecipe(new ItemStack(PILLAR_MARBLE, 4), "##", "##", '#', SMOOTH_MARBLE);
         addRecipe(new ItemStack(SMOOTH_MARBLE, 4), "##", "##", '#', MARBLE);
-        addRecipe(new ItemStack(MARBLE_SLAB, 6), new Object[]{"   ", "   ", "###", '#', SMOOTH_MARBLE});
-        addRecipe(new ItemStack(MARBLE_STAIRS, 4), new Object[]{"#  ", "## ", "###", '#', SMOOTH_MARBLE});
-        addRecipe(new ItemStack(MARBLE_STAIRS, 4), new Object[]{"  #", " ##", "###", '#', SMOOTH_MARBLE});
-        addRecipe(new ItemStack(MARBLE_WALL, 6), new Object[]{"   ", "###", "###", '#', SMOOTH_MARBLE});
-        addRecipe(new ItemStack(MARBLE_DOOR, 3), new Object[]{"## ", "## ", "## ", '#', SMOOTH_MARBLE});
-        addRecipe(new ItemStack(MARBLE_DOOR, 3), new Object[]{" ##", " ##", " ##", '#', SMOOTH_MARBLE});
+        addRecipe(new ItemStack(MARBLE_SLAB, 6), "   ", "   ", "###", '#', SMOOTH_MARBLE);
+        addRecipe(new ItemStack(MARBLE_STAIRS, 4), "#  ", "## ", "###", '#', SMOOTH_MARBLE);
+        addRecipe(new ItemStack(MARBLE_STAIRS, 4), "  #", " ##", "###", '#', SMOOTH_MARBLE);
+        addRecipe(new ItemStack(MARBLE_WALL, 6), "   ", "###", "###", '#', SMOOTH_MARBLE);
+        addRecipe(new ItemStack(MARBLE_DOOR, 3), "## ", "## ", "## ", '#', SMOOTH_MARBLE);
+        addRecipe(new ItemStack(MARBLE_DOOR, 3), " ##", " ##", " ##", '#', SMOOTH_MARBLE);
 
         //青砖
         for (int i = 1; i <= 8; i++) {
@@ -62,11 +62,11 @@ public class RecipeLoader implements ILoader {
             for (int j = 1; j <= i; j++) objs[j] = BRICK;
             addShapelessRecipe(new ItemStack(BLACK_BRICK, i), objs);
         }
-        addRecipe(new ItemStack(BLACK_BRICK_BLOCK), new Object[]{"##", "##", '#', BLACK_BRICK});
-        addRecipe(new ItemStack(BLACK_BRICK_SLAB, 6), new Object[]{"   ", "   ", "###", '#', BLACK_BRICK_BLOCK});
-        addRecipe(new ItemStack(BLACK_BRICK_STAIRS, 4), new Object[]{"#  ", "## ", "###", '#', BLACK_BRICK_BLOCK});
-        addRecipe(new ItemStack(BLACK_BRICK_STAIRS, 4), new Object[]{"  #", " ##", "###", '#', BLACK_BRICK_BLOCK});
-        addRecipe(new ItemStack(BLACK_BRICK_WALL, 6), new Object[]{"   ", "###", "###", '#', BLACK_BRICK_BLOCK});
+        addRecipe(new ItemStack(BLACK_BRICK_BLOCK), "##", "##", '#', BLACK_BRICK);
+        addRecipe(new ItemStack(BLACK_BRICK_SLAB, 6), "   ", "   ", "###", '#', BLACK_BRICK_BLOCK);
+        addRecipe(new ItemStack(BLACK_BRICK_STAIRS, 4), "#  ", "## ", "###", '#', BLACK_BRICK_BLOCK);
+        addRecipe(new ItemStack(BLACK_BRICK_STAIRS, 4), "  #", " ##", "###", '#', BLACK_BRICK_BLOCK);
+        addRecipe(new ItemStack(BLACK_BRICK_WALL, 6), "   ", "###", "###", '#', BLACK_BRICK_BLOCK);
     }
 
     @Load(LoaderState.INITIALIZATION)

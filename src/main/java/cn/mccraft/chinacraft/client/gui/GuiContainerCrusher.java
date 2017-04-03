@@ -16,7 +16,7 @@ import static org.lwjgl.opengl.GL11.*;
 public class GuiContainerCrusher extends GuiContainer {
     private TileEntityCrusher crusherEntity;
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(ChinaCraft.MODID, "textures/gui/buhrimill.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(ChinaCraft.MODID, "textures/gui/crusher.png");
     public GuiContainerCrusher(InventoryPlayer inventoryPlayer, TileEntityCrusher crusherEntity) {
         super(new ContainerCrusher(inventoryPlayer, crusherEntity));
         this.crusherEntity = crusherEntity;
@@ -34,7 +34,6 @@ public class GuiContainerCrusher extends GuiContainer {
         this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 3, 4210752);
         this.fontRenderer.drawString(I18n.format("container.inventory"), 8, this.ySize - 96 + 2,
             4210752);
-
     }
 
     @Override
@@ -46,8 +45,8 @@ public class GuiContainerCrusher extends GuiContainer {
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
-        int b = crusherEntity.getSchedule();
-        float max = crusherEntity.getMaxSchedule() * 1.0F;
+        int b = crusherEntity.getProgress();
+        float max = crusherEntity.getCurrentMaxProgress() * 1.0F;
         if (b > 0 && max > 0) {
             this.drawTexturedModalRect(k + 73, l + 25, 176, 0, (int) (24 * (b / max)), 16);
         }

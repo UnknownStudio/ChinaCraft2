@@ -1,14 +1,9 @@
 package cn.mccraft.chinacraft.capability;
 
 import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagFloat;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilitySerializable;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class CapabilityCrusherStats {
     public static class Storage implements Capability.IStorage<ICrusherStats> {
@@ -40,36 +35,6 @@ public class CapabilityCrusherStats {
         @Override
         public void addProgress(float progress) {
             this.progress += progress;
-        }
-    }
-
-    public static class ProviderTileEntity implements ICapabilitySerializable<NBTTagCompound> {
-        private ICrusherStats crusherStats = new Implementation();
-        private Capability.IStorage<ICrusherStats> storage = CapabilityLoader.getStatsCapability().getStorage();
-
-        @Override
-        public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
-            return CapabilityLoader.getStatsCapability().equals(capability);
-        }
-
-        @Nullable
-        @Override
-        public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
-            if (CapabilityLoader.getStatsCapability().equals(capability))
-                return (T) capability;
-            return null;
-        }
-
-        @Override
-        public NBTTagCompound serializeNBT() {
-            NBTTagCompound nbtTagCompound = new NBTTagCompound();
-            nbtTagCompound.setTag("progress", storage.writeNBT(CapabilityLoader.getStatsCapability(), crusherStats, null));
-            return nbtTagCompound;
-        }
-
-        @Override
-        public void deserializeNBT(NBTTagCompound nbt) {
-            storage.readNBT(CapabilityLoader.getStatsCapability(), crusherStats, null, nbt.getTag("progress"));
         }
     }
 }

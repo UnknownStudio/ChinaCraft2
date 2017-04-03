@@ -6,31 +6,40 @@ import cn.mccraft.chinacraft.block.machine.EnumCrusherMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
-import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.EnergyStorage;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Arrays;
+import java.util.Optional;
 
-public class TileEntityCrusher extends TileEntity implements IItemHandler, ITickable {
+public class TileEntityCrusher extends TileEntity implements ITickable {
     // 槽1:主原料 槽2:副原料 槽3:主产出 槽4:副产出
     private ItemStackHandler inventory = new ItemStackHandler(4);
     private EnumCrusherMaterial crusherMaterial;
+    private EnergyStorage energyStorage = new EnergyStorage(10000);
 
-    private int angle;
-    private int schedule;
+    private int progress = 0;
+    private CrusherRecipe currentRecipe;
 
     public TileEntityCrusher(EnumCrusherMaterial crusherMaterial) {
         this.crusherMaterial = crusherMaterial;
+        FMLCommonHandler.instance().getMinecraftServerInstance().registerTickable(this);
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         inventory.deserializeNBT(compound.getCompoundTag("inventory"));
-        angle = compound.getInteger("angle");
-        schedule = compound.getInteger("schedule");
+        CapabilityEnergy.ENERGY.getStorage().readNBT(CapabilityEnergy.ENERGY, energyStorage, null, compound.getTag("energy"));
+        CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.getStorage().readNBT(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, inventory, null, compound.getTag("inventory"));
     }
 
     @Nonnull
@@ -38,41 +47,9 @@ public class TileEntityCrusher extends TileEntity implements IItemHandler, ITick
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound = super.writeToNBT(compound);
         compound.setTag("inventory", inventory.serializeNBT());
-        compound.setInteger("angle", angle);
-        compound.setInteger("schedule", schedule);
+        compound.setTag("energy", CapabilityEnergy.ENERGY.getStorage().writeNBT(CapabilityEnergy.ENERGY, energyStorage, null));
+        compound.setTag("inventory", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.getStorage().writeNBT(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, inventory, null));
         return compound;
-    }
-
-    @Override
-    public int getSlots() {
-        return 4;
-    }
-
-    @Nonnull
-    @Override
-    public ItemStack getStackInSlot(int slot) {
-        return inventory.getStackInSlot(slot);
-    }
-
-    public void setStackInSlot(int slot, @Nonnull ItemStack stack) {
-        inventory.setStackInSlot(slot, stack);
-    }
-
-    @Nonnull
-    @Override
-    public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
-        return inventory.insertItem(slot, stack, simulate);
-    }
-
-    @Nonnull
-    @Override
-    public ItemStack extractItem(int slot, int amount, boolean simulate) {
-        return inventory.extractItem(slot, amount, simulate);
-    }
-
-    @Override
-    public int getSlotLimit(int slot) {
-        return 64;
     }
 
     public EnumCrusherMaterial getCrusherMaterial() {
@@ -81,123 +58,55 @@ public class TileEntityCrusher extends TileEntity implements IItemHandler, ITick
 
     @Override
     public void update() {
-        // 存在主原料
-        if (getStackInSlot(0) != ItemStack.EMPTY) {
-            CCRecipeManager.getRecipes(CrusherRecipe.class).stream()
-                .filter(recipe -> recipe.getMaterial() == crusherMaterial)
-                .filter(recipe -> recipe.getInputItems().equals(Arrays.asList(getStackInSlot(0), getStackInSlot(1))))
-                .forEach(this::parseRecipe);
-        } else {
-            schedule = 0;
-        }
-    }
-
-    private void parseRecipe(CrusherRecipe recipe) {
-        if (recipe.getInputItems().get(1) != ItemStack.EMPTY) {
-            if ((getStackInSlot(0).getCount() - recipe.getInputItems().get(0).getCount()) >= 0
-                && (getStackInSlot(1).getCount() - recipe.getInputItems().get(1).getCount()) >= 0
-                && (getStackInSlot(2) == ItemStack.EMPTY || getStackInSlot(2).equals(recipe.getInputItems().get(0)))
-                && (recipe.getOutputItems().get(1) == ItemStack.EMPTY || getStackInSlot(3) == ItemStack.EMPTY
-                || getStackInSlot(3).equals(recipe.getOutputItems().get(1)))) {
-                if (schedule >= recipe.getTime()) {
-                    schedule = 0;
-                    if (getStackInSlot(2) != ItemStack.EMPTY) {
-                        ItemStack output1 = recipe.getInputItems().get(0);
-                        output1.setCount(getStackInSlot(2).getCount() + output1.getCount());
-                        setStackInSlot(2, output1);
-                    } else {
-                        setStackInSlot(2, recipe.getInputItems().get(0));
-                    }
-                    if (recipe.getOutputItems().get(1) != ItemStack.EMPTY) {
-                        if (getStackInSlot(3) != ItemStack.EMPTY) {
-                            ItemStack output2 = recipe.getOutputItems().get(1);
-                            output2.setCount(getStackInSlot(3).getCount() + output2.getCount());
-                            setStackInSlot(3, output2);
-                        } else {
-                            setStackInSlot(3, recipe.getOutputItems().get(1));
-                        }
-                    }
-                    if ((getStackInSlot(0).getCount() - recipe.getInputItems().get(0).getCount()) == 0) {
-                        setStackInSlot(0, ItemStack.EMPTY);
-                    } else {
-                        ItemStack input1 = getStackInSlot(0);
-                        input1.setCount(input1.getCount() - recipe.getInputItems().get(0).getCount());
-                        setStackInSlot(0, input1);
-                    }
-                    if ((getStackInSlot(1).getCount() - recipe.getInputItems().get(1).getCount()) == 0) {
-                        setStackInSlot(1, ItemStack.EMPTY);
-                    } else {
-                        ItemStack input2 = getStackInSlot(1);
-                        input2.setCount(input2.getCount() - recipe.getInputItems().get(1).getCount());
-                        setStackInSlot(1, input2);
-                    }
-                }
+        if (currentRecipe != null && progress != 0) {
+            if (progress == currentRecipe.getTime()) { // 达到时间, 输出
+                inventory.setStackInSlot(0, ItemStack.EMPTY);
+                inventory.setStackInSlot(1, ItemStack.EMPTY);
+                inventory.setStackInSlot(2, currentRecipe.getOutputItems().get(0));
+                inventory.setStackInSlot(3, currentRecipe.getOutputItems().get(1));
+                currentRecipe = null;
+                progress = 0;
+            } else {
+                // 继续运转
+                ++progress;
             }
-        } else {
-            if ((getStackInSlot(0).getCount() - recipe.getInputItems().get(0).getCount()) >= 0
-                && (getStackInSlot(2) == ItemStack.EMPTY || getStackInSlot(2).equals(recipe.getOutputItems().get(0)))
-                && (recipe.getOutputItems().get(1) == null || getStackInSlot(3) == ItemStack.EMPTY
-                || getStackInSlot(3).equals(recipe.getOutputItems().get(1)))) {
-                if (schedule >= recipe.getTime()) {
-                    schedule = 0;
-                    if (getStackInSlot(2) != ItemStack.EMPTY) {
-                        ItemStack output1 = recipe.getOutputItems().get(0);
-                        output1.setCount(getStackInSlot(2).getCount() + output1.getCount());
-                        setStackInSlot(2, output1);
-                    } else {
-                        setStackInSlot(2, recipe.getOutputItems().get(0));
-                    }
-                    if (recipe.getOutputItems().get(1) != ItemStack.EMPTY) {
-                        if (getStackInSlot(3) != ItemStack.EMPTY) {
-                            ItemStack output2 = recipe.getOutputItems().get(1);
-                            output2.setCount(getStackInSlot(3).getCount() + output2.getCount());
-                            setStackInSlot(3, output2);
-                        } else {
-                            setStackInSlot(3, recipe.getOutputItems().get(1));
-                        }
-                    }
-                    if ((getStackInSlot(0).getCount() - recipe.getInputItems().get(0).getCount()) == 0) {
-                        setStackInSlot(0, ItemStack.EMPTY);
-                    } else {
-                        ItemStack input1 = getStackInSlot(0);
-                        input1.setCount(input1.getCount() - recipe.getInputItems().get(0).getCount());
-                        setStackInSlot(0, input1);
-                    }
-                }
-            }
+        } else if (progress != 0)
+            // 清理
+            progress = 0;
+        else {
+            progress = 0;
+            Optional<CrusherRecipe> recipe = CCRecipeManager.getRecipe(CrusherRecipe.class, Arrays.asList(inventory.getStackInSlot(0), inventory.getStackInSlot(1)));
+            recipe.ifPresent(crusherRecipe -> currentRecipe = crusherRecipe);
+            if (energyStorage.getEnergyStored() >= currentRecipe.getEnergy() && energyStorage.canExtract())
+                energyStorage.extractEnergy(currentRecipe.getEnergy(), false);
         }
     }
 
-    public int getMaxSchedule() {
-        if (getStackInSlot(0) != ItemStack.EMPTY) {
-            return CCRecipeManager.getRecipes(CrusherRecipe.class).stream()
-                .filter(recipe -> recipe.getMaterial() == crusherMaterial)
-                .filter(recipe -> recipe.getInputItems().equals(Arrays.asList(getStackInSlot(0), getStackInSlot(1))))
-                .map(CrusherRecipe::getTime).findFirst().orElse(0);
-        }
-        return 0;
+    public int getProgress() {
+        return progress;
     }
 
-    public void addAngle(int i) {
-        if (getMaxSchedule() > 0) {
-            schedule = schedule + i;
-        }
-        if (angle + i >= 360) {
-            angle = i + angle - 360;
-        } else {
-            angle = angle + i;
-        }
+    public int getCurrentMaxProgress() {
+        return currentRecipe != null ? currentRecipe.getTime() : 0;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
     }
 
     public ItemStackHandler getInventory() {
         return inventory;
     }
 
-    public int getAngle() {
-        return angle;
+    @Override
+    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
+        return capability == CapabilityEnergy.ENERGY || capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
     }
 
-    public int getSchedule() {
-        return schedule;
+    @SuppressWarnings("unchecked")
+    @Nullable
+    @Override
+    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
+        return capability == CapabilityEnergy.ENERGY ? (T) energyStorage : capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T) inventory : super.getCapability(capability, facing);
     }
 }

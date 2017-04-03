@@ -1,6 +1,7 @@
 package cn.mccraft.chinacraft.common;
 
 import cn.mccraft.chinacraft.block.BlockLoader;
+import cn.mccraft.chinacraft.capability.CapabilityLoader;
 import cn.mccraft.chinacraft.item.ItemLoader;
 import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
@@ -22,7 +23,7 @@ public class CommonProxy {
 
     private final Collection<Class<? extends ILoader>> loaders =
             Arrays.asList(BlockLoader.class, ItemLoader.class, RecipeLoader.class, WorldGenListener.class,
-                ModificationLoader.class, AchievementsLoader.class, TileEntityLoader.class);
+                ModificationLoader.class, AchievementsLoader.class, CapabilityLoader.class, TileEntityLoader.class);
 
     private final Map<Class<? extends ILoader>, ILoader> loaderInstanceMap = new HashMap<>();
     private final Map<LoaderState, Collection<Method>> stateLoaderMap = new HashMap<>();

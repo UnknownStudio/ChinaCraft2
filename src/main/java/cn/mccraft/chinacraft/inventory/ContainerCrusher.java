@@ -17,12 +17,14 @@ public class ContainerCrusher extends Container {
 
     public ContainerCrusher(InventoryPlayer inventoryPlayer, TileEntityCrusher crusherEntity) {
         this.crusherEntity = crusherEntity;
-        this.addSlotToContainer(new SlotItemHandler(crusherEntity, 0, 43, 25));
-        this.addSlotToContainer(new SlotItemHandler(crusherEntity, 1, 43, 50));
-        this.addSlotToContainer(new SlotItemHandler(crusherEntity, 2, 112, 25));
-        this.addSlotToContainer(new SlotItemHandler(crusherEntity, 3, 112, 50));
+        this.addSlotToContainer(new SlotItemHandler(crusherEntity.getInventory(), 0, 43, 25));
+        this.addSlotToContainer(new SlotItemHandler(crusherEntity.getInventory(), 1, 43, 50));
+        this.addSlotToContainer(new SlotItemHandler(crusherEntity.getInventory(), 2, 112, 25));
+        this.addSlotToContainer(new SlotItemHandler(crusherEntity.getInventory(), 3, 112, 50));
 //        this.addSlotToContainer(new SlotFurnaceOutput(par1InventoryPlayer.player, tileEntity, 2, 112, 25));
 //        this.addSlotToContainer(new SlotFurnaceOutput(par1InventoryPlayer.player, tileEntity, 3, 112, 50));
+
+        // 玩家物品栏
         int var3;
         for (var3 = 0; var3 < 3; ++var3) {
             for (int var4 = 0; var4 < 9; ++var4) {
