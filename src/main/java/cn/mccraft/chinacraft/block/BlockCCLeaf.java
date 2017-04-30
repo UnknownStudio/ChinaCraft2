@@ -32,7 +32,7 @@ import java.util.Random;
  * Created by Mouse on 2017/2/2.
  * TODO:
  */
-public class BlockCCLeaf extends Block implements IShearable {
+public class BlockCCLeaf extends BlockCCBase implements IShearable {
     public static final PropertyBool DECAYABLE = PropertyBool.create("decayable");
     public static final PropertyBool CHECK_DECAY = PropertyBool.create("check_decay");
     protected boolean leavesFancy;
@@ -43,7 +43,6 @@ public class BlockCCLeaf extends Block implements IShearable {
         super(Material.LEAVES);
         this.sapling = sapling;
         this.setTickRandomly(true);
-        this.setCreativeTab(CCCreativeTabs.tabCore);
         this.setHardness(0.2F);
         this.setLightOpacity(1);
         this.setSoundType(SoundType.PLANT);
