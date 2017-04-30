@@ -1,0 +1,117 @@
+{
+    "__createdwith": "opl's Model Creator",
+    "ambientocclusion": false,
+    "textures": {
+        "Crusher Face": "chinacraft:"
+    },
+    "elements": [
+        {
+            "from": [-1,0,0],
+            "to": [17,12,16],
+            "faces": {
+                "up": {
+                    "texture": "missingtexture"
+                },
+                "down": {
+                    "texture": "missingtexture"
+                },
+                "west": {
+                    "texture": "missingtexture"
+                },
+                "east": {
+                    "texture": "missingtexture"
+                },
+                "north": {
+                    "texture": "missingtexture"
+                },
+                "south": {
+                    "texture": "missingtexture"
+                }
+            }
+        },
+        {
+            "from": [-1,12,0],
+            "to": [17,16,4],
+            "faces": {
+                "up": {
+                    "texture": "missingtexture"
+                },
+                "west": {
+                    "texture": "missingtexture"
+                },
+                "east": {
+                    "texture": "missingtexture"
+                },
+                "north": {
+                    "texture": "missingtexture"
+                },
+                "south": {
+                    "texture": "missingtexture"
+                }
+            }
+        },
+        {
+            "from": [-1,12,12],
+            "to": [17,16,16],
+            "faces": {
+                "up": {
+                    "texture": "missingtexture"
+                },
+                "west": {
+                    "texture": "missingtexture"
+                },
+                "east": {
+                    "texture": "missingtexture"
+                },
+                "north": {
+                    "texture": "missingtexture"
+                },
+                "south": {
+                    "texture": "missingtexture"
+                }
+            }
+        },
+        {
+            "from": [-1,12,4],
+            "to": [4,16,12],
+            "faces": {
+                "up": {
+                    "texture": "missingtexture"
+                },
+                "west": {
+                    "texture": "missingtexture"
+                },
+                "east": {
+                    "texture": "missingtexture"
+                },
+                "north": {
+                    "texture": "missingtexture"
+                },
+                "south": {
+                    "texture": "missingtexture"
+                }
+            }
+        },
+        {
+            "from": [12,12,4],
+            "to": [17,16,12],
+            "faces": {
+                "up": {
+                    "texture": "missingtexture"
+                },
+                "west": {
+                    "texture": "missingtexture"
+                },
+                "east": {
+                    "texture": "missingtexture"
+                },
+                "north": {
+                    "texture": "missingtexture"
+                },
+                "south": {
+                    "texture": "missingtexture"
+                }
+            }
+        }
+    ]
+}

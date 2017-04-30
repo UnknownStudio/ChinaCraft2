@@ -2,12 +2,9 @@ package cn.mccraft.chinacraft.world.gen;
 
 import cn.mccraft.chinacraft.init.CCBlocks;
 import cn.mccraft.chinacraft.util.loader.ILoader;
-import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.OreGenEvent;
-import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Created by Mouse on 2017/2/1.
@@ -25,10 +22,10 @@ public class WorldGenListener implements ILoader{
     }
 
     @SubscribeEvent
-    public void onOreGenPost(OreGenEvent.Post event){
-        WORLD_GEN_COPPER_ORE.generate(event.getWorld(),event.getRand(),event.getPos());
-        WORLD_GEN_TIN_ORE.generate(event.getWorld(),event.getRand(),event.getPos());
-        WORLD_GEN_SILVER_ORE.generate(event.getWorld(),event.getRand(),event.getPos());
-        WORLD_GEN_MARBLE.generate(event.getWorld(),event.getRand(),event.getPos());
+    public void onOreGenPost(OreGenEvent.Post event) {
+        WORLD_GEN_COPPER_ORE.generate(event.getWorld(), event.getRand(), event.getPos());
+        WORLD_GEN_TIN_ORE.generate(event.getWorld(), event.getRand(), event.getPos());
+        WORLD_GEN_SILVER_ORE.generate(event.getWorld(), event.getRand(), event.getPos());
+        WORLD_GEN_MARBLE.generate(event.getWorld(), event.getRand(), event.getPos());
     }
 }

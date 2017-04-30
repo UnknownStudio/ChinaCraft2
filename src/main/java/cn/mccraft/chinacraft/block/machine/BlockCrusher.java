@@ -72,9 +72,6 @@ public class BlockCrusher extends BlockMachine {
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float side, float hitX, float hitY) {
         if (playerIn.isSneaking() || worldIn.isRemote)
             return true;
-        else if (facing == EnumFacing.UP)
-            if (worldIn.getTileEntity(pos) instanceof TileEntityCrusher)
-                ((TileEntityCrusher) worldIn.getTileEntity(pos)).addAngle(10);
         else
             playerIn.openGui(ChinaCraft.getInstance(), EnumGuiType.CRUSHER.ordinal(), worldIn, pos.getX(), pos.getY(), pos.getZ());
         return true;

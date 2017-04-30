@@ -1,22 +1,29 @@
 package cn.mccraft.chinacraft.capability;
 
+import cn.mccraft.chinacraft.common.ChinaCraft;
+import cn.mccraft.chinacraft.init.CCCapabilities;
+import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
-import net.minecraftforge.common.capabilities.Capability;
+import cn.mccraft.chinacraft.util.loader.annotation.RegCapability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class CapabilityLoader {
-    @CapabilityInject(ICrusherStats.class)
-    private static Capability<ICrusherStats> statsCapability;
+import java.lang.reflect.Field;
 
+public class CapabilityLoader implements ILoader {
     @Load
     public void load(FMLPreInitializationEvent event) {
-        CapabilityManager.INSTANCE.register(ICrusherStats.class, new CapabilityCrusherStats.Storage(),
-            CapabilityCrusherStats.Implementation.class);
+        for (Field field : CCCapabilities.class.getFields()) {
+            try {
+                register(field.getAnnotation(CapabilityInject.class).value(), field.getAnnotation(RegCapability.class));
+            } catch (Exception e) {
+                ChinaCraft.getLogger().warn("Un-able to register capability " + field.toGenericString(), e);
+            }
+        }
     }
 
-    public static Capability<ICrusherStats> getStatsCapability() {
-        return statsCapability;
+    public <T> void register(Class<T> tClass, RegCapability annotation) throws IllegalAccessException, InstantiationException {
+        CapabilityManager.INSTANCE.<T>register(tClass, annotation.storageClass().newInstance(), (Class<? extends T>) annotation.implClass());
     }
 }

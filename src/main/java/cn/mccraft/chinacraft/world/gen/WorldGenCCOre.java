@@ -13,10 +13,10 @@ import java.util.*;
 /**
  * Created by Mouse on 2017/2/1.
  */
-public class WorldGenCCOre extends WorldGenerator{
+public class WorldGenCCOre extends WorldGenerator {
 
-    private final Set<Integer> dimensionID = new HashSet();
-    private final Set<Integer> biomeID = new HashSet();
+    private final Set<Integer> dimensionID = new HashSet<>();
+    private final Set<Integer> biomeID = new HashSet<>();
     private final int frequency;
     private final int highest,lowest;
     private final WorldGenMinable gen;
