@@ -3,6 +3,7 @@ package cn.mccraft.chinacraft.block;
 import cn.mccraft.chinacraft.init.CCCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 
 /**
@@ -13,7 +14,11 @@ import net.minecraft.block.material.Material;
 public class BlockCCBase extends Block{
 
     public BlockCCBase(Material materialIn) {
-        super(materialIn);
+        this(materialIn, materialIn.getMaterialMapColor());
+    }
+
+    public BlockCCBase(Material materialIn, MapColor blockMapColorIn) {
+        super(materialIn,blockMapColorIn);
         setCreativeTab(CCCreativeTabs.tabCore);
     }
 
@@ -27,5 +32,13 @@ public class BlockCCBase extends Block{
     {
         super.setSoundType(sound);
         return this;
+    }
+
+    public float getResistance(){
+        return blockResistance / 3.0F;
+    }
+
+    public float getHardness(){
+        return blockHardness / 5.0F;
     }
 }

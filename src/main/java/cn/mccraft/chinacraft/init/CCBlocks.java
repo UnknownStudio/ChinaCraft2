@@ -39,7 +39,7 @@ public interface CCBlocks {
     Block MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"smooth", "marble"})
-    Block SMOOTH_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    BlockCCBase SMOOTH_MARBLE = (BlockCCBase) new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"chiseled", "marble"})
     Block CHISELED_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
@@ -66,7 +66,7 @@ public interface CCBlocks {
     Block BLACK_BRICK_BLOCK = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"black","brick", "stairs"})
-    Block BLACK_BRICK_STAIRS = new BlockCCStairs(SMOOTH_MARBLE.getDefaultState()).setHarvestLevelReturnBlock("pickaxe",0);
+    Block BLACK_BRICK_STAIRS = new BlockCCStairs(SMOOTH_MARBLE.getDefaultState()).setHarvestLevelReturnBlock("pickaxe",0).setHardness(SMOOTH_MARBLE.getHardness()).setResistance(SMOOTH_MARBLE.getResistance());
 
     @RegBlock(value = {"black","brick","slab"},isRegisterItemBlock = false)
     BlockCCSlab BLACK_BRICK_SLAB = (BlockCCSlab)new BlockCCSlab(Material.ROCK,false,null).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
@@ -78,7 +78,7 @@ public interface CCBlocks {
     Block BLACK_BRICK_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"wooden","window"})
-    Block WOODEN_WINDOW = new BlockCCPane(Material.WOOD,true).setSoundType(SoundType.WOOD);
+    Block WOODEN_WINDOW = new BlockCCPane(Material.WOOD).setCanDrop(true).setSoundType(SoundType.WOOD);
 
     @RegBlock({"stone", "crusher"})
     BlockCrusher STONE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.STONE);

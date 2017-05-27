@@ -1,6 +1,5 @@
 package cn.mccraft.chinacraft.block;
 
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
@@ -31,9 +30,6 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-/**
- * Created by Mouse on 2017/2/8.
- */
 public class BlockCCBucket extends BlockCCBase{
     public static final PropertyInteger LEVEL = PropertyInteger.create("level", 0, 3);
     protected static final AxisAlignedBB AABB_LEGS = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D);

@@ -4,6 +4,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,11 +23,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-/**
- * Created by Mouse on 2017/2/5.
- */
-public class BlockCCFenceGate extends BlockHorizontal
+public class BlockCCFenceGate extends BlockCCBase
 {
+    public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     public static final PropertyBool OPEN = PropertyBool.create("open");
     public static final PropertyBool POWERED = PropertyBool.create("powered");
     public static final PropertyBool IN_WALL = PropertyBool.create("in_wall");
@@ -41,7 +40,6 @@ public class BlockCCFenceGate extends BlockHorizontal
     {
         super(material);
         this.setDefaultState(this.blockState.getBaseState().withProperty(OPEN, Boolean.valueOf(false)).withProperty(POWERED, Boolean.valueOf(false)).withProperty(IN_WALL, Boolean.valueOf(false)));
-        this.setCreativeTab(CreativeTabs.REDSTONE);
     }
 
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
