@@ -23,7 +23,7 @@ public class CommonProxy {
 
     private final Collection<Class<? extends ILoader>> loaders =
             Arrays.asList(BlockLoader.class, ItemLoader.class, RecipeLoader.class, WorldGenListener.class,
-                ModificationLoader.class, AchievementsLoader.class, //CapabilityLoader.class ,
+                ModificationLoader.class, AchievementsLoader.class, CapabilityLoader.class ,
                     TileEntityLoader.class);
 
     private final Map<Class<? extends ILoader>, ILoader> loaderInstanceMap = new HashMap<>();
@@ -69,8 +69,7 @@ public class CommonProxy {
                 for (Method method : loaderClass.getMethods())
                     for (Annotation annotation : method.getDeclaredAnnotations())
                         if (annotation.annotationType().equals(Load.class))
-                            if (method.getParameterCount() == 0 ||
-                                    (FMLStateEvent.class.isAssignableFrom(method.getParameterTypes()[0]) && method.getParameterTypes()[0].equals(((Load) annotation).value().getEvent().getClass()))) {
+                            if (method.getParameterCount() <= 1) {
                                 Collection<Method> methods = stateLoaderMap.getOrDefault(((Load) annotation).value(), new ArrayList<>());
                                 if (!methods.contains(method))
                                     methods.add(method);
