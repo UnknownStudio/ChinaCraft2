@@ -15,6 +15,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.lang.reflect.Constructor;
@@ -47,6 +48,7 @@ public class ItemLoader implements ILoader {
     }
 
     @Load(side = Side.CLIENT)
+    @SideOnly(Side.CLIENT)
     public void registerRenders() {
         for (Field field : CCItems.class.getFields()) {
             field.setAccessible(true);
@@ -64,6 +66,7 @@ public class ItemLoader implements ILoader {
         }
     }
 
+    @SideOnly(Side.CLIENT)
     private void registerRender(Item item, int meta)
     {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));

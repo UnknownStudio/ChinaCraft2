@@ -1,9 +1,5 @@
 package cn.mccraft.chinacraft.block;
 
-import cn.mccraft.chinacraft.init.CCCreativeTabs;
-import net.minecraft.block.BlockRotatedPillar;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -17,9 +13,6 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-/**
- * Created by Mouse on 2017/2/3.
- */
 public class BlockCCRotatedPillar extends BlockCCBase{
 
     public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis>create("axis", EnumFacing.Axis.class);

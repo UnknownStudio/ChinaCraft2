@@ -13,6 +13,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.lang.reflect.Constructor;
@@ -52,11 +53,8 @@ public class BlockLoader implements ILoader {
     }
 
     @Load(side = Side.CLIENT)
+    @SideOnly(Side.CLIENT)
     public void registerRenders() {
-        //registerRender(CCBlocks.STONE_CRUSHER, 0);
-        //registerRender(CCBlocks.BRONZE_CRUSHER, 10);
-        //registerRender(CCBlocks.IRON_CRUSHER, 20);
-        //registerRender(CCBlocks.TIN_ORE,0);
         for (Field field : CCBlocks.class.getFields()) {
             field.setAccessible(true);
             RegBlock anno = field.getAnnotation(RegBlock.class);
@@ -73,6 +71,7 @@ public class BlockLoader implements ILoader {
         }
     }
 
+    @SideOnly(Side.CLIENT)
     private void registerRender(Block block, int meta)
     {
         Item item = Item.getItemFromBlock(block);

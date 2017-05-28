@@ -7,6 +7,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.event.terraingen.OreGenEvent;
+import net.minecraftforge.event.terraingen.TerrainGen;
 
 import java.util.*;
 
@@ -44,8 +46,11 @@ public class WorldGenCCOre extends WorldGenerator {
     }
 
     @Override
-    public boolean generate(World worldIn, Random rand, BlockPos position) {
-        if (!dimensionID.contains(worldIn.provider.getDimension())) return true;
+    public boolean generate(World world, Random rand, BlockPos position) {
+        if (!TerrainGen.generateOre(world, rand, this, position, OreGenEvent.GenerateMinable.EventType.CUSTOM))
+            return true;
+
+        if (!dimensionID.contains(world.provider.getDimension())) return true;
 
         for (int i = 0; i < frequency; i++) {
             int x= position.getX() + rand.nextInt(16);
@@ -53,9 +58,9 @@ public class WorldGenCCOre extends WorldGenerator {
             int z = position.getZ() + rand.nextInt(16);
             BlockPos pos = new BlockPos(x,y,z);
 
-            if(!biomeID.isEmpty() && !biomeID.contains(Biome.getIdForBiome(worldIn.getBiome(pos)))) return true;
+            if(!biomeID.isEmpty() && !biomeID.contains(Biome.getIdForBiome(world.getBiome(pos)))) return true;
 
-            gen.generate(worldIn, rand, pos);
+            gen.generate(world, rand, pos);
         }
         return true;
     }

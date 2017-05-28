@@ -138,7 +138,6 @@ public class BlockCCStairs extends BlockCCBase{
         this.modelState = modelState;
         this.setSoundType(this.modelBlock.getSoundType());
         this.setLightOpacity(255);
-        this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
     }
 
     public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn)

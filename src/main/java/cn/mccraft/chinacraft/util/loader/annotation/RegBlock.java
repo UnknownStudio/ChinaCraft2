@@ -22,16 +22,6 @@ public @interface RegBlock {
      */
     String[] oreDict() default {};
 
-
-    /**
-     * Add prefix on value
-     * Example: gold -> blockGold
-     */
-    //String prefix() default "block";
-
-    /**
-     *
-     */
     Class<? extends Item> itemClass() default ItemBlock.class;
 
     boolean isRegisterItemBlock() default true;

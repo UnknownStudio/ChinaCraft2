@@ -19,11 +19,5 @@ public @interface RegItem {
      */
     String[] oreDict() default {};
 
-    /**
-     * Add prefix on value
-     * Example: wandIron -> itemWandIron
-     */
-    //String prefix() default "item";
-
     boolean isRegisterRender() default true;
 }

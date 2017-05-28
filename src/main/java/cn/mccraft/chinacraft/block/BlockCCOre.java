@@ -3,9 +3,6 @@ package cn.mccraft.chinacraft.block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
-/**
- * Created by Mouse on 2017/1/31.
- */
 public class BlockCCOre extends BlockCCBase {
 
     public BlockCCOre() {

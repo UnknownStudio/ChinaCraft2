@@ -6,9 +6,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.OreGenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-/**
- * Created by Mouse on 2017/2/1.
- */
 public class WorldGenListener implements ILoader{
 
     private final WorldGenCCOre WORLD_GEN_COPPER_ORE = new WorldGenCCOre(new int[]{0},20,64,0,8, CCBlocks.COPPER_ORE.getDefaultState());

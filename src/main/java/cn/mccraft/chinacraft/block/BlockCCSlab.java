@@ -16,9 +16,6 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-/**
- * Created by Mouse on 2017/2/2.
- */
 public class BlockCCSlab extends BlockSlab{
 
     public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.<EnumType>create("variant", EnumType.class);
