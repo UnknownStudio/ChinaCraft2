@@ -11,9 +11,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-/**
- * Created by Mouse on 2017/1/28.
- */
 public class ItemCCRedPacket extends ItemCCBase {
 
     public ItemCCRedPacket(){

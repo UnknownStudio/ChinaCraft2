@@ -4,9 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-/**
- * Created by Mouse on 2017/2/8.
- */
 public class ItemCCBlockWithMetadata extends ItemBlock{
     private String[] subtypeNames;
 
