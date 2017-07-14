@@ -516,7 +516,7 @@ public class BlockCCStairs extends BlockCCBase{
 
     public static boolean isBlockStairs(IBlockState state)
     {
-        return state.getBlock() instanceof BlockStairs;
+        return state.getBlock() instanceof BlockStairs || state.getBlock() instanceof BlockCCStairs;
     }
 
     /**
@@ -619,32 +619,6 @@ public class BlockCCStairs extends BlockCCBase{
         private final String name;
 
         private EnumHalf(String name)
-        {
-            this.name = name;
-        }
-
-        public String toString()
-        {
-            return this.name;
-        }
-
-        public String getName()
-        {
-            return this.name;
-        }
-    }
-
-    public static enum EnumShape implements IStringSerializable
-    {
-        STRAIGHT("straight"),
-        INNER_LEFT("inner_left"),
-        INNER_RIGHT("inner_right"),
-        OUTER_LEFT("outer_left"),
-        OUTER_RIGHT("outer_right");
-
-        private final String name;
-
-        private EnumShape(String name)
         {
             this.name = name;
         }
