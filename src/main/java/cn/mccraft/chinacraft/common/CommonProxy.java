@@ -54,7 +54,7 @@ public class CommonProxy {
                     } catch (IllegalAccessException | InvocationTargetException e) {
                         ChinaCraft.getLogger().warn("Un-able to invoke method " + method.getName(), e);
                     }
-                else if (method.getParameterCount() == 1 && method.getParameterTypes()[1].equals(event.getClass()))
+                else if (method.getParameterCount() == 1 && method.getParameterTypes()[0].equals(event.getClass()))
                     try {
                         method.invoke(loaderInstanceMap.get(method.getDeclaringClass()), event);
                     } catch (IllegalAccessException | InvocationTargetException e) {
