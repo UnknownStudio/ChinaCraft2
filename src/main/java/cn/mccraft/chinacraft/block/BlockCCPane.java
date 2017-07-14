@@ -151,7 +151,7 @@ public class BlockCCPane extends BlockCCBase{
 
     public final boolean canPaneConnectToBlock(Block blockIn)
     {
-        return blockIn.getDefaultState().isFullCube() || blockIn == this || blockIn == Blocks.GLASS || blockIn == Blocks.STAINED_GLASS || blockIn == Blocks.STAINED_GLASS_PANE || blockIn instanceof BlockPane;
+        return blockIn.getDefaultState().isFullCube() || blockIn == this || blockIn == Blocks.GLASS || blockIn == Blocks.STAINED_GLASS || blockIn == Blocks.STAINED_GLASS_PANE || blockIn instanceof BlockPane || blockIn instanceof BlockCCPane;
     }
 
     @SideOnly(Side.CLIENT)
@@ -226,7 +226,7 @@ public class BlockCCPane extends BlockCCBase{
     public boolean canBeConnectedTo(IBlockAccess world, BlockPos pos, EnumFacing facing)
     {
         Block connector = world.getBlockState(pos.offset(facing)).getBlock();
-        return connector instanceof BlockPane;
+        return connector instanceof BlockPane||connector instanceof BlockCCPane;
     }
 
     public boolean canPaneConnectTo(IBlockAccess world, BlockPos pos, EnumFacing dir)

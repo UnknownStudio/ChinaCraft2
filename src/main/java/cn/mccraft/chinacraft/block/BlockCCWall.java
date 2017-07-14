@@ -81,9 +81,15 @@ public class BlockCCWall extends BlockCCBase {
     private boolean canConnectTo(IBlockAccess worldIn, BlockPos pos) {
         IBlockState iblockstate = worldIn.getBlockState(pos);
         Block block = iblockstate.getBlock();
-        if(block == Blocks.BARRIER) return false;
-        if(block==this||block instanceof BlockFenceGate||block instanceof BlockWall) return true;
-        if(block.getMaterial(block.getDefaultState()).isOpaque() && iblockstate.isFullCube()) return block.getMaterial(block.getDefaultState()) != Material.GOURD;
+        if(block == Blocks.BARRIER)
+            return false;
+
+        if(block instanceof BlockFenceGate||block instanceof BlockWall||block instanceof BlockCCWall||block instanceof BlockCCFenceGate)
+            return true;
+
+        if(block.getMaterial(block.getDefaultState()).isOpaque() && iblockstate.isFullCube())
+           return block.getMaterial(block.getDefaultState()) != Material.GOURD;
+
         return false;
     }
 

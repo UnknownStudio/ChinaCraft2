@@ -135,11 +135,24 @@ public class BlockCCFence extends BlockCCBase{
         return false;
     }
 
-    public boolean canConnectTo(IBlockAccess worldIn, BlockPos pos)
-    {
+    public boolean canConnectTo(IBlockAccess worldIn, BlockPos pos) {
         IBlockState iblockstate = worldIn.getBlockState(pos);
         Block block = iblockstate.getBlock();
-        return block == Blocks.BARRIER ? false : ((!(block instanceof BlockFence) || block.getMaterial(iblockstate) != this.blockMaterial) && !(block instanceof BlockFenceGate) ? (block.getMaterial(iblockstate).isOpaque() && iblockstate.isFullCube() ? block.getMaterial(iblockstate) != Material.GOURD : false) : true);
+        if (block == Blocks.BARRIER)
+            return false;
+
+        if (block instanceof BlockFence || block instanceof BlockCCFence)
+            return block == this;
+
+        if(block instanceof BlockFenceGate || block instanceof BlockCCFenceGate)
+            return true;
+
+        if(block.getMaterial(iblockstate).isOpaque() && iblockstate.isFullCube())
+            return block.getMaterial(iblockstate) != Material.GOURD;
+
+        return false;
+//        return (!(block instanceof BlockFence || block instanceof BlockCCFence) || block.getMaterial(iblockstate) != this.blockMaterial) && !(block instanceof BlockFenceGate || block instanceof BlockCCFenceGate) ?
+//                    (block.getMaterial(iblockstate).isOpaque() && iblockstate.isFullCube() ?  block.getMaterial(iblockstate) != Material.GOURD: false) : true;
     }
 
     @SideOnly(Side.CLIENT)
@@ -233,24 +246,15 @@ public class BlockCCFence extends BlockCCBase{
         Block connector = world.getBlockState(pos.offset(facing)).getBlock();
 
         if(connector instanceof BlockFence||connector instanceof BlockCCFence)
-        {
-            if(this != Blocks.NETHER_BRICK_FENCE && connector == Blocks.NETHER_BRICK_FENCE)
-            {
-                return false;
-            }
-            else if(this == Blocks.NETHER_BRICK_FENCE && connector != Blocks.NETHER_BRICK_FENCE)
-            {
-                return false;
-            }
-            return true;
-        }
+            return connector == this;
+
         return false;
     }
 
     private boolean canFenceConnectTo(IBlockAccess world, BlockPos pos, EnumFacing facing)
     {
         Block block = world.getBlockState(pos.offset(facing)).getBlock();
-        return block.canBeConnectedTo(world, pos.offset(facing), facing.getOpposite()) || block instanceof BlockCCFenceGate ||canConnectTo(world,pos);
+        return block.canBeConnectedTo(world, pos.offset(facing), facing.getOpposite()) || canConnectTo(world,pos);
     }
 
     /* ======================================== FORGE END ======================================== */
