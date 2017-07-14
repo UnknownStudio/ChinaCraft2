@@ -13,10 +13,16 @@ public interface CCItems {
     Item.ToolMaterial BRONZE_TOOL_MATERIAL = EnumHelper.addToolMaterial("BRONZE", 2, 232, 5.0F, 1.75F, 9);
 
     @RegItem({"marble","slab"})
-    ItemCCSlab ITEM_MARBLE_SLAB = new ItemCCSlab(CCBlocks.MARBLE_SLAB, CCBlocks.MARBLE_SLAB, CCBlocks.MARBLE_DOUBLE_SLAB);
+    ItemCCSlab ITEM_MARBLE_SLAB = new ItemCCSlab(CCBlocks.MARBLE_SLAB, CCBlocks.MARBLE_DOUBLE_SLAB);
 
     @RegItem({"black","brick","slab"})
-    ItemCCSlab ITEM_BLACK_BRICK_SLAB = new ItemCCSlab(CCBlocks.BLACK_BRICK_SLAB, CCBlocks.BLACK_BRICK_SLAB, CCBlocks.BLACK_BRICK_DOUBLE_SLAB);
+    ItemCCSlab ITEM_BLACK_BRICK_SLAB = new ItemCCSlab(CCBlocks.BLACK_BRICK_SLAB, CCBlocks.BLACK_BRICK_DOUBLE_SLAB);
+
+    @RegItem({"bamboo","slab"})
+    ItemCCSlab ITEM_BAMBOO_SLAB = new ItemCCSlab(CCBlocks.BAMBOO_SLAB,CCBlocks.BAMBOO_DOUBLE_SLAB);
+
+    @RegItem({"peeled","bamboo","slab"})
+    ItemCCSlab ITEM_PEELED_BAMBOO_SLAB = new ItemCCSlab(CCBlocks.PEELED_BAMBOO_SLAB,CCBlocks.PEELED_BAMBOO_DOUBLE_SLAB);
 
     @RegItem(value = {"copper", "ingot"}, oreDict = {"ingotCopper"})
     ItemCCBase COPPER_INGOT = new ItemCCBase();

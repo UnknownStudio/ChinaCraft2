@@ -88,4 +88,22 @@ public interface CCBlocks {
 
     @RegBlock({"iron", "crusher"})
     BlockCrusher IRON_CRUSHER = new BlockCrusher(EnumCrusherMaterial.IRON);
+
+    @RegBlock({"bamboo","plank"})
+    Block BAMBOO_PLANK = new BlockCCBase(Material.WOOD).setSoundType(SoundType.WOOD);
+
+    @RegBlock(value = {"bamboo","slab"},isRegisterItemBlock = false)
+    BlockCCSlab BAMBOO_SLAB = (BlockCCSlab)new BlockCCSlab(Material.WOOD,false,null).setSoundType(SoundType.WOOD);
+
+    @RegBlock(value = {"bamboo","double","slab"},isRegisterItemBlock = false)
+    BlockCCSlab BAMBOO_DOUBLE_SLAB = (BlockCCSlab)new BlockCCSlab(Material.WOOD,true,MARBLE_SLAB).setSoundType(SoundType.WOOD);
+
+    @RegBlock({"peeled","bamboo","plank"})
+    Block PEELED_BAMBOO_PLANK = new BlockCCBase(Material.WOOD).setSoundType(SoundType.WOOD);
+
+    @RegBlock(value = {"peeled","bamboo","slab"},isRegisterItemBlock = false)
+    BlockCCSlab PEELED_BAMBOO_SLAB = (BlockCCSlab)new BlockCCSlab(Material.WOOD,false,null).setSoundType(SoundType.WOOD);
+
+    @RegBlock(value = {"peeled","bamboo","double","slab"},isRegisterItemBlock = false)
+    BlockCCSlab PEELED_BAMBOO_DOUBLE_SLAB = (BlockCCSlab)new BlockCCSlab(Material.WOOD,true,MARBLE_SLAB).setSoundType(SoundType.WOOD);
 }
