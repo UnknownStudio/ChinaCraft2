@@ -1,6 +1,7 @@
 {
   "variants": {
-    "half=bottom,variant=default": { "model": "chinacraft:bamboo_slab_half" },
-    "half=top,variant=default": { "model": "chinacraft:bamboo_slab_top" }
+    "type=bottom": { "model": "chinacraft:bamboo_slab_half" },
+    "type=top": { "model": "chinacraft:bamboo_slab_top" },
+    "type=double": { "model": "chinacraft:bamboo_plank" }
   }
 }

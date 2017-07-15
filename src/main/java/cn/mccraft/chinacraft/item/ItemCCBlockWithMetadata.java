@@ -19,7 +19,7 @@ public class ItemCCBlockWithMetadata extends ItemBlock{
         return damage;
     }
 
-    public ItemCCBlockWithMetadata setSubtypeNames(String[] names)
+    public ItemCCBlockWithMetadata setSubtypeNames(String ...names)
     {
         this.subtypeNames = names;
         return this;

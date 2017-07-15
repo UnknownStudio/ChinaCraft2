@@ -40,7 +40,7 @@ public class BlockCCPane extends BlockCCBase{
     public BlockCCPane(Material materialIn)
     {
         super(materialIn);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, Boolean.valueOf(false)).withProperty(EAST, Boolean.valueOf(false)).withProperty(SOUTH, Boolean.valueOf(false)).withProperty(WEST, Boolean.valueOf(false)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false));
     }
 
     public BlockCCPane setCanDrop(boolean value){
@@ -116,10 +116,6 @@ public class BlockCCPane extends BlockCCBase{
         return i;
     }
 
-    /**
-     * Get the actual Block state of this Block at the given position. This applies properties not visible in the
-     * metadata, such as fence connections.
-     */
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)
     {
         return state.withProperty(NORTH, canPaneConnectTo(worldIn, pos, EnumFacing.NORTH))
@@ -128,17 +124,12 @@ public class BlockCCPane extends BlockCCBase{
                 .withProperty(EAST, canPaneConnectTo(worldIn, pos, EnumFacing.EAST));
     }
 
-    /**
-     * Get the Item that this Block should drop when harvested.
-     */
+
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return !isCanDrop() ? Items.AIR : super.getItemDropped(state, rand, fortune);
     }
 
-    /**
-     * Used to determine ambient occlusion and culling when rebuilding chunks for render
-     */
     public boolean isOpaqueCube(IBlockState state)
     {
         return false;
@@ -171,18 +162,11 @@ public class BlockCCPane extends BlockCCBase{
         return BlockRenderLayer.CUTOUT_MIPPED;
     }
 
-    /**
-     * Convert the BlockState into the correct metadata value
-     */
     public int getMetaFromState(IBlockState state)
     {
         return 0;
     }
 
-    /**
-     * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
-     * blockstate.
-     */
     public IBlockState withRotation(IBlockState state, Rotation rot)
     {
         switch (rot)
@@ -198,10 +182,6 @@ public class BlockCCPane extends BlockCCBase{
         }
     }
 
-    /**
-     * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed
-     * blockstate.
-     */
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
     {
         switch (mirrorIn)

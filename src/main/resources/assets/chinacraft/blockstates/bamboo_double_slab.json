@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "half=bottom,variant=default": { "model": "chinacraft:bamboo_plank" },
-    "half=top,variant=default": { "model": "chinacraft:bamboo_plank" }
-  }
-}

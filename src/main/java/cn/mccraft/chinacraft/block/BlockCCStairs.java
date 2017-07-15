@@ -130,14 +130,14 @@ public class BlockCCStairs extends BlockCCBase{
     private final Block modelBlock;
     private final IBlockState modelState;
 
-    public BlockCCStairs(IBlockState modelState)
-    {
+    public BlockCCStairs(IBlockState modelState) {
         super(modelState.getBlock().getMaterial(modelState));
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(HALF, BlockStairs.EnumHalf.BOTTOM).withProperty(SHAPE, BlockStairs.EnumShape.STRAIGHT));
         this.modelBlock = modelState.getBlock();
         this.modelState = modelState;
         this.setSoundType(this.modelBlock.getSoundType());
         this.setLightOpacity(255);
+        this.useNeighborBrightness = true;
     }
 
     public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn)

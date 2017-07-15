@@ -4,6 +4,7 @@ import cn.mccraft.chinacraft.block.*;
 import cn.mccraft.chinacraft.block.machine.BlockCrusher;
 import cn.mccraft.chinacraft.block.machine.EnumCrusherMaterial;
 import cn.mccraft.chinacraft.item.ItemCCDoor;
+import cn.mccraft.chinacraft.item.ItemCCNewSlab;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -50,11 +51,8 @@ public interface CCBlocks {
     @RegBlock({"marble", "stairs"})
     Block MARBLE_STAIRS = new BlockCCStairs(SMOOTH_MARBLE.getDefaultState()).setHarvestLevelReturnBlock("pickaxe",0);
 
-    @RegBlock(value = {"marble","slab"},isRegisterItemBlock = false)
-    BlockCCSlab MARBLE_SLAB = (BlockCCSlab)new BlockCCSlab(Material.ROCK,false,null).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
-
-    @RegBlock(value = {"marble","double","slab"},isRegisterItemBlock = false)
-    BlockCCSlab MARBLE_DOUBLE_SLAB = (BlockCCSlab)new BlockCCSlab(Material.ROCK,true,MARBLE_SLAB).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    @RegBlock(value = {"marble","slab"},itemClass = ItemCCNewSlab.class)
+    Block MARBLE_SLAB = new BlockCCNewSlab(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"marble","wall"})
     Block MARBLE_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
@@ -68,42 +66,33 @@ public interface CCBlocks {
     @RegBlock({"black","brick", "stairs"})
     Block BLACK_BRICK_STAIRS = new BlockCCStairs(SMOOTH_MARBLE.getDefaultState()).setHarvestLevelReturnBlock("pickaxe",0).setHardness(SMOOTH_MARBLE.getHardness()).setResistance(SMOOTH_MARBLE.getResistance());
 
-    @RegBlock(value = {"black","brick","slab"},isRegisterItemBlock = false)
-    BlockCCSlab BLACK_BRICK_SLAB = (BlockCCSlab)new BlockCCSlab(Material.ROCK,false,null).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
-
-    @RegBlock(value = {"black","brick","double","slab"},isRegisterItemBlock = false)
-    BlockCCSlab BLACK_BRICK_DOUBLE_SLAB = (BlockCCSlab)new BlockCCSlab(Material.ROCK,true,MARBLE_SLAB).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    @RegBlock(value = {"black","brick","slab"},itemClass = ItemCCNewSlab.class)
+    Block BLACK_BRICK_SLAB = new BlockCCNewSlab(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"black","brick","wall"})
     Block BLACK_BRICK_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"wooden","window"})
-    Block WOODEN_WINDOW = new BlockCCPane(Material.WOOD).setCanDrop(true).setSoundType(SoundType.WOOD);
+    Block WOODEN_WINDOW = new BlockCCPane(Material.WOOD).setCanDrop(true).setSoundType(SoundType.WOOD).setHardness(0.5F);
 
-    @RegBlock({"stone", "crusher"})
-    BlockCrusher STONE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.STONE);
-
-    @RegBlock({"bronze", "crusher"})
-    BlockCrusher BRONZE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.BRONZE);
-
-    @RegBlock({"iron", "crusher"})
-    BlockCrusher IRON_CRUSHER = new BlockCrusher(EnumCrusherMaterial.IRON);
+//    @RegBlock({"stone", "crusher"})
+//    BlockCrusher STONE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.STONE);
+//
+//    @RegBlock({"bronze", "crusher"})
+//    BlockCrusher BRONZE_CRUSHER = new BlockCrusher(EnumCrusherMaterial.BRONZE);
+//
+//    @RegBlock({"iron", "crusher"})
+//    BlockCrusher IRON_CRUSHER = new BlockCrusher(EnumCrusherMaterial.IRON);
 
     @RegBlock({"bamboo","plank"})
-    Block BAMBOO_PLANK = new BlockCCBase(Material.WOOD).setSoundType(SoundType.WOOD);
+    Block BAMBOO_PLANK = new BlockCCBase(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
 
-    @RegBlock(value = {"bamboo","slab"},isRegisterItemBlock = false)
-    BlockCCSlab BAMBOO_SLAB = (BlockCCSlab)new BlockCCSlab(Material.WOOD,false,null).setSoundType(SoundType.WOOD);
-
-    @RegBlock(value = {"bamboo","double","slab"},isRegisterItemBlock = false)
-    BlockCCSlab BAMBOO_DOUBLE_SLAB = (BlockCCSlab)new BlockCCSlab(Material.WOOD,true,MARBLE_SLAB).setSoundType(SoundType.WOOD);
+    @RegBlock(value = {"bamboo","slab"},itemClass = ItemCCNewSlab.class)
+    Block BAMBOO_NEW_SLAB = new BlockCCNewSlab(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
 
     @RegBlock({"peeled","bamboo","plank"})
-    Block PEELED_BAMBOO_PLANK = new BlockCCBase(Material.WOOD).setSoundType(SoundType.WOOD);
+    Block PEELED_BAMBOO_PLANK = new BlockCCBase(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
 
-    @RegBlock(value = {"peeled","bamboo","slab"},isRegisterItemBlock = false)
-    BlockCCSlab PEELED_BAMBOO_SLAB = (BlockCCSlab)new BlockCCSlab(Material.WOOD,false,null).setSoundType(SoundType.WOOD);
-
-    @RegBlock(value = {"peeled","bamboo","double","slab"},isRegisterItemBlock = false)
-    BlockCCSlab PEELED_BAMBOO_DOUBLE_SLAB = (BlockCCSlab)new BlockCCSlab(Material.WOOD,true,MARBLE_SLAB).setSoundType(SoundType.WOOD);
+    @RegBlock(value = {"peeled","bamboo","slab"},itemClass = ItemCCNewSlab.class)
+    Block PEELED_BAMBOO_SLAB = new BlockCCNewSlab(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
 }

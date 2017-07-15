@@ -25,6 +25,7 @@ public class BlockCCSlab extends BlockSlab{
     public BlockCCSlab(Material materialIn,boolean isDouble,BlockCCSlab singleSlab) {
         super(materialIn);
         this.isDouble = isDouble;
+        this.useNeighborBrightness = !isDouble;
         this.singleSlab = singleSlab==null?this:singleSlab;
 
         IBlockState iblockstate = this.blockState.getBaseState();
