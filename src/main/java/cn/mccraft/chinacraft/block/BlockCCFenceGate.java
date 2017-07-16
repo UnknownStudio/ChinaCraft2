@@ -1,13 +1,14 @@
 package cn.mccraft.chinacraft.block;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockFence;
+import net.minecraft.block.BlockWall;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
@@ -217,7 +218,7 @@ public class BlockCCFenceGate extends BlockCCBase
     public boolean canBeConnectedTo(IBlockAccess world, BlockPos pos, EnumFacing facing)
     {
         Block connector = world.getBlockState(pos.offset(facing)).getBlock();
-        return connector instanceof BlockFence || connector instanceof BlockWall || connector instanceof BlockCCWall || connector instanceof BlockCCFenceGate;
+        return connector instanceof BlockFence || connector instanceof BlockWall || connector instanceof BlockCCWall || connector instanceof BlockCCFence;
     }
 
     private boolean canFenceGateConnectTo(IBlockAccess world, BlockPos pos, EnumFacing facing)
