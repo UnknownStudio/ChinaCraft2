@@ -12,8 +12,8 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 
 version = "1.0"
-group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+group= "cn.mccraft.chinacraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "chinacraft"
 
 sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.
 compileJava {
@@ -21,7 +21,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.11-13.19.1.2189"
+    version = "1.11.2-13.20.1.2386"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.
@@ -29,7 +29,7 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20170202"
+    mappings = "snapshot_20170715"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 

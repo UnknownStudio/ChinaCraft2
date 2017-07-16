@@ -167,7 +167,8 @@ public class BlockCCLeaf extends BlockCCBase implements IShearable {
 
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        if(worldIn.isRainingAt(pos.up()) && !worldIn.getBlockState(pos.down()).isFullyOpaque() && rand.nextInt(15) == 1) {
+        // FIXME Check isOpaqueCube()
+        if(worldIn.isRainingAt(pos.up()) && !worldIn.getBlockState(pos.down()).isOpaqueCube() && rand.nextInt(15) == 1) {
             double d0 = (double)((float)pos.getX() + rand.nextFloat());
             double d1 = (double)pos.getY() - 0.05D;
             double d2 = (double)((float)pos.getZ() + rand.nextFloat());
