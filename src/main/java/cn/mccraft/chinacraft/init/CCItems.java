@@ -47,4 +47,10 @@ public interface CCItems {
 
     @RegItem({"bamboo","item"})
     ItemCCBase BAMBOO_ITEM = new ItemCCBase();
+
+    @RegItem({"peeled","bamboo","item"})
+    ItemCCBase PEELED_BAMBOO_ITEM = new ItemCCBase();
+
+    @RegItem({"art","knife"})
+    ItemCCArtKnife ART_KNIFE = new ItemCCArtKnife();
 }

@@ -29,6 +29,7 @@ tile.blackBrickSlab.name=青砖半砖
 tile.blackBrickDoubleSlab.name=青砖半砖
 tile.blackBrickWall.name=青砖墙
 item.bambooItem.name=竹子
+item.peeledBambooItem.name=竹子(已杀青)
 
 #竹制品
 tile.bambooPlank.name=竹板
@@ -45,6 +46,7 @@ item.bronzeAxe.name=青铜斧
 item.bronzeShovel.name=青铜铲
 item.bronzeSword.name=青铜剑
 item.bronzeHoe.name=青铜锄
+item.artKnife.name=美术切割刀
 
 # 成就
 achievement.firstBronze=第一个青铜！
@@ -66,3 +68,6 @@ redPacket.success=成功发送红包给 %s.
 redPacket.notFoundPlayer=失败: 没有找到玩家 %s!
 redPacket.backpackFull=失败: %s 的背包已满!
 redPacket.received=您收到了来自 %s 的一个红包!
+
+#窗户
+item.woodenWindow.name=木窗

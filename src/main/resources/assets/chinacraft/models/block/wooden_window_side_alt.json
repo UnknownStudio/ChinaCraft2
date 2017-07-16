@@ -1,0 +1,7 @@
+{
+    "parent": "block/pane_side_alt",
+    "textures": {
+        "edge": "chinacraft:blocks/wooden_window_top",
+        "pane": "chinacraft:blocks/wooden_window_1"
+    }
+}
