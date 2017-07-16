@@ -1,17 +1,13 @@
 package cn.mccraft.chinacraft.block;
 
-import cn.mccraft.chinacraft.init.CCCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -52,7 +48,7 @@ public class BlockCCFence extends BlockCCBase{
     public BlockCCFence(Material materialIn)
     {
         super(materialIn);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, Boolean.valueOf(false)).withProperty(EAST, Boolean.valueOf(false)).withProperty(SOUTH, Boolean.valueOf(false)).withProperty(WEST, Boolean.valueOf(false)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false));
     }
 
     public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn)
@@ -60,22 +56,22 @@ public class BlockCCFence extends BlockCCBase{
         state = state.getActualState(worldIn, pos);
         addCollisionBoxToList(pos, entityBox, collidingBoxes, PILLAR_AABB);
 
-        if (((Boolean)state.getValue(NORTH)).booleanValue())
+        if (state.getValue(NORTH))
         {
             addCollisionBoxToList(pos, entityBox, collidingBoxes, NORTH_AABB);
         }
 
-        if (((Boolean)state.getValue(EAST)).booleanValue())
+        if (state.getValue(EAST))
         {
             addCollisionBoxToList(pos, entityBox, collidingBoxes, EAST_AABB);
         }
 
-        if (((Boolean)state.getValue(SOUTH)).booleanValue())
+        if (state.getValue(SOUTH))
         {
             addCollisionBoxToList(pos, entityBox, collidingBoxes, SOUTH_AABB);
         }
 
-        if (((Boolean)state.getValue(WEST)).booleanValue())
+        if (state.getValue(WEST))
         {
             addCollisionBoxToList(pos, entityBox, collidingBoxes, WEST_AABB);
         }
@@ -94,22 +90,22 @@ public class BlockCCFence extends BlockCCBase{
     {
         int i = 0;
 
-        if (((Boolean)state.getValue(NORTH)).booleanValue())
+        if (state.getValue(NORTH))
         {
             i |= 1 << EnumFacing.NORTH.getHorizontalIndex();
         }
 
-        if (((Boolean)state.getValue(EAST)).booleanValue())
+        if (state.getValue(EAST))
         {
             i |= 1 << EnumFacing.EAST.getHorizontalIndex();
         }
 
-        if (((Boolean)state.getValue(SOUTH)).booleanValue())
+        if (state.getValue(SOUTH))
         {
             i |= 1 << EnumFacing.SOUTH.getHorizontalIndex();
         }
 
-        if (((Boolean)state.getValue(WEST)).booleanValue())
+        if (state.getValue(WEST))
         {
             i |= 1 << EnumFacing.WEST.getHorizontalIndex();
         }
@@ -141,8 +137,10 @@ public class BlockCCFence extends BlockCCBase{
         if (block == Blocks.BARRIER)
             return false;
 
-        if (block instanceof BlockFence || block instanceof BlockCCFence)
-            return block == this;
+//        if (block instanceof BlockFence || block instanceof BlockCCFence)
+//            return block.getMaterial(iblockstate)==blockMaterial;
+        if(block == this)
+            return true;
 
         if(block instanceof BlockFenceGate || block instanceof BlockCCFenceGate)
             return true;
@@ -244,17 +242,14 @@ public class BlockCCFence extends BlockCCBase{
     public boolean canBeConnectedTo(IBlockAccess world, BlockPos pos, EnumFacing facing)
     {
         Block connector = world.getBlockState(pos.offset(facing)).getBlock();
-
-        if(connector instanceof BlockFence||connector instanceof BlockCCFence)
-            return connector == this;
-
-        return false;
+//        return connector instanceof BlockFence || connector instanceof BlockCCFence;
+        return connector == this;
     }
 
     private boolean canFenceConnectTo(IBlockAccess world, BlockPos pos, EnumFacing facing)
     {
         Block block = world.getBlockState(pos.offset(facing)).getBlock();
-        return block.canBeConnectedTo(world, pos.offset(facing), facing.getOpposite()) || canConnectTo(world,pos);
+        return block.canBeConnectedTo(world, pos.offset(facing), facing.getOpposite()) || canConnectTo(world,pos.offset(facing));
     }
 
     /* ======================================== FORGE END ======================================== */

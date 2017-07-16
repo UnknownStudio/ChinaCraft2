@@ -1,6 +1,5 @@
 package cn.mccraft.chinacraft.block;
 
-import cn.mccraft.chinacraft.init.CCCreativeTabs;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -17,9 +16,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-/**
- * Created by Mouse on 2017/2/5.
- */
 public class BlockCCWall extends BlockCCBase {
     public static final PropertyBool UP = PropertyBool.create("up");
     public static final PropertyBool NORTH = PropertyBool.create("north");

@@ -93,6 +93,9 @@ public interface CCBlocks {
     @RegBlock({"bamboo","stairs"})
     Block BAMBOO_STAIRS = new BlockCCStairs(BAMBOO_PLANK.getDefaultState());
 
+    @RegBlock({"bamboo","fence"})
+    Block BAMBOO_FENCE = new BlockCCFence(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
+
     @RegBlock({"peeled","bamboo","plank"})
     Block PEELED_BAMBOO_PLANK = new BlockCCBase(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
 
@@ -101,4 +104,7 @@ public interface CCBlocks {
 
     @RegBlock({"peeled","bamboo","stairs"})
     Block PEELED_BAMBOO_STAIRS = new BlockCCStairs(PEELED_BAMBOO_PLANK.getDefaultState());
+
+    @RegBlock({"peeled","bamboo","fence"})
+    Block PEELED_BAMBOO_FENCE = new BlockCCFence(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
 }
