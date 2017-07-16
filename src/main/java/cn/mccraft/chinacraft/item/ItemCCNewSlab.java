@@ -87,6 +87,6 @@ public class ItemCCNewSlab extends ItemBlock
     }
 
     private boolean isSingle(IBlockState state){
-        return state.getBlock() instanceof BlockCCNewSlab && state.getValue(BlockCCNewSlab.SLAB_TYPE) != BlockCCNewSlab.EnumBlockSlab.DOUBLE;
+        return state.getBlock() == block && state.getValue(BlockCCNewSlab.SLAB_TYPE) != BlockCCNewSlab.EnumBlockSlab.DOUBLE;
     }
 }
