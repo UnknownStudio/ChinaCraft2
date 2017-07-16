@@ -28,6 +28,16 @@ tile.blackBrickStairs.name=青砖楼梯
 tile.blackBrickSlab.name=青砖半砖
 tile.blackBrickDoubleSlab.name=青砖半砖
 tile.blackBrickWall.name=青砖墙
+item.bambooItem.name=竹子
+
+#竹制品
+tile.bambooPlank.name=竹板
+tile.bambooSlab.name=竹台阶
+tile.bambooStairs.name=竹楼梯
+
+tile.peeledBambooPlank.name=竹板(已杀青)
+tile.peeledBambooSlab.name=竹台阶(已杀青)
+tile.peeledBambooStairs.name=竹楼梯(已杀青)
 
 # 工具
 item.bronzePickaxe.name=青铜镐

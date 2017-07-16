@@ -44,4 +44,7 @@ public interface CCItems {
 
     @RegItem({"red", "packet"})
     ItemCCRedPacket RED_PACKET = new ItemCCRedPacket();
+
+    @RegItem({"bamboo","item"})
+    ItemCCBase BAMBOO_ITEM = new ItemCCBase();
 }

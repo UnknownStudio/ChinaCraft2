@@ -55,6 +55,12 @@ public class RecipeLoader implements ILoader {
         addRecipe(new ItemStack(MARBLE_DOOR, 3), "## ", "## ", "## ", '#', SMOOTH_MARBLE);
         addRecipe(new ItemStack(MARBLE_DOOR, 3), " ##", " ##", " ##", '#', SMOOTH_MARBLE);
 
+        //竹制品
+        addRecipe(new ItemStack(BAMBOO_PLANK), "## ", "## ", '#', BAMBOO_ITEM);
+        addRecipe(new ItemStack(BAMBOO_SLAB, 6), "###", '#', BAMBOO_PLANK);
+        addRecipe(new ItemStack(BAMBOO_STAIRS, 4), "#  ", "## ","###", '#', BAMBOO_PLANK);
+        addRecipe(new ItemStack(BAMBOO_STAIRS, 4), "  #", " ##","###", '#', BAMBOO_PLANK);
+
         //青砖
         for (int i = 1; i <= 8; i++) {
             Object objs[] = new Object[i + 1];
