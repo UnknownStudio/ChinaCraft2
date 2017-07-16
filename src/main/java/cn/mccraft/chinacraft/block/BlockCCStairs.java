@@ -9,6 +9,7 @@ public class BlockCCStairs extends BlockStairs{
     public BlockCCStairs(IBlockState modelState) {
         super(modelState);
         setCreativeTab(CCCreativeTabs.tabCore);
+        this.useNeighborBrightness = true;
     }
 
     public BlockCCStairs setHarvestLevelReturnBlock(String toolClass, int level) {
