@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "chinacraft:blocks/peeled_bamboo_plank",
+    "top": "chinacraft:blocks/peeled_bamboo_plank",
+    "side": "chinacraft:blocks/peeled_bamboo_plank"
+  }
+}

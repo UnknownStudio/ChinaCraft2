@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "half=bottom,variant=default": { "model": "chinacraft:black_brick_block" },
-    "half=top,variant=default": { "model": "chinacraft:black_brick_block" }
-  }
-}

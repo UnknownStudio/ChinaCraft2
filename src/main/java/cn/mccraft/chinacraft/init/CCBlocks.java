@@ -64,7 +64,7 @@ public interface CCBlocks {
     Block BLACK_BRICK_BLOCK = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
 
     @RegBlock({"black","brick", "stairs"})
-    Block BLACK_BRICK_STAIRS = new BlockCCStairs(SMOOTH_MARBLE.getDefaultState()).setHarvestLevelReturnBlock("pickaxe",0).setHardness(SMOOTH_MARBLE.getHardness()).setResistance(SMOOTH_MARBLE.getResistance());
+    Block BLACK_BRICK_STAIRS = new BlockCCStairs(SMOOTH_MARBLE.getDefaultState()).setHarvestLevelReturnBlock("pickaxe",0);
 
     @RegBlock(value = {"black","brick","slab"},itemClass = ItemCCNewSlab.class)
     Block BLACK_BRICK_SLAB = new BlockCCNewSlab(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
@@ -88,11 +88,17 @@ public interface CCBlocks {
     Block BAMBOO_PLANK = new BlockCCBase(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
 
     @RegBlock(value = {"bamboo","slab"},itemClass = ItemCCNewSlab.class)
-    Block BAMBOO_NEW_SLAB = new BlockCCNewSlab(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
+    Block BAMBOO_SLAB = new BlockCCNewSlab(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
+
+    @RegBlock({"bamboo","stairs"})
+    Block BAMBOO_STAIRS = new BlockCCStairs(BAMBOO_PLANK.getDefaultState());
 
     @RegBlock({"peeled","bamboo","plank"})
     Block PEELED_BAMBOO_PLANK = new BlockCCBase(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
 
     @RegBlock(value = {"peeled","bamboo","slab"},itemClass = ItemCCNewSlab.class)
     Block PEELED_BAMBOO_SLAB = new BlockCCNewSlab(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
+
+    @RegBlock({"peeled","bamboo","stairs"})
+    Block PEELED_BAMBOO_STAIRS = new BlockCCStairs(PEELED_BAMBOO_PLANK.getDefaultState());
 }

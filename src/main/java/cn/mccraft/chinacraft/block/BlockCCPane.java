@@ -41,6 +41,7 @@ public class BlockCCPane extends BlockCCBase{
     {
         super(materialIn);
         this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false));
+        setHardness(0.5F);
     }
 
     public BlockCCPane setCanDrop(boolean value){

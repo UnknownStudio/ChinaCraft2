@@ -1,0 +1,8 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "chinacraft:blocks/bamboo_plank",
+    "top": "chinacraft:blocks/bamboo_plank",
+    "side": "chinacraft:blocks/bamboo_plank"
+  }
+}
