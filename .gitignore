@@ -1,5 +1,6 @@
 # Use Whitelist Mode
 /*
+*.DS_Store
 
 # Gradle Files
 !gradle/
