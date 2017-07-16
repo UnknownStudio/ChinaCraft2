@@ -50,7 +50,6 @@ public class RecipeLoader implements ILoader {
         addRecipe(new ItemStack(SMOOTH_MARBLE, 4), "##", "##", '#', MARBLE);
         addRecipe(new ItemStack(MARBLE_SLAB, 6), "   ", "   ", "###", '#', SMOOTH_MARBLE);
         addRecipe(new ItemStack(MARBLE_STAIRS, 4), "#  ", "## ", "###", '#', SMOOTH_MARBLE);
-        addRecipe(new ItemStack(MARBLE_STAIRS, 4), "  #", " ##", "###", '#', SMOOTH_MARBLE);
         addRecipe(new ItemStack(MARBLE_WALL, 6), "   ", "###", "###", '#', SMOOTH_MARBLE);
         addRecipe(new ItemStack(MARBLE_DOOR, 3), "## ", "## ", "## ", '#', SMOOTH_MARBLE);
         addRecipe(new ItemStack(MARBLE_DOOR, 3), " ##", " ##", " ##", '#', SMOOTH_MARBLE);
@@ -59,7 +58,6 @@ public class RecipeLoader implements ILoader {
         addRecipe(new ItemStack(BAMBOO_PLANK), "## ", "## ", '#', BAMBOO_ITEM);
         addRecipe(new ItemStack(BAMBOO_SLAB, 6), "###", '#', BAMBOO_PLANK);
         addRecipe(new ItemStack(BAMBOO_STAIRS, 4), "#  ", "## ","###", '#', BAMBOO_PLANK);
-        addRecipe(new ItemStack(BAMBOO_STAIRS, 4), "  #", " ##","###", '#', BAMBOO_PLANK);
 
         //青砖
         for (int i = 1; i <= 8; i++) {
@@ -71,7 +69,6 @@ public class RecipeLoader implements ILoader {
         addRecipe(new ItemStack(BLACK_BRICK_BLOCK), "##", "##", '#', BLACK_BRICK);
         addRecipe(new ItemStack(BLACK_BRICK_SLAB, 6), "   ", "   ", "###", '#', BLACK_BRICK_BLOCK);
         addRecipe(new ItemStack(BLACK_BRICK_STAIRS, 4), "#  ", "## ", "###", '#', BLACK_BRICK_BLOCK);
-        addRecipe(new ItemStack(BLACK_BRICK_STAIRS, 4), "  #", " ##", "###", '#', BLACK_BRICK_BLOCK);
         addRecipe(new ItemStack(BLACK_BRICK_WALL, 6), "   ", "###", "###", '#', BLACK_BRICK_BLOCK);
     }
 
