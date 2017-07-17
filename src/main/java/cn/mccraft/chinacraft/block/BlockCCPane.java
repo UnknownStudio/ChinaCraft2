@@ -1,15 +1,12 @@
 package cn.mccraft.chinacraft.block;
 
-import cn.mccraft.chinacraft.init.CCCreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPane;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

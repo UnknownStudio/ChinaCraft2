@@ -25,52 +25,52 @@ public interface CCBlocks {
     Block SILVER_ORE = new BlockCCOre().setHarvestLevelReturnBlock("pickaxe", 2);
 
     @RegBlock(value = {"copper", "block"}, oreDict = {"blockCopper"})
-    Block COPPER_BLOCK = new BlockCCBase(Material.IRON).setHarvestLevelReturnBlock("pickaxe", 1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block COPPER_BLOCK = new BlockCCBase(Material.IRON).setHarvestLevelReturnBlock("pickaxe", 1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(10.0F);
 
     @RegBlock(value = {"tin", "block"}, oreDict = {"blockTin"})
-    Block TIN_BLOCK = new BlockCCBase(Material.IRON).setHarvestLevelReturnBlock("pickaxe", 1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block TIN_BLOCK = new BlockCCBase(Material.IRON).setHarvestLevelReturnBlock("pickaxe", 1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(10.0F);
 
     @RegBlock(value = {"bronze", "block"}, oreDict = {"blockBronze"})
-    Block BRONZE_BLOCK = new BlockCCBase(Material.IRON).setHarvestLevelReturnBlock("pickaxe", 1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block BRONZE_BLOCK = new BlockCCBase(Material.IRON).setHarvestLevelReturnBlock("pickaxe", 1).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(10.0F);
 
     @RegBlock(value = {"silver", "block"}, oreDict = {"blockSilver"})
-    Block SILVER_BLOCK = new BlockCCBase(Material.IRON).setHarvestLevelReturnBlock("pickaxe", 2).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block SILVER_BLOCK = new BlockCCBase(Material.IRON).setHarvestLevelReturnBlock("pickaxe", 2).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(10.0F);
 
     @RegBlock("marble")
-    Block MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
 
     @RegBlock({"smooth", "marble"})
-    BlockCCBase SMOOTH_MARBLE = (BlockCCBase) new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    BlockCCBase SMOOTH_MARBLE = (BlockCCBase) new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
 
     @RegBlock({"chiseled", "marble"})
-    Block CHISELED_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block CHISELED_MARBLE = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
 
     @RegBlock({"pillar", "marble"})
-    Block PILLAR_MARBLE = new BlockCCRotatedPillar(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block PILLAR_MARBLE = new BlockCCRotatedPillar(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
 
     @RegBlock({"marble", "stairs"})
     Block MARBLE_STAIRS = new BlockCCStairs(SMOOTH_MARBLE.getDefaultState()).setHarvestLevelReturnBlock("pickaxe",0);
 
     @RegBlock(value = {"marble","slab"},itemClass = ItemCCNewSlab.class)
-    Block MARBLE_SLAB = new BlockCCNewSlab(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block MARBLE_SLAB = new BlockCCNewSlab(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
 
     @RegBlock({"marble","wall"})
-    Block MARBLE_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block MARBLE_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
 
     @RegBlock(value={"marble","door"},itemClass = ItemCCDoor.class)
-    Block MARBLE_DOOR = new BlockCCDoor(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block MARBLE_DOOR = new BlockCCDoor(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
 
     @RegBlock({"black","brick","block"})
-    Block BLACK_BRICK_BLOCK = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block BLACK_BRICK_BLOCK = new BlockCCBase(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
 
     @RegBlock({"black","brick", "stairs"})
     Block BLACK_BRICK_STAIRS = new BlockCCStairs(SMOOTH_MARBLE.getDefaultState()).setHarvestLevelReturnBlock("pickaxe",0);
 
     @RegBlock(value = {"black","brick","slab"},itemClass = ItemCCNewSlab.class)
-    Block BLACK_BRICK_SLAB = new BlockCCNewSlab(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block BLACK_BRICK_SLAB = new BlockCCNewSlab(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
 
     @RegBlock({"black","brick","wall"})
-    Block BLACK_BRICK_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(3.0F).setResistance(5.0F);
+    Block BLACK_BRICK_WALL = new BlockCCWall(Material.ROCK).setHarvestLevelReturnBlock("pickaxe",0).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
 
     @RegBlock({"wooden","window"})
     Block WOODEN_WINDOW = new BlockCCPane(Material.WOOD).setCanDrop(true).setSoundType(SoundType.WOOD).setHardness(0.5F);
@@ -113,4 +113,13 @@ public interface CCBlocks {
 
     @RegBlock({"peeled","bamboo","fence","gate"})
     Block PEELED_BAMBOO_FENCE_GATE = new BlockCCFenceGate(Material.WOOD).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
+
+    @RegBlock("loess")
+    Block LOESS = new BlockCCBase(Material.GROUND).setSoundType(SoundType.GROUND).setHardness(0.5F);
+
+    @RegBlock("adobe")
+    Block ADOBE = new BlockCCBase(Material.GROUND).setSoundType(SoundType.GROUND).setHardness(0.8F);
+
+    @RegBlock("limestone")
+    Block LIMESTONE = new BlockCCBase(Material.GROUND).setSoundType(SoundType.GROUND).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
 }
