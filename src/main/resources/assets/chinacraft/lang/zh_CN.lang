@@ -69,5 +69,9 @@ redPacket.notFoundPlayer=失败: 没有找到玩家 %s!
 redPacket.backpackFull=失败: %s 的背包已满!
 redPacket.received=您收到了来自 %s 的一个红包!
 
-#窗户
+# 窗户
 item.woodenWindow.name=木窗
+
+# 丝绸
+item.silk.name=丝绸
+item.silk.lore=颜色: %s

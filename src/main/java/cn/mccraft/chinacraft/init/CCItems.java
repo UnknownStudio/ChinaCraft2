@@ -53,4 +53,9 @@ public interface CCItems {
 
     @RegItem({"art","knife"})
     ItemCCArtKnife ART_KNIFE = new ItemCCArtKnife();
+
+    @RegItem({"silk"})
+    ItemCCSilk SILK = new ItemCCSilk();
+
+
 }

@@ -6,20 +6,20 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 
 public class CapabilityCrusherStats {
-    public static class Storage implements Capability.IStorage<ICrusherStats> {
+    public static class Storage implements Capability.IStorage<CrusherStats> {
         @Override
-        public NBTBase writeNBT(Capability<ICrusherStats> capability, ICrusherStats instance, EnumFacing side) {
+        public NBTBase writeNBT(Capability<CrusherStats> capability, CrusherStats instance, EnumFacing side) {
             return new NBTTagFloat(instance.getProgress());
         }
 
         @Override
-        public void readNBT(Capability<ICrusherStats> capability, ICrusherStats instance, EnumFacing side, NBTBase nbt) {
+        public void readNBT(Capability<CrusherStats> capability, CrusherStats instance, EnumFacing side, NBTBase nbt) {
             if (nbt.getId() == 5)
                 instance.setProgress(((NBTTagFloat) nbt).getFloat());
         }
     }
 
-    public static class Implementation implements ICrusherStats {
+    public static class Implementation implements CrusherStats {
         private float progress;
 
         @Override

@@ -1,11 +1,15 @@
 package cn.mccraft.chinacraft.common;
 
+import cn.mccraft.chinacraft.capability.CapabilityColor;
 import cn.mccraft.chinacraft.init.CCAchievements;
 import cn.mccraft.chinacraft.init.CCItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -37,5 +41,10 @@ public class CCEventHandler {
             event.player.addStat(CCAchievements.FIRST_BRONZE);
         else if (event.crafting.isItemEqual(new ItemStack(CCItems.BRONZE_PICKAXE)))
             event.player.addStat(CCAchievements.FIRST_BRONZE_PICKAXE);
+    }
+
+    @SubscribeEvent
+    public void attachItemStack(AttachCapabilitiesEvent<Item> event) {
+        event.addCapability(new ResourceLocation(ChinaCraft.MODID, "colorable"), new CapabilityColor.Serializable());
     }
 }

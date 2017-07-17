@@ -1,27 +1,24 @@
 package cn.mccraft.chinacraft.item;
 
 import cn.mccraft.chinacraft.common.ChinaCraft;
-import cn.mccraft.chinacraft.init.CCBlocks;
+import cn.mccraft.chinacraft.init.CCCapabilities;
 import cn.mccraft.chinacraft.init.CCItems;
 import cn.mccraft.chinacraft.util.NameBuilder;
 import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
-import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
-import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Auto loader of all items annotated with {@link RegItem} in {@link CCItems}.
@@ -66,9 +63,14 @@ public class ItemLoader implements ILoader {
         }
     }
 
+    @Load(value = LoaderState.POSTINITIALIZATION, side = Side.CLIENT)
     @SideOnly(Side.CLIENT)
-    private void registerRender(Item item, int meta)
-    {
+    public void registerItemColors() {
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> tintIndex == 0 ? stack.getCapability(CCCapabilities.ITEM_STACK_COLORABLE_CAPABILITY, null).getColor() : -1, CCItems.SILK);
+    }
+
+    @SideOnly(Side.CLIENT)
+    private void registerRender(Item item, int meta) {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
     }
 }

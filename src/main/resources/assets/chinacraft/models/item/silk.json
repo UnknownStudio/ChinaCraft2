@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "chinacraft:items/silk",
+    "layer1": "chinacraft:items/silk_overlay"
+  }
+}

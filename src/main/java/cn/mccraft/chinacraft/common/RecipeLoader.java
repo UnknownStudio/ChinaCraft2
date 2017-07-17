@@ -1,11 +1,13 @@
 package cn.mccraft.chinacraft.common;
 
 import cn.mccraft.chinacraft.init.CCItems;
+import cn.mccraft.chinacraft.item.crafting.RecipesSilkDyes;
 import cn.mccraft.chinacraft.util.loader.ILoader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.LoaderState;
+import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -14,6 +16,7 @@ import static cn.mccraft.chinacraft.init.CCItems.*;
 import static net.minecraft.init.Items.BRICK;
 import static net.minecraft.init.Items.WATER_BUCKET;
 import static net.minecraftforge.fml.common.registry.GameRegistry.*;
+import static net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS;
 
 /**
  * Created by Mouse on 2017/1/28.
@@ -82,6 +85,8 @@ public class RecipeLoader implements ILoader {
         addRecipe(new ItemStack(BLACK_BRICK_SLAB, 6), "   ", "   ", "###", '#', BLACK_BRICK_BLOCK);
         addRecipe(new ItemStack(BLACK_BRICK_STAIRS, 4), "#  ", "## ", "###", '#', BLACK_BRICK_BLOCK);
         addRecipe(new ItemStack(BLACK_BRICK_WALL, 6), "   ", "###", "###", '#', BLACK_BRICK_BLOCK);
+        RecipeSorter.register("chinacraft:silkdyes", RecipesSilkDyes.class, SHAPELESS, "after:minecraft:shapeless");
+        addRecipe(new RecipesSilkDyes());
     }
 
     @Load(LoaderState.INITIALIZATION)
