@@ -5,6 +5,7 @@ import cn.mccraft.chinacraft.client.gui.GuiContainerCrusher;
 import cn.mccraft.chinacraft.client.gui.GuiContainerRedPacket;
 import cn.mccraft.chinacraft.inventory.ContainerCrusher;
 import cn.mccraft.chinacraft.inventory.ContainerRedPacket;
+import cn.mccraft.chinacraft.inventory.ContainerSilkwormFrame;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -22,6 +23,8 @@ public class GuiHandler implements IGuiHandler {
                 return new ContainerRedPacket(player);
             case CRUSHER:
                 return new ContainerCrusher(player.inventory, (TileEntityCrusher) world.getTileEntity(new BlockPos(x, y, z)));
+            case SILKWORM_FRAME:
+                return new ContainerSilkwormFrame();
             default:
                 return null;
         }

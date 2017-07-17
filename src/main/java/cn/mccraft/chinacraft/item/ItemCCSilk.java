@@ -1,6 +1,7 @@
 package cn.mccraft.chinacraft.item;
 
 import cn.mccraft.chinacraft.init.CCCapabilities;
+import cn.mccraft.chinacraft.init.CCCreativeTabs;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,12 +15,12 @@ import java.util.List;
 
 public class ItemCCSilk extends ItemCCBase {
     public ItemCCSilk() {
-        setHasSubtypes(true);
+        setCreativeTab(CCCreativeTabs.tabSilkworm);
     }
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer worldIn, List<String> tooltip, boolean flagIn) {
-            tooltip.add(I18n.format("item.silk.lore", stack.getCapability(CCCapabilities.ITEM_STACK_COLORABLE_CAPABILITY, null).getColor()));
+        tooltip.add(I18n.format("item.silk.lore", stack.getCapability(CCCapabilities.ITEM_STACK_COLORABLE_CAPABILITY, null).getColor()));
     }
 
     @Override
