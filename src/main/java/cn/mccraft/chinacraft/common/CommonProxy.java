@@ -24,7 +24,7 @@ public class CommonProxy {
     private final Collection<Class<? extends Loader>> loaders =
             Arrays.asList(BlockLoader.class, ItemLoader.class, RecipeLoader.class, WorldGenListener.class,
                 ModificationLoader.class, AchievementsLoader.class, CapabilityLoader.class ,
-                    TileEntityLoader.class, SoundLoader.class, LootLoader.class);
+                    TileEntityLoader.class, SoundLoader.class, LootLoader.class, TreeLoader.class);
 
     private final Map<Class<? extends Loader>, Loader> loaderInstanceMap = new HashMap<>();
     private final Map<LoaderState, Collection<Method>> stateLoaderMap = new HashMap<>();

@@ -11,6 +11,6 @@
   "credits": "Unknown Domain Studio Team, for making this mod.",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": ["biomesoplenty"]
 }
 ]
