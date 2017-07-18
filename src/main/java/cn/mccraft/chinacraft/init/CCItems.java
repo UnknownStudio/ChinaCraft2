@@ -2,7 +2,7 @@ package cn.mccraft.chinacraft.init;
 
 import cn.mccraft.chinacraft.item.*;
 import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.util.EnumHelper;
 
 /**
@@ -57,5 +57,15 @@ public interface CCItems {
     @RegItem({"silk"})
     ItemCCSilk SILK = new ItemCCSilk();
 
+    @RegItem({"record", "volunteer", "march"})
+    ItemCCRecord RECORD_VOLUNTEER_MARCH = new ItemCCRecord("volunteer_march", CCSounds.VOLUNTEER_MARCH);
 
+    @RegItem({"record", "spring", "festival"})
+    ItemCCRecord RECORD_SPRING_FESTIVAL = new ItemCCRecord("volunteer_march", CCSounds.SPRING_FESTIVAL);
+
+    @RegItem({"record", "mountain", "fall"})
+    ItemCCRecord RECORD_MOUNTAIN_FALL = new ItemCCRecord("volunteer_march", CCSounds.MOUNTAIN_FALL);
+
+    @RegItem({"record", "plum", "blossom"})
+    ItemCCRecord RECORD_PLUM_BLOSSOM = new ItemCCRecord("volunteer_march", CCSounds.PLUM_BLOSSOM);
 }
