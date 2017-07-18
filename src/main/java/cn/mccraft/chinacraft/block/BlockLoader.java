@@ -3,13 +3,12 @@ package cn.mccraft.chinacraft.block;
 import cn.mccraft.chinacraft.common.ChinaCraft;
 import cn.mccraft.chinacraft.init.CCBlocks;
 import cn.mccraft.chinacraft.util.NameBuilder;
-import cn.mccraft.chinacraft.util.loader.ILoader;
+import cn.mccraft.chinacraft.util.loader.Loader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import cn.mccraft.chinacraft.util.loader.annotation.RegBlock;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -25,7 +24,7 @@ import java.util.Arrays;
  * 自动加载{@link CCBlocks}中被{@link RegBlock}注释的方块。
  */
 @SuppressWarnings("unused")
-public class BlockLoader implements ILoader {
+public class BlockLoader implements Loader {
     @Load
     public void registerBlocks() {
         for (Field field : CCBlocks.class.getFields()) {

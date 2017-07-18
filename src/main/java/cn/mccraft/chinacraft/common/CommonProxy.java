@@ -3,7 +3,7 @@ package cn.mccraft.chinacraft.common;
 import cn.mccraft.chinacraft.block.BlockLoader;
 import cn.mccraft.chinacraft.capability.CapabilityLoader;
 import cn.mccraft.chinacraft.item.ItemLoader;
-import cn.mccraft.chinacraft.util.loader.ILoader;
+import cn.mccraft.chinacraft.util.loader.Loader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import cn.mccraft.chinacraft.world.gen.WorldGenListener;
 import net.minecraftforge.fml.common.LoaderState;
@@ -21,12 +21,12 @@ import java.util.*;
  */
 public class CommonProxy {
 
-    private final Collection<Class<? extends ILoader>> loaders =
+    private final Collection<Class<? extends Loader>> loaders =
             Arrays.asList(BlockLoader.class, ItemLoader.class, RecipeLoader.class, WorldGenListener.class,
                 ModificationLoader.class, AchievementsLoader.class, CapabilityLoader.class ,
-                    TileEntityLoader.class, SoundLoader.class);
+                    TileEntityLoader.class, SoundLoader.class, LootLoader.class);
 
-    private final Map<Class<? extends ILoader>, ILoader> loaderInstanceMap = new HashMap<>();
+    private final Map<Class<? extends Loader>, Loader> loaderInstanceMap = new HashMap<>();
     private final Map<LoaderState, Collection<Method>> stateLoaderMap = new HashMap<>();
 
     public void preInit(FMLPreInitializationEvent event) {
@@ -64,7 +64,7 @@ public class CommonProxy {
     }
 
     public CommonProxy() {
-        for (Class<? extends ILoader> loaderClass : loaders)
+        for (Class<? extends Loader> loaderClass : loaders)
             try {
                 for (Method method : loaderClass.getMethods())
                     for (Annotation annotation : method.getDeclaredAnnotations())
@@ -81,11 +81,11 @@ public class CommonProxy {
             }
     }
 
-    public Map<Class<? extends ILoader>, ? extends ILoader> getLoaderInstanceMap() {
+    public Map<Class<? extends Loader>, ? extends Loader> getLoaderInstanceMap() {
         return loaderInstanceMap;
     }
 
-    public <T extends ILoader> Optional<T> getLoader(Class<T> loaderClass) {
+    public <T extends Loader> Optional<T> getLoader(Class<T> loaderClass) {
         try {
             return Optional.of((T) loaderInstanceMap.get(loaderClass));
         } catch (ClassCastException ignored) {
@@ -93,7 +93,7 @@ public class CommonProxy {
         }
     }
 
-    public Collection<Class<? extends ILoader>> getLoaders() {
+    public Collection<Class<? extends Loader>> getLoaders() {
         return loaders;
     }
 

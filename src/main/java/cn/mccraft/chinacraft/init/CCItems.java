@@ -57,15 +57,15 @@ public interface CCItems {
     @RegItem({"silk"})
     ItemCCSilk SILK = new ItemCCSilk();
 
-    @RegItem({"record", "volunteer", "march"})
-    ItemCCRecord RECORD_VOLUNTEER_MARCH = new ItemCCRecord("volunteer_march", CCSounds.VOLUNTEER_MARCH);
+    @RegItem(value = {"record", "volunteer", "march"}, oreDict = {"record"})
+    ItemCCRecord RECORD_VOLUNTEER_MARCH = new ItemCCRecord("volunteerMarch", CCSounds.VOLUNTEER_MARCH);
 
-    @RegItem({"record", "spring", "festival"})
-    ItemCCRecord RECORD_SPRING_FESTIVAL = new ItemCCRecord("volunteer_march", CCSounds.SPRING_FESTIVAL);
+    @RegItem(value = {"record", "spring", "festival"}, oreDict = {"record"})
+    ItemCCRecord RECORD_SPRING_FESTIVAL = new ItemCCRecord("springFestival", CCSounds.SPRING_FESTIVAL);
 
-    @RegItem({"record", "mountain", "fall"})
-    ItemCCRecord RECORD_MOUNTAIN_FALL = new ItemCCRecord("volunteer_march", CCSounds.MOUNTAIN_FALL);
+    @RegItem(value = {"record", "mountain", "fall"}, oreDict = {"record"})
+    ItemCCRecord RECORD_MOUNTAIN_FALL = new ItemCCRecord("mountainFall", CCSounds.MOUNTAIN_FALL);
 
-    @RegItem({"record", "plum", "blossom"})
-    ItemCCRecord RECORD_PLUM_BLOSSOM = new ItemCCRecord("volunteer_march", CCSounds.PLUM_BLOSSOM);
+    @RegItem(value = {"record", "plum", "blossom"}, oreDict = {"record"})
+    ItemCCRecord RECORD_PLUM_BLOSSOM = new ItemCCRecord("plumBlossom", CCSounds.PLUM_BLOSSOM);
 }

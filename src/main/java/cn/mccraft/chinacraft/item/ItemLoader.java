@@ -4,12 +4,13 @@ import cn.mccraft.chinacraft.common.ChinaCraft;
 import cn.mccraft.chinacraft.init.CCCapabilities;
 import cn.mccraft.chinacraft.init.CCItems;
 import cn.mccraft.chinacraft.util.NameBuilder;
-import cn.mccraft.chinacraft.util.loader.ILoader;
+import cn.mccraft.chinacraft.util.loader.Loader;
 import cn.mccraft.chinacraft.util.loader.annotation.Load;
 import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemRecord;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -24,7 +25,7 @@ import java.util.Arrays;
  * Auto loader of all items annotated with {@link RegItem} in {@link CCItems}.
  * 自动加载{@link CCItems}中被{@link RegItem}注释的物品。
  */
-public class ItemLoader implements ILoader {
+public class ItemLoader implements Loader {
 
     @Load
     public void registerItems() {
@@ -35,7 +36,10 @@ public class ItemLoader implements ILoader {
 
             try {
                 Item item = (Item) field.get(null);
-                GameRegistry.register(item.setRegistryName(NameBuilder.buildRegistryName(anno.value())).setUnlocalizedName(NameBuilder.buildUnlocalizedName(anno.value())));
+                if (item instanceof ItemRecord)
+                    GameRegistry.register(item.setRegistryName(NameBuilder.buildRegistryName(anno.value()))).setUnlocalizedName("record");
+                else
+                    GameRegistry.register(item.setRegistryName(NameBuilder.buildRegistryName(anno.value())).setUnlocalizedName(NameBuilder.buildUnlocalizedName(anno.value())));
 
                 Arrays.asList(anno.oreDict()).forEach(s -> OreDictionary.registerOre(s, item));
             } catch (Exception e) {

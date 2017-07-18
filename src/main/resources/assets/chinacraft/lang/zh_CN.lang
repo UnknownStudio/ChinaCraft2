@@ -76,3 +76,9 @@ item.woodenWindow.name=木窗
 # 丝绸
 item.silk.name=丝绸
 item.silk.lore=颜色: %s
+
+# 唱片
+item.record.volunteerMarch.desc=中国人民解放军军乐团 - 义勇军进行曲
+item.record.springFestival.desc=中国人民解放军军乐团 - 春节序曲
+item.record.mountainFall.desc=中央民族乐团 - 高山流水
+item.record.plumBlossom.desc=姜育恒 - 梅花三弄

@@ -1,0 +1,30 @@
+{
+  "pools": [
+    {
+      "name": "main",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "chinacraft:record_volunteer_march",
+          "weight": 15
+        },
+        {
+          "type": "item",
+          "name": "chinacraft:record_mountain_fall",
+          "weight": 15
+        },
+        {
+          "type": "item",
+          "name": "chinacraft:record_spring_festival",
+          "weight": 15
+        },
+        {
+          "type": "item",
+          "name": "chinacraft:record_plum_blossom",
+          "weight": 15
+        }
+      ]
+    }
+  ]
+}

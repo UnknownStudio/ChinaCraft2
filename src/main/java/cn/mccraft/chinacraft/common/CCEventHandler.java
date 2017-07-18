@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -46,5 +47,17 @@ public class CCEventHandler {
     @SubscribeEvent
     public void attachItemStack(AttachCapabilitiesEvent<Item> event) {
         event.addCapability(new ResourceLocation(ChinaCraft.MODID, "colorable"), new CapabilityColor.Serializable());
+    }
+
+    @SubscribeEvent
+    public void addLoots(LootTableLoadEvent event) {
+        if (event.getName().toString().equals("minecraft:chests/simple_dungeon") || event.getName().toString().equals("minecraft:chests/woodland_mansion")) {
+//            TODO
+//            LootEntry entry = new LootEntryTable(new ResourceLocation(ChinaCraft.MODID, "inject/records"), 15, <quality>, <conditions>, <entryName>); // weight doesn't matter since it's the only entry in the pool. Other params set as you wish.
+//
+//            LootPool pool = new LootPool(new LootEntry[] {entry}, <conditions>, <rolls>, <bonusRolls>, <name>); // Other params set as you wish.
+//
+//            event.getTable().addPool(pool);
+        }
     }
 }
