@@ -63,6 +63,8 @@ public class RecipeLoader implements Loader {
         addRecipe(new ItemStack(BAMBOO_PLANK), "## ", "## ", '#', BAMBOO_ITEM);
         addRecipe(new ItemStack(BAMBOO_SLAB, 6), "###", '#', BAMBOO_PLANK);
         addRecipe(new ItemStack(BAMBOO_STAIRS, 4), "#  ", "## ","###", '#', BAMBOO_PLANK);
+        addRecipe(new ItemStack(BAMBOO_DOOR, 3), " ##", " ##", " ##", BAMBOO_ITEM);
+
         // 杀青竹制品
         for(int i = 0;i<6;i++){
             addRecipe(new ItemStack(PEELED_BAMBOO_PLANK, 8), "###", "#A#", "###", '#', BAMBOO_PLANK, 'A', new ItemStack(ART_KNIFE,1,i));
