@@ -124,4 +124,13 @@ public interface CCBlocks {
 
     @RegBlock("limestone")
     Block LIMESTONE = new BlockCCBase(Material.GROUND).setSoundType(SoundType.GROUND).setSoundType(SoundType.STONE).setHardness(2.0F).setResistance(10.0F);
+
+    @RegBlock("azalea")
+    Block AZALEA = new BlockCCFlower();
+
+    @RegBlock("peony")
+    Block PEONY = new BlockCCFlower();
+
+    @RegBlock("chrysanthemum")
+    Block CHRYSANTHEMUM = new BlockCCFlower();
 }
