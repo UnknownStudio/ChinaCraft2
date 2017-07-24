@@ -37,4 +37,12 @@ public interface CCCreativeTabs {
             return stack;
         }
     };
+
+    CreativeTabs tabPlant = new CreativeTabs(ChinaCraft.MODID + "Plant") {
+        @Nonnull
+        @Override
+        public ItemStack getTabIconItem() {
+            return new ItemStack(CCBlocks.AZALEA);
+        }
+    };
 }
