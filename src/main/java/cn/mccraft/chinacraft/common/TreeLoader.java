@@ -5,8 +5,7 @@ import biomesoplenty.common.world.generator.tree.GeneratorTreeBase;
 import cn.mccraft.chinacraft.block.BlockCCLeaf;
 import cn.mccraft.chinacraft.block.BlockCCLog;
 import cn.mccraft.chinacraft.block.BlockCCSapling;
-import cn.mccraft.chinacraft.util.loader.Loader;
-import cn.mccraft.chinacraft.util.loader.annotation.Load;
+import cn.mccraft.util.loader.Load;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -14,7 +13,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import java.util.HashSet;
 import java.util.Set;
 
-public class TreeLoader implements Loader {
+public class TreeLoader {
     public static final Set<GeneratorTreeBase> GENERATOR_TREES = new HashSet<>();
 
     @Load

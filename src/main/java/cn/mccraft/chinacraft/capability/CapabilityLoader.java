@@ -2,8 +2,7 @@ package cn.mccraft.chinacraft.capability;
 
 import cn.mccraft.chinacraft.common.ChinaCraft;
 import cn.mccraft.chinacraft.init.CCCapabilities;
-import cn.mccraft.chinacraft.util.loader.Loader;
-import cn.mccraft.chinacraft.util.loader.annotation.Load;
+import cn.mccraft.util.loader.Load;
 import cn.mccraft.chinacraft.util.loader.annotation.RegCapability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -11,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import java.lang.reflect.Field;
 
-public class CapabilityLoader implements Loader {
+public class CapabilityLoader {
     @Load
     public void load(FMLPreInitializationEvent event) {
         for (Field field : CCCapabilities.class.getFields()) {

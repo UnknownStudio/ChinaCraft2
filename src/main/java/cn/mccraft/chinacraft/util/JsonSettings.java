@@ -1,6 +1,6 @@
 package cn.mccraft.chinacraft.util;
 
-import cn.mccraft.chinacraft.api.ISettings;
+import cn.mccraft.chinacraft.api.Settings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class JsonSettings implements ISettings, Flushable {
+public class JsonSettings implements Settings, Flushable {
     private Map<String, JsonObject> domainConfigMap = new ConcurrentHashMap<>();
     private final File configFolder;
 

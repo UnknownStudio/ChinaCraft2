@@ -2,8 +2,7 @@ package cn.mccraft.chinacraft.common;
 
 import cn.mccraft.chinacraft.init.CCItems;
 import cn.mccraft.chinacraft.item.crafting.RecipesSilkDyes;
-import cn.mccraft.chinacraft.util.loader.Loader;
-import cn.mccraft.chinacraft.util.loader.annotation.Load;
+import cn.mccraft.util.loader.Load;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.LoaderState;
@@ -21,7 +20,7 @@ import static net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS;
 /**
  * Created by Mouse on 2017/1/28.
  */
-public class RecipeLoader implements Loader {
+public class RecipeLoader {
 
     @Load(LoaderState.INITIALIZATION)
     public void loadCraftingRecipe() {
