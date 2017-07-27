@@ -1,5 +1,6 @@
 package cn.mccraft.chinacraft.common;
 
+import biomesoplenty.common.world.generator.tree.GeneratorTreeBase;
 import cn.mccraft.chinacraft.capability.CapabilityColor;
 import cn.mccraft.chinacraft.init.CCAchievements;
 import cn.mccraft.chinacraft.init.CCItems;
@@ -11,13 +12,16 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.LootTableLoadEvent;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 public class CCEventHandler {
     public CCEventHandler() {
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.TERRAIN_GEN_BUS.register(this);
     }
 
 //    @SubscribeEvent
@@ -59,5 +63,14 @@ public class CCEventHandler {
 //
 //            event.getTable().addPool(pool);
         }
+    }
+
+    @SubscribeEvent
+    public void generateTree(DecorateBiomeEvent.Decorate event) {
+        if (event.getType() == DecorateBiomeEvent.Decorate.EventType.TREE)
+            if (event.getRand().nextBoolean()) {
+                event.setResult(Event.Result.DENY);
+                TreeLoader.GENERATOR_TREES.toArray(new GeneratorTreeBase[0])[event.getRand().nextInt(TreeLoader.GENERATOR_TREES.size() - 1)].generate(event.getWorld(), event.getRand(), event.getPos());
+            }
     }
 }

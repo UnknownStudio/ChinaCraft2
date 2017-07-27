@@ -4,8 +4,7 @@ import cn.mccraft.chinacraft.common.ChinaCraft;
 import cn.mccraft.chinacraft.init.CCCapabilities;
 import cn.mccraft.chinacraft.init.CCItems;
 import cn.mccraft.chinacraft.util.NameBuilder;
-import cn.mccraft.chinacraft.util.loader.Loader;
-import cn.mccraft.chinacraft.util.loader.annotation.Load;
+import cn.mccraft.util.loader.Load;
 import cn.mccraft.chinacraft.util.loader.annotation.RegItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -25,7 +24,7 @@ import java.util.Arrays;
  * Auto loader of all items annotated with {@link RegItem} in {@link CCItems}.
  * 自动加载{@link CCItems}中被{@link RegItem}注释的物品。
  */
-public class ItemLoader implements Loader {
+public class ItemLoader {
 
     @Load
     public void registerItems() {

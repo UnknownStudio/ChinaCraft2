@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top",
+    "textures": {
+        "bottom": "chinacraft:blocks/door_bamboo_lower",
+        "top": "chinacraft:blocks/door_bamboo_upper"
+    }
+}

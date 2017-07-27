@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.Map;
 import java.util.Set;
 
-public interface ISettings {
+public interface Settings {
     File getConfigFolder();
     File getConfigFile(String domain);
     Object remove(String domain, String property);

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": { "model": "chinacraft:cherry_log" },
+    "axis=z": { "model": "chinacraft:cherry_log", "x": 90 },
+    "axis=x": { "model": "chinacraft:cherry_log", "x": 90, "y": 90 }
+  }
+}

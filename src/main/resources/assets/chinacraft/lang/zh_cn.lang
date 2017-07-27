@@ -36,6 +36,7 @@ item.peeledBambooItem.name=竹子(已杀青)
 tile.bambooPlank.name=竹板
 tile.bambooSlab.name=竹台阶
 tile.bambooStairs.name=竹楼梯
+tile.bambooDoor.name=竹门
 
 tile.peeledBambooPlank.name=竹板(已杀青)
 tile.peeledBambooSlab.name=竹台阶(已杀青)

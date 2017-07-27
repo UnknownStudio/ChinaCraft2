@@ -19,7 +19,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * ChinaCraft Mod.
  */
-@Mod(modid = ChinaCraft.MODID, name = ChinaCraft.NAME, version = ChinaCraft.VERSION)
+@Mod(modid = ChinaCraft.MODID, name = ChinaCraft.NAME, version = ChinaCraft.VERSION, dependencies = "required-after:biomesoplenty")
 public final class ChinaCraft {
     public static final String MODID = "chinacraft";
     public static final String NAME = "ChinaCraft 2";

@@ -1,4 +1,4 @@
-package cn.mccraft.chinacraft.util.loader.annotation;
+package cn.mccraft.util.loader;
 
 import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.relauncher.Side;

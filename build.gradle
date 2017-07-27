@@ -55,6 +55,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+	compile 'com.github.glitchfiend.biomesoplenty:BiomesOPlenty:1.11.2-6.2.0.2254:universal'
 }
 
 processResources
