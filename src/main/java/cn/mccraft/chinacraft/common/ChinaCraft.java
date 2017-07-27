@@ -48,7 +48,7 @@ public final class ChinaCraft {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        network = new SimpleNetworkWrapper(MODID);
+        network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
         network.registerMessage(new RedPacketMessage.Handler(), RedPacketMessage.class,0, Side.SERVER);
 
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());

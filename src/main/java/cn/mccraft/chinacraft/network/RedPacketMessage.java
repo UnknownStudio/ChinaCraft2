@@ -2,6 +2,7 @@ package cn.mccraft.chinacraft.network;
 
 import cn.mccraft.chinacraft.util.Utils;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -10,6 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -54,23 +56,18 @@ public class RedPacketMessage implements IMessage {
 
     @Override
     public void fromBytes(ByteBuf buf) {
-        PacketBuffer pb = new PacketBuffer(buf);
-        sender = pb.readString(pb.readInt());
-        wish = pb.readString(pb.readInt());
-        receiver = pb.readString(pb.readInt());
-        isSend = pb.readBoolean();
+        sender = ByteBufUtils.readUTF8String(buf);
+        wish = ByteBufUtils.readUTF8String(buf);
+        receiver = ByteBufUtils.readUTF8String(buf);
+        isSend = buf.readBoolean();
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
-        PacketBuffer pb = new PacketBuffer(buf);
-        pb.writeInt(sender == null ? 0 : sender.length());
-        pb.writeString(sender);
-        pb.writeInt(wish == null ? 0 : wish.length());
-        pb.writeString(wish);
-        pb.writeInt(receiver == null ? 0 : receiver.length());
-        pb.writeString(receiver);
-        pb.writeBoolean(isSend);
+        ByteBufUtils.writeUTF8String(buf,sender);
+        ByteBufUtils.writeUTF8String(buf,wish);
+        ByteBufUtils.writeUTF8String(buf,receiver);
+        buf.writeBoolean(isSend);
     }
 
     public boolean isSend() {
